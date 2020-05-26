@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FolkerKinzel.RecentFiles", "FolkerKinzel.RecentFiles\FolkerKinzel.RecentFiles.csproj", "{31FD69AE-A404-4DD4-AD2E-75F127963E4F}"
+EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "FolkerKinzel.RecentFiles.Doku.de", "FolkerKinzel.RecentFiles.Doku.de\FolkerKinzel.RecentFiles.Doku.de.shfbproj", "{44D58554-B7A2-4E15-A066-CA4166FDF4D8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{31FD69AE-A404-4DD4-AD2E-75F127963E4F} = {31FD69AE-A404-4DD4-AD2E-75F127963E4F}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31FD69AE-A404-4DD4-AD2E-75F127963E4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31FD69AE-A404-4DD4-AD2E-75F127963E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31FD69AE-A404-4DD4-AD2E-75F127963E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31FD69AE-A404-4DD4-AD2E-75F127963E4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44D58554-B7A2-4E15-A066-CA4166FDF4D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44D58554-B7A2-4E15-A066-CA4166FDF4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44D58554-B7A2-4E15-A066-CA4166FDF4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44D58554-B7A2-4E15-A066-CA4166FDF4D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {77F1CD7A-2A52-4D9F-B29E-282B5E1E198F}
+	EndGlobalSection
+EndGlobal
