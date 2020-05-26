@@ -24,9 +24,9 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageIcon>Logo.png</PackageIcon>
-    <RepositoryUrl>https://github.com/FolkerKinzel/Contacts.IO.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/FolkerKinzel/RecentFiles.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/FolkerKinzel/Contacts.IO</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/FolkerKinzel/RecentFiles</PackageProjectUrl>
     
     
   </PropertyGroup>
