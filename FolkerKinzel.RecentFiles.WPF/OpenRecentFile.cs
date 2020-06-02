@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace FolkerKinzel.RecentFiles
+namespace FolkerKinzel.RecentFiles.WPF
 {
     /// <summary>
     /// <see cref="ICommand"/> zum Öffnen einer aus dem <see cref="RecentFilesMenu"/> ausgewählten Datei.

@@ -10,10 +10,10 @@
     <!-- nuget-Package: -->
     <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
     <Product>FolkerKinzel.RecentFiles.WPF</Product>
-    <Version>1.0.0</Version>
-    <FileVersion>1.0.2.0</FileVersion>
+    <Version>1.1.0</Version>
+    <FileVersion>1.1.0.0</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <PackageReleaseNotes>Bug fix.</PackageReleaseNotes>
+    <PackageReleaseNotes>Refactoring.</PackageReleaseNotes>
     <PackageTags>recent menu WPF</PackageTags>
     <Description>Recent files menu for WPF applications.</Description>
     <Authors>Folker Kinzel</Authors>

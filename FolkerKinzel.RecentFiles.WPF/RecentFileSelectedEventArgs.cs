@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FolkerKinzel.RecentFiles
+namespace FolkerKinzel.RecentFiles.WPF
 {
     /// <summary>
     /// <see cref="EventArgs"/> für das <see cref="RecentFilesMenu.RecentFileSelected"/>-Event.

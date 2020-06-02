@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace FolkerKinzel.RecentFiles
+namespace FolkerKinzel.RecentFiles.WPF
 {
     /// <summary>
     /// Interface, das die öffentliche Schnittstelle von <see cref="RecentFilesMenu"/> darstellt.

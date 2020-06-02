@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace FolkerKinzel.RecentFiles
+namespace FolkerKinzel.RecentFiles.WPF
 {
     /// <summary>
     /// Klasse, die der WPF-Anwendung ein Menü mit den zuletzt verwendeten Dateien hinzufügt.
