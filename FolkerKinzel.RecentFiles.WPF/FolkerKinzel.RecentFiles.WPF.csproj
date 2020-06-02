@@ -8,10 +8,10 @@
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
     <!-- nuget-Package: -->
-    <PackageId>FolkerKinzel.RecentFiles</PackageId>
-    <Product>FolkerKinzel.RecentFiles</Product>
-    <Version>1.1.0</Version>
-    <FileVersion>1.1.1.0</FileVersion>
+    <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
+    <Product>FolkerKinzel.RecentFiles.WPF</Product>
+    <Version>1.0.0</Version>
+    <FileVersion>1.0.1.0</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <PackageReleaseNotes>Bug fix.</PackageReleaseNotes>
     <PackageTags>recent menu WPF</PackageTags>
@@ -21,9 +21,9 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageIcon>Logo.png</PackageIcon>
-    <RepositoryUrl>https://github.com/FolkerKinzel/RecentFiles.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/FolkerKinzel/RecentFiles.WPF.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/FolkerKinzel/RecentFiles</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/FolkerKinzel/RecentFiles.WPF</PackageProjectUrl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

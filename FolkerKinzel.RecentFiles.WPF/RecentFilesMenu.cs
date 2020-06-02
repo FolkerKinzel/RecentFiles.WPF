@@ -1,4 +1,4 @@
-﻿using FolkerKinzel.RecentFiles.Resources;
+﻿using FolkerKinzel.RecentFiles.WPF.Resources;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

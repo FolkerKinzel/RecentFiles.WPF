@@ -11,7 +11,7 @@
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
     <AssemblyName>FolkerKinzel.RecentFiles.Doku.de</AssemblyName>
     <RootNamespace>FolkerKinzel.RecentFiles.Doku.de</RootNamespace>
-    <Name>FolkerKinzel.RecentFiles.Doku.de</Name>
+    <Name>FolkerKinzel.RecentFiles.WPF.Doku.de</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>Cross-platform (.NET Core/.NET Standard)</FrameworkVersion>
     <OutputPath>.\Help\</OutputPath>
@@ -27,7 +27,7 @@
       <Argument Key="maxVersionParts" Value="" xmlns="" />
     </TransformComponentArguments>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\FolkerKinzel.RecentFiles\FolkerKinzel.RecentFiles.csproj" xmlns="" />
+      <DocumentationSource sourceFile="..\FolkerKinzel.RecentFiles.WPF\FolkerKinzel.RecentFiles.WPF.csproj" />
     </DocumentationSources>
     <HelpFileFormat>HtmlHelp1</HelpFileFormat>
     <SyntaxFilters>Standard</SyntaxFilters>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FolkerKinzel.RecentFiles.Resources {
+namespace FolkerKinzel.RecentFiles.WPF.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace FolkerKinzel.RecentFiles.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FolkerKinzel.RecentFiles.Resources.Res", typeof(Res).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FolkerKinzel.RecentFiles.WPF.Resources.Res", typeof(Res).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
