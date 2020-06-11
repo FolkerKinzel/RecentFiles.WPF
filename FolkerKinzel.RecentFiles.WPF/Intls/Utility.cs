@@ -7,7 +7,9 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
 {
     internal static class Utility
     {
+#if NET461
         internal static bool IsPathFullyQualified(string path) => StringComparer.OrdinalIgnoreCase.Equals(Path.GetFullPath(path), path);
+#endif
 
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Keine allgemeinen Ausnahmetypen abfangen", Justification = "<Ausstehend>")]
