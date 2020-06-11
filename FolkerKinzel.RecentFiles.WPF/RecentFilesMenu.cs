@@ -28,6 +28,12 @@ namespace FolkerKinzel.RecentFiles.WPF
     /// <para>Beim Beenden der Anwendung sollten Sie sämtliche offenen Tasks mit <see cref="Task.WhenAll(IEnumerable{Task})"/> abwarten und dann 
     /// <see cref="RecentFilesMenu.Dispose()"/> aufrufen.</para>
     /// </remarks>
+    /// <example>
+    /// <para>Initialisieren von <see cref="RecentFilesMenu"/>:</para>
+    /// <code language="cs" source="..\WpfExample\App.xaml.cs" />
+    /// <para>Einbinden von <see cref="RecentFilesMenu"/> in ein WPF-<see cref="Window"/>:</para>
+    /// <code language="cs" source="..\WpfExample\MainWindow.xaml.cs" />
+    /// </example>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Keine allgemeinen Ausnahmetypen abfangen", Justification = "<Ausstehend>")]
     public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     {
@@ -51,6 +57,7 @@ namespace FolkerKinzel.RecentFiles.WPF
 
 
         private readonly int _maxFiles;
+        private readonly string? _clearListText;
 
         #endregion
 
@@ -62,18 +69,32 @@ namespace FolkerKinzel.RecentFiles.WPF
         /// </summary>
         /// <param name="persistenceDirectoryPath">Absoluter Pfad des Verzeichnisses, in das <see cref="RecentFilesMenu"/>
         /// persistiert wird.</param>
-        /// <param name="maxFiles">Maximalanzahl der im Menü anzuzeigenden Dateinamen.</param>
+        /// <param name="maxFiles">Maximalanzahl der im Menü anzuzeigenden Dateinamen (zwischen 1 und 10).</param>
+        /// <param name="clearListText">Text für den Menüpunkt "Liste leeren" oder <c>null</c>, um den Text aus den Ressourcen zu 
+        /// nutzen. (Es gibt Ressourcen für Deutsch und Englisch.)</param>
         /// <exception cref="ArgumentNullException"><paramref name="persistenceDirectoryPath"/> ist <c>null</c>.</exception>
-        /// <exception cref="ArgumentException"><paramref name="persistenceDirectoryPath"/> enthält mindestens eines der in 
-        /// <see cref="Path.GetInvalidPathChars"/> definierten ungültigen Zeichen oder <paramref name="persistenceDirectoryPath"/>
-        /// ist kein absoluter Pfad.</exception>
-        public RecentFilesMenu(string persistenceDirectoryPath, int maxFiles = 10)
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="maxFiles"/> ist kleiner als 1 oder größer als 10.</exception>
+        /// <exception cref="ArgumentException">
+        /// <para>
+        /// <paramref name="persistenceDirectoryPath"/> enthält mindestens eines der in <see cref="Path.GetInvalidPathChars"/> definierten ungültigen Zeichen
+        /// </para>
+        /// <para>- oder -</para>
+        /// <para>
+        /// <paramref name="persistenceDirectoryPath"/> ist kein absoluter Pfad
+        /// </para>
+        /// <para>- oder -</para>
+        /// <para>
+        /// <paramref name="persistenceDirectoryPath"/> verweist nicht auf einen existierenden Ordner.
+        /// </para></exception>
+        public RecentFilesMenu(string persistenceDirectoryPath, int maxFiles = 10, string? clearListText = null)
         {
-            if (maxFiles < 1)
+            if (maxFiles < 1 || maxFiles > 10)
             {
                 throw new ArgumentOutOfRangeException(nameof(maxFiles));
             }
+
             _maxFiles = maxFiles;
+            this._clearListText = string.IsNullOrWhiteSpace(clearListText) ? null : clearListText;
 
             _persistence = new RecentFilesPersistence(persistenceDirectoryPath);
             _openRecentFileCommand = new OpenRecentFile(new Action<object>(OpenRecentFile_Executed));
@@ -109,6 +130,7 @@ namespace FolkerKinzel.RecentFiles.WPF
         /// </summary>
         /// <param name="fileName">Ein hinzuzufügender Dateiname. Wenn <paramref name="fileName"/>&#160;<c>null</c>, 
         /// leer oder Whitespace ist, wird nichts hinzugefügt.</param>
+        /// <returns>Der <see cref="Task"/>, auf dessen Beendigung gewartet werden kann.</returns>
         public async Task AddRecentFileAsync(string fileName)
         {
             if (!string.IsNullOrWhiteSpace(fileName))
@@ -138,6 +160,7 @@ namespace FolkerKinzel.RecentFiles.WPF
         /// Enfernt einen Dateinamen aus der Liste.
         /// </summary>
         /// <param name="fileName">Der zu entfernende Dateiname.</param>
+        /// <returns>Der <see cref="Task"/>, auf dessen Beendigung gewartet werden kann.</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Keine allgemeinen Ausnahmetypen abfangen", Justification = "<Ausstehend>")]
         public Task RemoveRecentFileAsync(string fileName)
         {
@@ -154,7 +177,7 @@ namespace FolkerKinzel.RecentFiles.WPF
         /// <summary>
         /// Gibt den Namen der zuletzt geöffneten Datei zurück oder <c>null</c>, wenn dieser nicht existiert.
         /// </summary>
-        /// <returns>Name der zuletzt geöffneten Datei zurück oder <c>null</c>, wenn dieser nicht existiert.</returns>
+        /// <returns>Name der zuletzt geöffneten Datei oder <c>null</c>, wenn dieser nicht existiert.</returns>
         public async Task<string?> GetMostRecentFileAsync()
         {
             await _persistence.LoadAsync().ConfigureAwait(false);
@@ -190,7 +213,7 @@ namespace FolkerKinzel.RecentFiles.WPF
         {
             if (_miRecentFiles is null)
             {
-                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Res.RecentFilesMenu_NotInitialized, nameof(Initialize)));
+                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Res.NotInitialized, nameof(Initialize)));
             }
 
             await _persistence.LoadAsync().ConfigureAwait(true);
@@ -239,7 +262,7 @@ namespace FolkerKinzel.RecentFiles.WPF
 
                     var menuItemClearList = new MenuItem
                     {
-                        Header = "Liste leeren",
+                        Header = _clearListText ?? Res.ClearList,
                         Command = _clearRecentFilesCommand
                     };
 

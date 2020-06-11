@@ -13,7 +13,7 @@
     <RootNamespace>FolkerKinzel.RecentFiles.Doku.de</RootNamespace>
     <Name>FolkerKinzel.RecentFiles.WPF.Doku.de</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>Cross-platform (.NET Core/.NET Standard)</FrameworkVersion>
+    <FrameworkVersion>.NET Framework 4.8</FrameworkVersion>
     <OutputPath>.\Help\</OutputPath>
     <HtmlHelpName>FolkerKinzel.RecentFiles.Doku.de</HtmlHelpName>
     <Language>de-DE</Language>
@@ -27,7 +27,8 @@
       <Argument Key="maxVersionParts" Value="" xmlns="" />
     </TransformComponentArguments>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\FolkerKinzel.RecentFiles.WPF\FolkerKinzel.RecentFiles.WPF.csproj" />
+      <DocumentationSource sourceFile="..\FolkerKinzel.RecentFiles.WPF\bin\Release\net461\de\FolkerKinzel.RecentFiles.WPF.xml" />
+      <DocumentationSource sourceFile="..\FolkerKinzel.RecentFiles.WPF\bin\Release\net461\FolkerKinzel.RecentFiles.WPF.dll" />
     </DocumentationSources>
     <HelpFileFormat>HtmlHelp1</HelpFileFormat>
     <SyntaxFilters>Standard</SyntaxFilters>
@@ -48,8 +49,9 @@
     <Preliminary>False</Preliminary>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <NamespaceSummaries>
-      <NamespaceSummaryItem name="FolkerKinzel.RecentFiles" isDocumented="True" xmlns="">Contains a recent files menu for WPF applications.</NamespaceSummaryItem>
-    </NamespaceSummaries>
+      <NamespaceSummaryItem name="FolkerKinzel.RecentFiles" isDocumented="False">Contains a recent files menu for WPF applications.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="(global)" isDocumented="False" />
+<NamespaceSummaryItem name="FolkerKinzel.RecentFiles.WPF" isDocumented="True">Klassen, die zum Anzeigen eines Menüs für die zuletzt verwendeten Dateien in einer WPF-Anwendung dienen.</NamespaceSummaryItem></NamespaceSummaries>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->

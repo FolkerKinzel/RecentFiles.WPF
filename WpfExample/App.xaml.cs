@@ -1,12 +1,6 @@
 ﻿using FolkerKinzel.RecentFiles.WPF;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace WpfExample
@@ -18,7 +12,11 @@ namespace WpfExample
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            new MainWindow(new RecentFilesMenu(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName)!)).Show();
+            // Construct a new RecentFilesMenu, that persist its data in the same directory,
+            // where the program exe-file is:
+            var rfm = new RecentFilesMenu(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName)!);
+
+            new MainWindow(rfm).Show();
         }
     }
 }

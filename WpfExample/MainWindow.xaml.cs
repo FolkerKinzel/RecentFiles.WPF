@@ -1,21 +1,12 @@
 ﻿using FolkerKinzel.RecentFiles.WPF;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 
 namespace WpfExample
 {
@@ -24,17 +15,17 @@ namespace WpfExample
     /// </summary>
     public sealed partial class MainWindow : Window, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private readonly ConcurrentBag<Task> _tasks = new ConcurrentBag<Task>();
         private readonly IRecentFilesMenu _recentFilesMenu;
         private string? _currentFile;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         public MainWindow(IRecentFilesMenu recentFilesMenu)
         {
             this._recentFilesMenu = recentFilesMenu;
             InitializeComponent();
         }
-
 
         public string? CurrentFile
         {
@@ -46,12 +37,13 @@ namespace WpfExample
 
                 if (value != null)
                 {
-                    _recentFilesMenu.AddRecentFileAsync(value);
+                    // Adds the current file to the RecentFilesMenu.
+                    // If the RecentFilesMenu already contains the file,
+                    // it's moved now to position 1.
+                    _tasks.Add(_recentFilesMenu.AddRecentFileAsync(value));
                 }
             }
         }
-
-        
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -61,14 +53,17 @@ namespace WpfExample
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            // Wait all tasks to be finished before disposing the
+            // recent files menu:
+            Task.WhenAll(_tasks.ToArray());
             _recentFilesMenu.Dispose();
         }
 
         private void RecentFilesMenu_RecentFileSelected(object? sender, RecentFileSelectedEventArgs e)
         {
+            // in Reality: Open the file here!
             CurrentFile = e.FileName;
         }
-
 
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
         {
@@ -76,22 +71,19 @@ namespace WpfExample
 
             if (dialog.ShowDialog(this) == true)
             {
+                // in Reality: Open the file here!
                 CurrentFile = dialog.FileName;
             }
         }
-
 
         private void OnPropertyChanged([CallerMemberName] string propName = "")
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
-
-
         private void Quit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
     }
 }

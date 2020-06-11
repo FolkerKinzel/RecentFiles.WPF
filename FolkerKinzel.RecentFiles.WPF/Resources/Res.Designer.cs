@@ -22,7 +22,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Res {
+    internal class Res {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Resources {
         ///   Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FolkerKinzel.RecentFiles.WPF.Resources.Res", typeof(Res).Assembly);
@@ -51,7 +51,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Resources {
         ///   Ressourcenzuordnungen, die diese stark typisierte Ressourcenklasse verwenden.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,20 +61,38 @@ namespace FolkerKinzel.RecentFiles.WPF.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The file path is not rooted. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Clear list ähnelt.
         /// </summary>
-        public static string RecentFilesMenu_FilePathNotRooted {
+        internal static string ClearList {
             get {
-                return ResourceManager.GetString("RecentFilesMenu_FilePathNotRooted", resourceCulture);
+                return ResourceManager.GetString("ClearList", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The MenuItem has not yet been initialized. Call {0} first! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} is not a fully qualified path. ähnelt.
         /// </summary>
-        public static string RecentFilesMenu_NotInitialized {
+        internal static string FilePathNotFullyQualified {
             get {
-                return ResourceManager.GetString("RecentFilesMenu_NotInitialized", resourceCulture);
+                return ResourceManager.GetString("FilePathNotFullyQualified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} doesn&apos;t refer to an existing directory. ähnelt.
+        /// </summary>
+        internal static string NotAnExistingDirectory {
+            get {
+                return ResourceManager.GetString("NotAnExistingDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The MenuItem has not yet been assigned. Call {0} first! ähnelt.
+        /// </summary>
+        internal static string NotInitialized {
+            get {
+                return ResourceManager.GetString("NotInitialized", resourceCulture);
             }
         }
     }

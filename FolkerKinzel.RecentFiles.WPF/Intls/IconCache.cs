@@ -33,7 +33,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             {
                 return icon;
             }
-            else if (IsDirectory(path))
+            else if (Utility.IsPathDirectory(path))
             {
                 if (_iconDic.TryGetValue(DIRECTORY, out icon))
                 {
@@ -102,19 +102,6 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
         {
             using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DefaultFileIcon.ico");
             return BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
-        }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Keine allgemeinen Ausnahmetypen abfangen", Justification = "<Ausstehend>")]
-        private static bool IsDirectory(string path)
-        {
-            try
-            {
-                return File.GetAttributes(path).HasFlag(FileAttributes.Directory);
-            }
-            catch
-            {
-                return false;
-            }
         }
     }
 }

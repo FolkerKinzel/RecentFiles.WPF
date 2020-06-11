@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FolkerKinzel.RecentFiles.WP
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "FolkerKinzel.RecentFiles.WPF.Doku.de", "FolkerKinzel.RecentFiles.WPF.Doku.de\FolkerKinzel.RecentFiles.WPF.Doku.de.shfbproj", "{44D58554-B7A2-4E15-A066-CA4166FDF4D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfExample", "WpfExample\WpfExample.csproj", "{4F6E882B-EE1A-4AA5-9D14-67789215DF9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfExample", "WpfExample\WpfExample.csproj", "{4F6E882B-EE1A-4AA5-9D14-67789215DF9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,9 +25,7 @@ Global
 		{C99CF01C-10B1-4935-9356-082C8283D10E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C99CF01C-10B1-4935-9356-082C8283D10E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{44D58554-B7A2-4E15-A066-CA4166FDF4D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{44D58554-B7A2-4E15-A066-CA4166FDF4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44D58554-B7A2-4E15-A066-CA4166FDF4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{44D58554-B7A2-4E15-A066-CA4166FDF4D8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4F6E882B-EE1A-4AA5-9D14-67789215DF9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4F6E882B-EE1A-4AA5-9D14-67789215DF9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F6E882B-EE1A-4AA5-9D14-67789215DF9E}.Release|Any CPU.ActiveCfg = Release|Any CPU

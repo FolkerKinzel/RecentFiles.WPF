@@ -1,6 +1,7 @@
 ﻿using FolkerKinzel.RecentFiles.WPF.Resources;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,9 +25,19 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
         /// <param name="persistenceDirectoryPath">Absoluter Pfad des Verzeichnisses, in das <see cref="RecentFilesMenu"/>
         /// persistiert wird.</param>
         /// <exception cref="ArgumentNullException"><paramref name="persistenceDirectoryPath"/> ist <c>null</c>.</exception>
-        /// <exception cref="ArgumentException"><paramref name="persistenceDirectoryPath"/> enthält mindestens eines der in 
-        /// <see cref="Path.GetInvalidPathChars"/> definierten ungültigen Zeichen oder <paramref name="persistenceDirectoryPath"/>
-        /// ist kein absoluter Pfad.</exception>
+        /// <exception cref="ArgumentException">
+        /// <para>
+        /// <paramref name="persistenceDirectoryPath"/> enthält mindestens eines der in <see cref="Path.GetInvalidPathChars"/> definierten ungültigen Zeichen
+        /// </para>
+        /// <para>- oder -</para>
+        /// <para>
+        /// <paramref name="persistenceDirectoryPath"/> ist kein absoluter Pfad
+        /// </para>
+        /// <para>- oder -</para>
+        /// <para>
+        /// <paramref name="persistenceDirectoryPath"/> verweist nicht auf einen existierenden Ordner.
+        /// </para>
+        /// </exception>
         public RecentFilesPersistence(string persistenceDirectoryPath)
         {
             if (persistenceDirectoryPath is null)
@@ -36,10 +47,21 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
 
             _fileName = Path.Combine(persistenceDirectoryPath, $"{Environment.MachineName}.{Environment.UserName}.RF.txt");
 
-            if (!Path.IsPathRooted(_fileName))
+#if NET461
+            if (!Utility.IsPathFullyQualified(_fileName))
+#else
+            if (!Path.IsPathFullyQualified(_fileName))
+#endif
             {
-                throw new ArgumentException(Res.RecentFilesMenu_FilePathNotRooted, nameof(persistenceDirectoryPath));
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, Res.FilePathNotFullyQualified, nameof(persistenceDirectoryPath)), nameof(persistenceDirectoryPath));
             }
+
+
+            if(!Utility.IsPathDirectory(persistenceDirectoryPath))
+            {
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, Res.NotAnExistingDirectory, nameof(persistenceDirectoryPath)), nameof(persistenceDirectoryPath));
+            }
+
 
             this._mutex = new Mutex(false, $"Global\\{_fileName.Replace('\\', '_')}");
         }
