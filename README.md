@@ -41,7 +41,6 @@ using FolkerKinzel.RecentFiles.WPF;
 using Microsoft.Win32;
 using System;
 using System.Collections.Concurrent;
-using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -53,7 +52,7 @@ namespace WpfExample
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public sealed partial class MainWindow : Window, INotifyPropertyChanged
+    public sealed partial class MainWindow : Window
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -75,7 +74,6 @@ namespace WpfExample
             private set
             {
                 _currentFile = value;
-                OnPropertyChanged();
 
                 if (value != null)
                 {
@@ -106,12 +104,6 @@ namespace WpfExample
             // recent files menu:
             await Task.WhenAll(_tasks.ToArray()).ConfigureAwait(false);
             _recentFilesMenu.Dispose();
-        }
-
-
-        private void Quit_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
 
 
@@ -146,12 +138,6 @@ namespace WpfExample
             }
 
             CurrentFile = fileName;
-        }
-
-
-        private void OnPropertyChanged([CallerMemberName] string propName = "")
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
     }
 }
