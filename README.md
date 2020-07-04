@@ -1,9 +1,36 @@
 # FolkerKinzel.RecentFiles.WPF
+[![NuGet](https://img.shields.io/nuget/v/FolkerKinzel.RecentFiles.WPF)](https://www.nuget.org/packages/FolkerKinzel.RecentFiles.WPF/)
+
+
 Recent files menu for WPF applications.
 
 ![Screenshot](screenshot.png)
 
-Initialize RecentFilesMenu: 
+```
+nuget Package Manager:
+PM> Install-Package FolkerKinzel.RecentFiles.WPF -Version 1.2.0
+
+.NET CLI:
+> dotnet add package FolkerKinzel.RecentFiles.WPF --version 1.2.0
+
+PackageReference (Visual Studio Project File):
+<PackageReference Include="FolkerKinzel.RecentFiles.WPF" Version="1.2.0" />
+
+Paket CLI:
+> paket add FolkerKinzel.RecentFiles.WPF --version 1.2.0
+```
+
+* [Download Reference (English)](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/FolkerKinzel.RecentFiles.WPF.Reference.en/Help/FolkerKinzel.RecentFiles.WPF.Reference.en.chm)
+
+* [Projektdokumentation (Deutsch) herunterladen](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/FolkerKinzel.RecentFiles.WPF.Doku.de/Help/FolkerKinzel.RecentFiles.Doku.de.chm)
+
+> IMPORTANT: On some systems, the content of the CHM file is blocked. Before extracting it,
+>  right click on the file, select Properties, and check the "Allow" checkbox - if it 
+> is present - in the lower right corner of the General tab in the Properties dialog.
+
+
+## Example Code
+#### Initialize RecentFilesMenu: 
 ```c#
 using FolkerKinzel.RecentFiles.WPF;
 using System.Diagnostics;
@@ -34,7 +61,7 @@ namespace WpfExample
 }
 ```
 
-Include RecentFilesMenu into a WPF-Window: 
+#### Include RecentFilesMenu into a WPF-Window: 
 
 ```c#
 using FolkerKinzel.RecentFiles.WPF;
