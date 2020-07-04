@@ -5,7 +5,7 @@ namespace FolkerKinzel.RecentFiles.WPF
     /// <summary>
     /// <see cref="EventArgs"/> für das <see cref="RecentFilesMenu.RecentFileSelected"/>-Event.
     /// </summary>
-    public class RecentFileSelectedEventArgs : EventArgs
+    public sealed class RecentFileSelectedEventArgs : EventArgs
     {
         /// <summary>
         /// Initialisiert ein <see cref="RecentFileSelectedEventArgs"/>-Objekt.

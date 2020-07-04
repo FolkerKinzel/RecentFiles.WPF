@@ -6,7 +6,7 @@ namespace FolkerKinzel.RecentFiles.WPF
     /// <summary>
     /// <see cref="ICommand"/> zum Öffnen einer aus dem <see cref="RecentFilesMenu"/> ausgewählten Datei.
     /// </summary>
-    public class OpenRecentFile : ICommand
+    public sealed class OpenRecentFile : ICommand
     {
         private readonly Action<object> _executeHandler;
 

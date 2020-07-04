@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Tsltn Version="1.0" SourceFile="..\bin\Release\netcoreapp3.1\FolkerKinzel.RecentFiles.WPF.xml" SourceLanguage="de" TargetLanguage="en">
+  <T ID="625B9A5BB37746D6">&lt;see cref ="T:System.Windows.Input.ICommand"/&gt; to delete the list of recently used files.</T>
+  <T ID="24B6B25464F285AC">Initializes the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt;.</T>
+  <T ID="AD6B4DAA2F1E52B7">&lt;see cref ="T:System.Action"/&gt; delegate, that executes the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt;.</T>
+  <T ID="5937975FA4E66B03">Method that checks, whether the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; can be executed.</T>
+  <T ID="A1A4574A20F1D512">Data used by the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; or &lt;c&gt;null&lt;/c&gt;.</T>
+  <T ID="E1D1EBB8B3E9F640">&lt;c&gt;true&lt;/c&gt;, if the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; can be executed.</T>
+  <T ID="4C380E4EB0BF1FD4">Event that is fired if the return value of &lt;see cref="M:FolkerKinzel.RecentFiles.WPF.ClearRecentFiles.CanExecute(System.Object)"/&gt; has changed.</T>
+  <T ID="F546D3DA43F00D3B">Method that executes the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt;.</T>
+  <T ID="E90272020F1D512">Data used by the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; or &lt;c&gt;null&lt;/c&gt;.</T>
+  <T ID="A8D9919A06BA40F1">Initializes a &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.Intls.RecentFilesPersistence"/&gt; object.</T>
+  <T ID="4925195BF97131B2">Absolute path of the directory, into the &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt;
+             is persisted.</T>
+  <T ID="2B80CB986A2527E2">&lt;paramref name="persistenceDirectoryPath"/&gt; is &lt;c&gt;null&lt;/c&gt;.</T>
+  <T ID="ABF92C9D966BE995">&lt;para&gt; &lt;paramref name ="persistenceDirectoryPath"/&gt; contains at least one of the invalid characters defined in &lt;see cref ="M:System.IO.Path.GetInvalidPathChars"/&gt;
+             &lt;/para&gt; &lt;para&gt; - or - &lt;/para&gt; &lt;para&gt; &lt;paramref name ="persistenceDirectoryPath"/&gt; is not an absolute path
+             &lt;/para&gt; &lt;para&gt; - or - &lt;/para&gt; &lt;para&gt; &lt;paramref name ="persistenceDirectoryPath"/&gt; does not refer to an existing directory.
+             &lt;/para&gt;</T>
+  <T ID="6B16F9333CE94902">Interface, that represents the public interface of the &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt; class.</T>
+  <T ID="58B86B21CF39E121">Event, that is fired when the user selects a file to open.</T>
+  <T ID="68B9281D3953B3E3">&lt;paramref name="miRecentFiles"/&gt; is &lt;c&gt;null&lt;/c&gt;.</T>
+  <T ID="B115F7278AB2F7F">Adds &lt;paramref name ="fileName"/&gt; to the menu, if
+             &lt;paramref name ="fileName"/&gt; contains a filename.</T>
+  <T ID="686C7191E7E10AE1">A filename to add. If &lt;paramref name ="fileName"/&gt; is &lt;c&gt;null&lt;/c&gt;, empty or whitespace, nothing is added.</T>
+  <T ID="EFD4090BD2A609FD">The &lt;see cref ="T:System.Threading.Tasks.Task"/&gt; that can be awaited.</T>
+  <T ID="528C1D7D19E3A464">Returns the name of the most recently opened file or &lt;c&gt;null&lt;/c&gt;, if the menu is empty.</T>
+  <T ID="D46F6ADC0D330789">Name of the most recently opened file or &lt;c&gt;null&lt;/c&gt;, if the menu is empty.</T>
+  <T ID="ED585F598924677C">Removes a filename from the menu.</T>
+  <T ID="2BBA7B6657841AF9">The filename to remove.</T>
+  <T ID="2332B9A2D2A609FD">The &lt;see cref ="T:System.Threading.Tasks.Task"/&gt; that can be awaited.</T>
+  <T ID="43A9FFB6596BF283">&lt;see cref ="T:System.Windows.Input.ICommand"/&gt; to open a file selected from the &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt;.</T>
+  <T ID="7BDC212664F285AC">Initializes the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt;.</T>
+  <T ID="6EB0337B3E01FFEB">&lt;see cref ="T:System.Action`1"/&gt; delegate, that executes the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt;.</T>
+  <T ID="DDB2835EA4E66B03">Method that checks, whether the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; can be executed.</T>
+  <T ID="F54976DC20F1D512">Data used by the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; or &lt;c&gt;null&lt;/c&gt;.</T>
+  <T ID="B93DFC85B3E9F640">&lt;c&gt;true&lt;/c&gt;, if the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; can be executed.</T>
+  <T ID="AE2BFC218BB30904">Event, that is fired, if the return value of &lt;see cref="M:FolkerKinzel.RecentFiles.WPF.OpenRecentFile.CanExecute(System.Object)"/&gt; has changed.</T>
+  <T ID="A54E171F43F00D3B">Method, that executes the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt;.</T>
+  <T ID="2417AB4CD2766DA7">The filename selected for opening.</T>
+  <T ID="4A0B8AF5E75493BB">&lt;see cref ="T:System.EventArgs"/&gt; for the &lt;see cref ="E:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.RecentFileSelected"/&gt; event.</T>
+  <T ID="4905820F055A0953">Initializes a &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs"/&gt; object.</T>
+  <T ID="2BED5186F8AAA734">The filename of the selected file.</T>
+  <T ID="430A0A2F363B88B4">The selected filename.</T>
+  <T ID="86FD7E266BDD2C60">Class, that adds a menu of recently used files to the WPF application.</T>
+  <T ID="EB8339C0F8799D76">&lt;para&gt; Initialize &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt;: &lt;/para&gt; &lt;code/&gt; &lt;para&gt; Include &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt; into a WPF- &lt;see cref ="T:System.Windows.Window"/&gt;: &lt;/para&gt; &lt;code/&gt;</T>
+  <T ID="793578F8CF39E121">Event, that is fired, when the user selects a file to open from the menu.</T>
+  <T ID="652F9DD946DE1368">&lt;para&gt; Add a &lt;see cref ="T:System.Windows.Controls.MenuItem"/&gt; to your application, as its submenu &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt; is to be displayed and
+            pass this to the method &lt;see cref ="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.Initialize(System.Windows.Controls.MenuItem)"/&gt; - then the menu is ready to start. &lt;/para&gt; &lt;para&gt; To add a filename to the menu, &lt;see cref ="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.AddRecentFileAsync(System.String)"/&gt;
+           has to be called. Do this always after opening a file (e.g. in a property "CurrentFileName"). &lt;/para&gt; &lt;para&gt; To open a file selected from the menu, you must subscribe to the event &lt;see cref ="E:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.RecentFileSelected"/&gt;. The filename is delivered in the
+            &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs"/&gt;. &lt;/para&gt; &lt;para&gt; &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt; persists in small text files with the Naming convention
+            [&lt;see cref ="P:System.Environment.MachineName"/&gt;].[&lt;see cref ="P:System.Environment.UserName"/&gt;].RF.txt. Note that the program name is not
+             included. Therefore &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt; should be persisted in a folder that other programs don't
+             access.&lt;/para&gt;&lt;para&gt; When exiting the application you should wait for all open tasks of the &lt;see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt; (e.g. with &lt;see cref ="M:System.Threading.Tasks.Task.WhenAll(System.Collections.Generic.IEnumerable{System.Threading.Tasks.Task})"/&gt;) and then
+            call &lt;see cref ="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.Dispose"/&gt; to release the system wide &lt;see cref="T:System.Threading.Mutex"/&gt;, that is used to synchronize the persistence of the &lt;see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt; between multiple instances of your application. &lt;/para&gt;</T>
+  <T ID="E289F379B46A3EFD">Initializes a &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt;.</T>
+  <T ID="C250C51C31C499F2">Absolute path of the directory, into the &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt;
+             is persisted. This should be a folder, that other programs don't access.</T>
+  <T ID="E14D19D539932A53">Maximum number of file names to be displayed in the menu (between 1 and 10).</T>
+  <T ID="FE80FCF796732BAC">Text for the menu item "Clear list" or &lt;c&gt;null&lt;/c&gt; to add the text from the resources. (There are resources for German and English.)</T>
+  <T ID="C1F1780A6A2527E2">&lt;paramref name="persistenceDirectoryPath"/&gt; is &lt;c&gt;null&lt;/c&gt;.</T>
+  <T ID="68DDBBA6B869025B">&lt;paramref name ="maxFiles"/&gt; is less than 1 or greater than 10.</T>
+  <T ID="3C669CB0966BE995">&lt;para&gt; &lt;paramref name ="persistenceDirectoryPath"/&gt; contains at least one of the invalid characters defined in &lt;see cref ="M:System.IO.Path.GetInvalidPathChars"/&gt;
+             &lt;/para&gt; &lt;para&gt; - or - &lt;/para&gt; &lt;para&gt; &lt;paramref name ="persistenceDirectoryPath"/&gt; is not an absolute path
+             &lt;/para&gt; &lt;para&gt; - or - &lt;/para&gt; &lt;para&gt; &lt;paramref name ="persistenceDirectoryPath"/&gt; does not refer to an existing directory.
+             &lt;/para&gt;</T>
+  <T ID="E0D7AB43017CF04E">Assigns the &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt; the &lt;see cref ="T:System.Windows.Controls.MenuItem"/&gt; as its submenu the
+             &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt; is displayed. This method must be called before everyone else!</T>
+  <T ID="2BF01F77BF4EED56">The &lt;see cref ="T:System.Windows.Controls.MenuItem"/&gt;, as its child the
+             &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt; is displayed.</T>
+  <T ID="7F0A6265017CF04E">Assigns the &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt; the &lt;see cref ="T:System.Windows.Controls.MenuItem"/&gt; as its submenu the
+             &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt; is displayed. This method must be called before everyone else!</T>
+  <T ID="BF878A3ABF4EED56">The &lt;see cref ="T:System.Windows.Controls.MenuItem"/&gt;, as its submenu the
+             &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt; is displayed.</T>
+  <T ID="7F1EB7753953B3E3">&lt;paramref name="miRecentFiles"/&gt; is &lt;c&gt;null&lt;/c&gt;.</T>
+  <T ID="5839228878AB2F7F">Adds &lt;paramref name ="fileName"/&gt; to the menu, if
+             &lt;paramref name ="fileName"/&gt; contains a filename.</T>
+  <T ID="6CD9B1AAE7E10AE1">A filename to add. If &lt;paramref name ="fileName"/&gt; is &lt;c&gt;null&lt;/c&gt;, empty or whitespace, nothing is added.</T>
+  <T ID="19150F3BD2A609FD">The &lt;see cref ="T:System.Threading.Tasks.Task"/&gt; that can be awaited.</T>
+  <T ID="B7445028924677C">Removes a filename from the menu.</T>
+  <T ID="882DCAC357841AF9">The filename to remove.</T>
+  <T ID="D1C453EDD2A609FD">The &lt;see cref ="T:System.Threading.Tasks.Task"/&gt; that can be awaited.</T>
+  <T ID="B7FF28E819E3A464">Returns the name of the most recently opened file or &lt;c&gt;null&lt;/c&gt;, if the menu is empty.</T>
+  <T ID="CD3CCC190D330789">Name of the most recently opened file or &lt;c&gt;null&lt;/c&gt;, if the menu is empty.</T>
+  <T ID="272F86D32CA7CCED">Releases the resources.</T>
+  <T ID="4AE23AFE11FDE060">Such a resource is the system wide &lt;see cref="T:System.Threading.Mutex"/&gt;.</T>
+</Tsltn>

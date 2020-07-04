@@ -1,6 +1,8 @@
 ﻿using FolkerKinzel.RecentFiles.WPF;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using System.Threading;
 using System.Windows;
 
 namespace WpfExample
@@ -12,6 +14,9 @@ namespace WpfExample
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
+
             // Construct a new RecentFilesMenu, that persist its data in the same directory,
             // where the program exe-file is:
             var rfm = new RecentFilesMenu(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName)!);

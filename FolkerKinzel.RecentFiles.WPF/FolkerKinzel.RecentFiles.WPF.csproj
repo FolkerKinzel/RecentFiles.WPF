@@ -29,6 +29,12 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Translations\**" />
+    <EmbeddedResource Remove="Translations\**" />
+    <None Remove="Translations\**" />
+    <Page Remove="Translations\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Resources\Icons\DefaultFileIcon.ico" />
     <None Remove="Resources\Icons\DirectoryIcon.png" />
   </ItemGroup>

@@ -6,7 +6,7 @@ namespace FolkerKinzel.RecentFiles.WPF
     /// <summary>
     /// <see cref="ICommand"/> zum Löschen der Liste der zuletzt benutzten Dateien.
     /// </summary>
-    public class ClearRecentFiles : ICommand
+    public sealed class ClearRecentFiles : ICommand
     {
         private readonly Action _executeHandler;
 

@@ -17,16 +17,19 @@ namespace FolkerKinzel.RecentFiles.WPF
     /// Klasse, die der WPF-Anwendung ein Menü mit den zuletzt verwendeten Dateien hinzufügt.
     /// </summary>
     /// <remarks>
-    /// <para>Fügen Sie Ihrer Anwendung ein <see cref="MenuItem"/> hinzu, neben dem <see cref="RecentFilesMenu"/> angezeigt werden soll und 
+    /// <para>Fügen Sie Ihrer Anwendung ein <see cref="MenuItem"/> hinzu, als dessen Untermenü <see cref="RecentFilesMenu"/> angezeigt werden soll und 
     /// übergeben Sie dieses der Methode <see cref="RecentFilesMenu.Initialize(MenuItem)"/> - dann ist das Menü startklar.</para>
     /// <para>Um einen Dateinamen zum Menü hinzuzufügen, muss <see cref="AddRecentFileAsync(string)"/>
     /// aufgerufen werden. Das sollte immer nach dem Öffnen einer Datei geschehen (z.B. in einer Property "CurrentFileName").</para>
     /// <para>Um eine Datei zu öffnen, muss das Event <see cref="RecentFileSelected"/> abonniert werden. Der Dateiname wird in den 
     /// <see cref="RecentFileSelectedEventArgs"/> geliefert.</para> 
     /// <para><see cref="RecentFilesMenu"/> persistiert sich in kleinen Textdateien mit der Namenskonvention
-    /// [<see cref="Environment.MachineName"/>].[<see cref="Environment.UserName"/>].RF.txt</para>
-    /// <para>Beim Beenden der Anwendung sollten Sie sämtliche offenen Tasks mit <see cref="Task.WhenAll(IEnumerable{Task})"/> abwarten und dann 
-    /// <see cref="RecentFilesMenu.Dispose()"/> aufrufen.</para>
+    /// [<see cref="Environment.MachineName"/>].[<see cref="Environment.UserName"/>].RF.txt. Beachten Sie, dass der Programmname nicht 
+    /// enthalten ist. Deshalb sollte <see cref="RecentFilesMenu"/> in einem Ordner persistiert werden, auf den andere Programme nicht
+    /// zugreifen.</para>
+    /// <para>Beim Beenden der Anwendung sollten Sie sämtliche offenen Tasks des <see cref="RecentFilesMenu"/>s mit <see cref="Task.WhenAll(IEnumerable{Task})"/> abwarten und dann 
+    /// <see cref="RecentFilesMenu.Dispose()"/> aufrufen um den systemweiten <see cref="Mutex"/> freizugeben, der verwendet wird, um
+    /// die Persistenz von <see cref="RecentFilesMenu"/> zwischen mehreren Instanzen derselben Anwendung zu synchronisieren.</para>
     /// </remarks>
     /// <example>
     /// <para>Initialisieren von <see cref="RecentFilesMenu"/>:</para>
@@ -65,10 +68,10 @@ namespace FolkerKinzel.RecentFiles.WPF
         #region ctor
 
         /// <summary>
-        /// Initialisiert ein neues <see cref="RecentFilesMenu"/>.
+        /// Initialisiert ein <see cref="RecentFilesMenu"/>.
         /// </summary>
         /// <param name="persistenceDirectoryPath">Absoluter Pfad des Verzeichnisses, in das <see cref="RecentFilesMenu"/>
-        /// persistiert wird.</param>
+        /// persistiert wird. Dies sollte ein Ordner sein, auf den andere Programme nicht zugreifen.</param>
         /// <param name="maxFiles">Maximalanzahl der im Menü anzuzeigenden Dateinamen (zwischen 1 und 10).</param>
         /// <param name="clearListText">Text für den Menüpunkt "Liste leeren" oder <c>null</c>, um den Text aus den Ressourcen zu 
         /// nutzen. (Es gibt Ressourcen für Deutsch und Englisch.)</param>
@@ -107,10 +110,10 @@ namespace FolkerKinzel.RecentFiles.WPF
         #region public Methods
 
         /// <summary>
-        /// Weist dem <see cref="RecentFilesMenu"/> das <see cref="MenuItem"/> zu, als dessen Child das
+        /// Weist dem <see cref="RecentFilesMenu"/> das <see cref="MenuItem"/> zu, als dessen Submenü das
         /// <see cref="RecentFilesMenu"/> angezeigt wird. Diese Methode muss vor allen anderen aufgerufen werden!
         /// </summary>
-        /// <param name="miRecentFiles">Das <see cref="MenuItem"/> zu, als dessen Child das
+        /// <param name="miRecentFiles">Das <see cref="MenuItem"/>, als dessen Submenü das
         /// <see cref="RecentFilesMenu"/> angezeigt wird.</param>
         /// <exception cref="ArgumentNullException"><paramref name="miRecentFiles"/> ist <c>null</c>.</exception>
         public void Initialize(MenuItem miRecentFiles)

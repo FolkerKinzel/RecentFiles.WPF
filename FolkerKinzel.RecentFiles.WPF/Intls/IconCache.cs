@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 
 namespace FolkerKinzel.RecentFiles.WPF.Intls
 {
-    internal class IconCache
+    internal sealed class IconCache
     {
         private const string DIRECTORY = @"\DIRECTORY\";
 
