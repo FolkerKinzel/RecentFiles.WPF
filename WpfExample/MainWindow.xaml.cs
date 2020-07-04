@@ -81,7 +81,7 @@ namespace WpfExample
             OpenFile(e.FileName);
         }
 
-        
+
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             var dialog = new OpenFileDialog();
@@ -92,7 +92,7 @@ namespace WpfExample
             }
         }
 
-        
+
         private void OpenFile(string fileName)
         {
             try
