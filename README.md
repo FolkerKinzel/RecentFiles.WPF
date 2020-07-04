@@ -3,6 +3,11 @@
 
 
 Recent files menu for WPF applications.
+* Shows the file icons automatically.
+* Customizable for every language.
+* Has its own (asynchronous) persistence mechanism.
+* Synchronizes access between multiple threads and multiple instances of the same program.
+* Implements an interface, to support Dependency Inversion and unit tests (mockable).
 
 ![Screenshot](screenshot.png)
 
