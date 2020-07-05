@@ -3,7 +3,7 @@
 
 
 Recent files menu for WPF applications.
-* Shows the file icons automatically.
+* Displays the file icons automatically.
 * Customizable for every language.
 * Has its own (asynchronous) persistence mechanism.
 * Synchronizes access between multiple threads and multiple instances of the same program.
