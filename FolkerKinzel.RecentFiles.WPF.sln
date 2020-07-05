@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D7CA8209-BC58-40F5-BF9E-4C67EC3946AA}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		Reference.md = Reference.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FolkerKinzel.RecentFiles.WPF", "FolkerKinzel.RecentFiles.WPF\FolkerKinzel.RecentFiles.WPF.csproj", "{C99CF01C-10B1-4935-9356-082C8283D10E}"
@@ -16,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfExample", "WpfExample\Wp
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "FolkerKinzel.RecentFiles.WPF.Reference.en", "FolkerKinzel.RecentFiles.WPF.Reference.en\FolkerKinzel.RecentFiles.WPF.Reference.en.shfbproj", "{83ED2CC3-4B12-413B-B45F-0BBDD96161AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MutexTester", "MutexTester\MutexTester.csproj", "{6E4A1FC2-11B3-423B-9846-469C25D65BB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MutexTester", "MutexTester\MutexTester.csproj", "{6E4A1FC2-11B3-423B-9846-469C25D65BB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

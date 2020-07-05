@@ -20,7 +20,7 @@ namespace FolkerKinzel.RecentFiles.WPF
     /// <para>Fügen Sie Ihrer Anwendung ein <see cref="MenuItem"/> hinzu, als dessen Untermenü <see cref="RecentFilesMenu"/> angezeigt werden soll und 
     /// übergeben Sie dieses der Methode <see cref="RecentFilesMenu.Initialize(MenuItem)"/> - dann ist das Menü startklar.</para>
     /// <para>Um einen Dateinamen zum Menü hinzuzufügen, muss <see cref="AddRecentFileAsync(string)"/>
-    /// aufgerufen werden. Das sollte immer nach dem Öffnen einer Datei geschehen (z.B. in einer Property "CurrentFileName").</para>
+    /// aufgerufen werden. Das sollte immer nach dem Öffnen oder Speichern einer Datei geschehen (z.B. in einer Property "CurrentFileName").</para>
     /// <para>Um eine Datei zu öffnen, muss das Event <see cref="RecentFileSelected"/> abonniert werden. Der Dateiname wird in den 
     /// <see cref="RecentFileSelectedEventArgs"/> geliefert.</para> 
     /// <para><see cref="RecentFilesMenu"/> persistiert sich in kleinen Textdateien mit der Namenskonvention

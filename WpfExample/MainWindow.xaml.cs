@@ -110,6 +110,32 @@ namespace WpfExample
         }
 
 
+        private void SaveAs_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var dialog = new SaveFileDialog();
+            
+            if(CurrentFile != null)
+            {
+                dialog.InitialDirectory = Path.GetDirectoryName(CurrentFile);
+                dialog.FileName = Path.GetFileName(CurrentFile);
+            }
+
+            if (dialog.ShowDialog(this) == true)
+            {
+                try
+                {
+                    //  Save the file here!
+
+                    CurrentFile = dialog.FileName;
+                }
+                catch (IOException)
+                {
+
+                }
+            }
+        }
+
+
         private void OnPropertyChanged([CallerMemberName] string propName = "")
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));

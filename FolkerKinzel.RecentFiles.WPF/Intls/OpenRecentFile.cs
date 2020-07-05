@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace FolkerKinzel.RecentFiles.WPF
+namespace FolkerKinzel.RecentFiles.WPF.Intls
 {
     /// <summary>
     /// <see cref="ICommand"/> zum Öffnen einer aus dem <see cref="RecentFilesMenu"/> ausgewählten Datei.
     /// </summary>
-    public sealed class OpenRecentFile : ICommand
+    internal sealed class OpenRecentFile : ICommand
     {
         private readonly Action<object> _executeHandler;
 

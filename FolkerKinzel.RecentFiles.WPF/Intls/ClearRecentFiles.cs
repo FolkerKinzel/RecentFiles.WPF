@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace FolkerKinzel.RecentFiles.WPF
+namespace FolkerKinzel.RecentFiles.WPF.Intls
 { 
     /// <summary>
     /// <see cref="ICommand"/> zum Löschen der Liste der zuletzt benutzten Dateien.
     /// </summary>
-    public sealed class ClearRecentFiles : ICommand
+    internal sealed class ClearRecentFiles : ICommand
     {
         private readonly Action _executeHandler;
 

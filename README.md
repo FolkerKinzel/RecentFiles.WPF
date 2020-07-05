@@ -13,16 +13,16 @@ Recent files menu for WPF applications.
 
 ```
 nuget Package Manager:
-PM> Install-Package FolkerKinzel.RecentFiles.WPF -Version 1.2.0
+PM> Install-Package FolkerKinzel.RecentFiles.WPF -Version 1.3.0
 
 .NET CLI:
-> dotnet add package FolkerKinzel.RecentFiles.WPF --version 1.2.0
+> dotnet add package FolkerKinzel.RecentFiles.WPF --version 1.3.0
 
 PackageReference (Visual Studio Project File):
-<PackageReference Include="FolkerKinzel.RecentFiles.WPF" Version="1.2.0" />
+<PackageReference Include="FolkerKinzel.RecentFiles.WPF" Version="1.3.0" />
 
 Paket CLI:
-> paket add FolkerKinzel.RecentFiles.WPF --version 1.2.0
+> paket add FolkerKinzel.RecentFiles.WPF --version 1.3.0
 ```
 
 * [Download Reference (English)](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/FolkerKinzel.RecentFiles.WPF.Reference.en/Help/FolkerKinzel.RecentFiles.WPF.Reference.en.chm)
@@ -170,6 +170,32 @@ namespace WpfExample
             }
 
             CurrentFile = fileName;
+        }
+
+
+        private void SaveAs_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var dialog = new SaveFileDialog();
+            
+            if(CurrentFile != null)
+            {
+                dialog.InitialDirectory = Path.GetDirectoryName(CurrentFile);
+                dialog.FileName = Path.GetFileName(CurrentFile);
+            }
+
+            if (dialog.ShowDialog(this) == true)
+            {
+                try
+                {
+                    //  Save the file here!
+
+                    CurrentFile = dialog.FileName;
+                }
+                catch (IOException)
+                {
+
+                }
+            }
         }
     }
 }
