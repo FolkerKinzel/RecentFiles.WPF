@@ -69,13 +69,14 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             }
         }
 
-        [SuppressMessage("Design", "CA1031:Keine allgemeinen Ausnahmetypen abfangen", Justification = "<Ausstehend>")]
         private static bool TryGetFileIcon(string path, [NotNullWhen(true)] out ImageSource? icon)
         {
             icon = null;
             try
             {
-                System.Drawing.Icon ic = System.Drawing.Icon.ExtractAssociatedIcon(path);
+                System.Drawing.Icon? ic = System.Drawing.Icon.ExtractAssociatedIcon(path);
+
+                if (ic is null) return false;
 
                 icon = ToImageSource(ic);
 

@@ -37,7 +37,6 @@ namespace FolkerKinzel.RecentFiles.WPF
     /// <para>Einbinden von <see cref="RecentFilesMenu"/> in ein WPF-<see cref="Window"/>:</para>
     /// <code language="cs" source="..\WpfExample\MainWindow.xaml.cs" />
     /// </example>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Keine allgemeinen Ausnahmetypen abfangen", Justification = "<Ausstehend>")]
     public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     {
         const int MAX_DISPLAYED_FILE_PATH_LENGTH = 60;
@@ -164,7 +163,6 @@ namespace FolkerKinzel.RecentFiles.WPF
         /// </summary>
         /// <param name="fileName">Der zu entfernende Dateiname.</param>
         /// <returns>Der <see cref="Task"/>, auf dessen Beendigung gewartet werden kann.</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Keine allgemeinen Ausnahmetypen abfangen", Justification = "<Ausstehend>")]
         public Task RemoveRecentFileAsync(string fileName)
         {
             bool result;
@@ -212,6 +210,9 @@ namespace FolkerKinzel.RecentFiles.WPF
         #region miRecentFiles_Loaded
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Benennungsstile", Justification = "<Ausstehend>")]
+#if !NET461
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0057:Bereichsoperator verwenden", Justification = "<Ausstehend>")]
+#endif
         private async void miRecentFiles_Loaded(object sender, RoutedEventArgs e)
         {
             if (_miRecentFiles is null)
@@ -251,12 +252,17 @@ namespace FolkerKinzel.RecentFiles.WPF
                                 Command = _openRecentFileCommand,
                                 CommandParameter = recentFiles[i],
 
+                                HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                                VerticalContentAlignment = VerticalAlignment.Stretch,
+
                                 Icon = new Image()
                                 {
                                     Width = 16.0,
                                     Height = 16.0,
                                     Source = _icons.GetIcon(currentFile)
                                 }
+
+                                
                             };
 
                             _miRecentFiles.Items.Add(mi);
