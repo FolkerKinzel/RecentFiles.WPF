@@ -69,22 +69,23 @@ namespace WpfExample
 #### Include RecentFilesMenu into a WPF-Window: 
 
 ```c#
-using FolkerKinzel.RecentFiles.WPF;
-using Microsoft.Win32;
 using System;
 using System.Collections.Concurrent;
+using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using FolkerKinzel.RecentFiles.WPF;
+using Microsoft.Win32;
 
 namespace WpfExample
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public sealed partial class MainWindow : Window
+    public sealed partial class MainWindow : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -106,12 +107,13 @@ namespace WpfExample
             private set
             {
                 _currentFile = value;
+                OnPropertyChanged();
 
                 if (value != null)
                 {
                     // Adds the current file to the RecentFilesMenu.
                     // If the RecentFilesMenu already contains the file,
-                    // it's moved now to position 1.
+                    // it's moved now to the first position.
                     _tasks.Add(_recentFilesMenu.AddRecentFileAsync(value));
                 }
             }
@@ -139,10 +141,12 @@ namespace WpfExample
         }
 
 
-        private void RecentFilesMenu_RecentFileSelected(object? sender, RecentFileSelectedEventArgs e)
-        {
-            OpenFile(e.FileName);
-        }
+        private void Quit_Click(object sender, RoutedEventArgs e) => Close();
+
+
+        private void RecentFilesMenu_RecentFileSelected(
+            object? sender,
+            RecentFileSelectedEventArgs e) => OpenFile(e.FileName);
 
 
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -176,8 +180,8 @@ namespace WpfExample
         private void SaveAs_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             var dialog = new SaveFileDialog();
-            
-            if(CurrentFile != null)
+
+            if (CurrentFile != null)
             {
                 dialog.InitialDirectory = Path.GetDirectoryName(CurrentFile);
                 dialog.FileName = Path.GetFileName(CurrentFile);
@@ -197,6 +201,10 @@ namespace WpfExample
                 }
             }
         }
+
+
+        private void OnPropertyChanged([CallerMemberName] string propName = "")
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
     }
 }
 ```

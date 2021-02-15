@@ -1,6 +1,4 @@
-﻿using FolkerKinzel.RecentFiles.WPF;
-using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.IO;
@@ -8,6 +6,8 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using FolkerKinzel.RecentFiles.WPF;
+using Microsoft.Win32;
 
 namespace WpfExample
 {
@@ -42,7 +42,7 @@ namespace WpfExample
                 {
                     // Adds the current file to the RecentFilesMenu.
                     // If the RecentFilesMenu already contains the file,
-                    // it's moved now to position 1.
+                    // it's moved now to the first position.
                     _tasks.Add(_recentFilesMenu.AddRecentFileAsync(value));
                 }
             }
@@ -70,16 +70,12 @@ namespace WpfExample
         }
 
 
-        private void Quit_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        private void Quit_Click(object sender, RoutedEventArgs e) => Close();
 
 
-        private void RecentFilesMenu_RecentFileSelected(object? sender, RecentFileSelectedEventArgs e)
-        {
-            OpenFile(e.FileName);
-        }
+        private void RecentFilesMenu_RecentFileSelected(
+            object? sender,
+            RecentFileSelectedEventArgs e) => OpenFile(e.FileName);
 
 
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -113,8 +109,8 @@ namespace WpfExample
         private void SaveAs_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             var dialog = new SaveFileDialog();
-            
-            if(CurrentFile != null)
+
+            if (CurrentFile != null)
             {
                 dialog.InitialDirectory = Path.GetDirectoryName(CurrentFile);
                 dialog.FileName = Path.GetFileName(CurrentFile);
@@ -137,8 +133,6 @@ namespace WpfExample
 
 
         private void OnPropertyChanged([CallerMemberName] string propName = "")
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-        }
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
     }
 }

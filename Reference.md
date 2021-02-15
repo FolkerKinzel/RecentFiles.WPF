@@ -1,5 +1,7 @@
 # FolkerKinzel.RecentFiles.WPF
 
+![Screenshot](https://raw.githubusercontent.com/FolkerKinzel/RecentFiles.WPF/master/screenshot.png)
+
 Recent files menu for WPF applications.
 * Displays the file icons automatically.
 * Customizable for every language.
