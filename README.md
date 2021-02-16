@@ -53,11 +53,10 @@ namespace WpfExample
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
-
-            // Construct a new RecentFilesMenu which persist its data in the same
-            // directory, where the program exe-file is:
+            // The example initializes a new RecentFilesMenu which persists its data in
+            // the same directory, where the program exe-file is. The constructor has 
+            // optional parameters to substitute the text "Clear list" to something in
+            // another language and to control the maximum number of files to display.
             string persistenceDirectoryPath =
                 Path.GetDirectoryName(Process.GetCurrentProcess().MainModule!.FileName)!;
             var rfm = new RecentFilesMenu(persistenceDirectoryPath);
