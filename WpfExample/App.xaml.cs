@@ -1,9 +1,9 @@
-﻿using FolkerKinzel.RecentFiles.WPF;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Windows;
+using FolkerKinzel.RecentFiles.WPF;
 
 namespace WpfExample
 {
@@ -17,9 +17,11 @@ namespace WpfExample
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
 
-            // Construct a new RecentFilesMenu, that persist its data in the same directory,
-            // where the program exe-file is:
-            var rfm = new RecentFilesMenu(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName)!);
+            // Construct a new RecentFilesMenu which persist its data in the same
+            // directory, where the program exe-file is:
+            string persistenceDirectoryPath =
+                Path.GetDirectoryName(Process.GetCurrentProcess().MainModule!.FileName)!;
+            var rfm = new RecentFilesMenu(persistenceDirectoryPath);
 
             new MainWindow(rfm).Show();
         }
