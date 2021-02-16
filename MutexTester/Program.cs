@@ -3,21 +3,21 @@ using System.Threading;
 
 namespace MutexTester
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             Console.WriteLine("Press any key to take the mutex.");
-            Console.ReadKey(true);
+            _ = Console.ReadKey(true);
 
-            using (Mutex _mutex = new Mutex(false, "Global\\MutexTester"))
+            using (var _mutex = new Mutex(false, "Global\\MutexTester"))
             {
                 try
                 {
                     if (_mutex.WaitOne())
                     {
                         Console.WriteLine("Took mutex. Press any key to release the mutex.");
-                        Console.ReadKey(true);
+                        _ = Console.ReadKey(true);
                         _mutex.ReleaseMutex();
 
                         Console.WriteLine("Mutex released.");
@@ -30,7 +30,7 @@ namespace MutexTester
             }
 
             Console.WriteLine("Mutex disposed. Press any key to quit.");
-            Console.ReadKey();
+            _ = Console.ReadKey();
         }
     }
 }

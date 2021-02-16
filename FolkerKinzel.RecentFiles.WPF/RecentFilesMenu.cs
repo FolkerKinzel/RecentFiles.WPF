@@ -51,11 +51,11 @@ namespace FolkerKinzel.RecentFiles.WPF
         #region private fields
 
         private readonly RecentFilesPersistence _persistence;
-        readonly ICommand _openRecentFileCommand;
-        readonly ICommand _clearRecentFilesCommand;
-        readonly IconCache _icons = new IconCache();
+        private readonly ICommand _openRecentFileCommand;
+        private readonly ICommand _clearRecentFilesCommand;
+        private readonly IconCache _icons = new IconCache();
 
-        MenuItem? _miRecentFiles;
+        private MenuItem? _miRecentFiles;
 
 
         private readonly int _maxFiles;
@@ -139,11 +139,11 @@ namespace FolkerKinzel.RecentFiles.WPF
             {
                 await _persistence.LoadAsync().ConfigureAwait(false);
 
-                var recentFiles = _persistence.RecentFiles;
+                List<string> recentFiles = _persistence.RecentFiles;
 
                 lock (recentFiles)
                 {
-                    recentFiles.Remove(fileName);
+                    _ = recentFiles.Remove(fileName);
                     recentFiles.Insert(0, fileName);
 
                     if (recentFiles.Count > _maxFiles)
@@ -196,15 +196,15 @@ namespace FolkerKinzel.RecentFiles.WPF
         /// <remarks>
         /// Eine solche Ressource ist der systemweite <see cref="Mutex"/>.
         /// </remarks>
-        public void Dispose()
-        {
-            _persistence.Dispose();
-        }
+        public void Dispose() => _persistence.Dispose();
 
         #endregion
 
 
         #region private
+
+        private void OnRecentFileSelected(string fileName) 
+            => RecentFileSelected?.Invoke(this, new RecentFileSelectedEventArgs(fileName));
 
 
         #region miRecentFiles_Loaded
@@ -234,7 +234,7 @@ namespace FolkerKinzel.RecentFiles.WPF
                 {
                     _miRecentFiles.IsEnabled = true;
 
-                    var recentFiles = _persistence.RecentFiles;
+                    List<string> recentFiles = _persistence.RecentFiles;
 
                     lock (recentFiles)
                     {
@@ -265,7 +265,7 @@ namespace FolkerKinzel.RecentFiles.WPF
                                 
                             };
 
-                            _miRecentFiles.Items.Add(mi);
+                            _ = _miRecentFiles.Items.Add(mi);
                         }
                     }
 
@@ -275,8 +275,8 @@ namespace FolkerKinzel.RecentFiles.WPF
                         Command = _clearRecentFilesCommand
                     };
 
-                    _miRecentFiles.Items.Add(new Separator());
-                    _miRecentFiles.Items.Add(menuItemClearList);
+                    _ = _miRecentFiles.Items.Add(new Separator());
+                    _ = _miRecentFiles.Items.Add(menuItemClearList);
                 }
                 catch
                 {
@@ -318,10 +318,8 @@ namespace FolkerKinzel.RecentFiles.WPF
 
         #region Command-Execute-Handler
 
-        private void OpenRecentFile_Executed(object fileName)
-        {
-            OnRecentFileSelected((string)fileName);
-        }
+        private void OpenRecentFile_Executed(object fileName) 
+            => OnRecentFileSelected((string)fileName);
 
 
         private void ClearRecentFiles_Executed()
@@ -330,16 +328,10 @@ namespace FolkerKinzel.RecentFiles.WPF
             {
                 _persistence.RecentFiles.Clear();
             }
-            _persistence.SaveAsync();
+            _ = _persistence.SaveAsync();
         }
 
         #endregion
-
-
-        private void OnRecentFileSelected(string fileName)
-        {
-            RecentFileSelected?.Invoke(this, new RecentFileSelectedEventArgs(fileName));
-        }
 
         #endregion
 

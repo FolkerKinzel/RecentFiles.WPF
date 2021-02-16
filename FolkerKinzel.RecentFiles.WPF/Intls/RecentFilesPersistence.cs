@@ -67,7 +67,6 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
         }
 
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Keine allgemeinen Ausnahmetypen abfangen", Justification = "<Ausstehend>")]
         public Task LoadAsync()
         {
             return Task.Run(() =>
@@ -108,8 +107,6 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             });
         }
 
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Keine allgemeinen Ausnahmetypen abfangen", Justification = "<Ausstehend>")]
         public Task SaveAsync()
         {
             return Task.Run(() =>
@@ -142,10 +139,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
         }
 
 
-        public void Dispose()
-        {
-            _mutex.Dispose();
-        }
+        public void Dispose() => _mutex.Dispose();
     }
 
 }

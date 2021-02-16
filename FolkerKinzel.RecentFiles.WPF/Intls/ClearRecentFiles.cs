@@ -14,10 +14,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
         /// Initialisiert das <see cref="ICommand"/>.
         /// </summary>
         /// <param name="execute"><see cref="Action"/>-Delegate, das das <see cref="ICommand"/> ausführt.</param>
-        public ClearRecentFiles(Action execute)
-        {
-            _executeHandler = execute;
-        }
+        public ClearRecentFiles(Action execute) => _executeHandler = execute;
 
         /// <summary>
         /// Methode, die prüft, ob das <see cref="ICommand"/> ausgeführt werden kann.
@@ -38,10 +35,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
         /// Methode, die das <see cref="ICommand"/> ausführt.
         /// </summary>
         /// <param name="parameter">Vom <see cref="ICommand"/> verwendete Daten oder <c>null</c>.</param>
-        public void Execute(object? parameter)
-        {
-            _executeHandler();
-        }
+        public void Execute(object? parameter) => _executeHandler();
     }
 
 }

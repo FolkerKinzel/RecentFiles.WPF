@@ -15,10 +15,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
         /// Initialisiert das <see cref="ICommand"/>.
         /// </summary>
         /// <param name="execute"><see cref="Action{T}"/>-Delegate, das das <see cref="ICommand"/> ausführt.</param>
-        public OpenRecentFile(Action<object> execute)
-        {
-            _executeHandler = execute;
-        }
+        public OpenRecentFile(Action<object> execute) => _executeHandler = execute;
 
         /// <summary>
         /// Methode, die prüft, ob das <see cref="ICommand"/> ausgeführt werden kann.
@@ -37,10 +34,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
         /// Methode, die das <see cref="ICommand"/> ausführt.
         /// </summary>
         /// <param name="parameter">Der zum Öffnen ausgewählte Dateiname.</param>
-        public void Execute(object parameter)
-        {
-            _executeHandler(parameter);
-        }
+        public void Execute(object parameter) => _executeHandler(parameter);
     }
 
 }

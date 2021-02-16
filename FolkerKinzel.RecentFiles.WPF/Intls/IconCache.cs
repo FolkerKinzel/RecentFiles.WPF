@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -41,7 +42,10 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
                 }
                 else
                 {
-                    using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DirectoryIcon.png");
+                    using Stream stream = 
+                        Assembly
+                        .GetExecutingAssembly()
+                        .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DirectoryIcon.png")!;
 
                     icon = BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
 
@@ -74,9 +78,12 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             icon = null;
             try
             {
-                System.Drawing.Icon? ic = System.Drawing.Icon.ExtractAssociatedIcon(path);
+                var ic = Icon.ExtractAssociatedIcon(path);
 
-                if (ic is null) return false;
+                if (ic is null)
+                {
+                    return false;
+                }
 
                 icon = ToImageSource(ic);
 
@@ -101,7 +108,10 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
 
         private static ImageSource GetDefaultFileIcon()
         {
-            using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DefaultFileIcon.ico");
+            using Stream stream = Assembly
+                .GetExecutingAssembly()
+                .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DefaultFileIcon.ico")!;
+
             return BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
         }
     }
