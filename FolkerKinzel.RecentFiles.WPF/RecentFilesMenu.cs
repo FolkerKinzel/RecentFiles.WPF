@@ -39,7 +39,7 @@ namespace FolkerKinzel.RecentFiles.WPF
     /// </example>
     public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     {
-        const int MAX_DISPLAYED_FILE_PATH_LENGTH = 60;
+        private const int MAX_DISPLAYED_FILE_PATH_LENGTH = 60;
 
 
         /// <summary>
