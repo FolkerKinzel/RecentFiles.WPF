@@ -28,9 +28,9 @@ F# Interactive:
 > #r "nuget: FolkerKinzel.RecentFiles.WPF, 1.3.2"
 ```
 
-* [Download Reference (English)](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/FolkerKinzel.RecentFiles.WPF.Reference.en/Help/FolkerKinzel.RecentFiles.WPF.Reference.en.chm)
+* [Download Reference (English)](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/ProjectReference/1.3.2/FolkerKinzel.RecentFiles.WPF.Reference.en.chm)
 
-* [Projektdokumentation (Deutsch) herunterladen](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/FolkerKinzel.RecentFiles.WPF.Doku.de/Help/FolkerKinzel.RecentFiles.Doku.de.chm)
+* [Projektdokumentation (Deutsch) herunterladen](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/ProjectReference/1.3.2/FolkerKinzel.RecentFiles.Doku.de.chm)
 
 > IMPORTANT: On some systems, the content of the CHM file is blocked. Before opening the file
 >  right click on it, select Properties, and check the "Allow" checkbox - if it 
