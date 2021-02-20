@@ -1,14 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Tsltn Version="1.0" SourceFile="..\bin\Release\netcoreapp3.1\FolkerKinzel.RecentFiles.WPF.xml" SourceLanguage="de" TargetLanguage="en">
-  <T ID="625B9A5BB37746D6">&lt;see cref ="T:System.Windows.Input.ICommand"/&gt; to delete the list of recently used files.</T>
-  <T ID="24B6B25464F285AC">Initializes the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt;.</T>
-  <T ID="AD6B4DAA2F1E52B7">&lt;see cref ="T:System.Action"/&gt; delegate, that executes the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt;.</T>
-  <T ID="5937975FA4E66B03">Method that checks, whether the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; can be executed.</T>
-  <T ID="A1A4574A20F1D512">Data used by the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; or &lt;c&gt;null&lt;/c&gt;.</T>
-  <T ID="E1D1EBB8B3E9F640">&lt;c&gt;true&lt;/c&gt;, if the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; can be executed.</T>
-  <T ID="4C380E4EB0BF1FD4">Event that is fired if the return value of &lt;see cref="M:FolkerKinzel.RecentFiles.WPF.ClearRecentFiles.CanExecute(System.Object)"/&gt; has changed.</T>
-  <T ID="F546D3DA43F00D3B">Method that executes the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt;.</T>
-  <T ID="E90272020F1D512">Data used by the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; or &lt;c&gt;null&lt;/c&gt;.</T>
+<Tsltn Version="1.0" SourceFile="..\bin\Release\net461\de\FolkerKinzel.RecentFiles.WPF.xml" SourceLanguage="de" TargetLanguage="en">
   <T ID="A8D9919A06BA40F1">Initializes a &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.Intls.RecentFilesPersistence"/&gt; object.</T>
   <T ID="4925195BF97131B2">Absolute path of the directory, into the &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt;
              is persisted.</T>
@@ -29,15 +20,6 @@
   <T ID="ED585F598924677C">Removes a filename from the menu.</T>
   <T ID="2BBA7B6657841AF9">The filename to remove.</T>
   <T ID="2332B9A2D2A609FD">The &lt;see cref ="T:System.Threading.Tasks.Task"/&gt; that can be awaited.</T>
-  <T ID="43A9FFB6596BF283">&lt;see cref ="T:System.Windows.Input.ICommand"/&gt; to open a file selected from the &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt;.</T>
-  <T ID="7BDC212664F285AC">Initializes the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt;.</T>
-  <T ID="6EB0337B3E01FFEB">&lt;see cref ="T:System.Action`1"/&gt; delegate, that executes the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt;.</T>
-  <T ID="DDB2835EA4E66B03">Method that checks, whether the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; can be executed.</T>
-  <T ID="F54976DC20F1D512">Data used by the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; or &lt;c&gt;null&lt;/c&gt;.</T>
-  <T ID="B93DFC85B3E9F640">&lt;c&gt;true&lt;/c&gt;, if the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt; can be executed.</T>
-  <T ID="AE2BFC218BB30904">Event, that is fired, if the return value of &lt;see cref="M:FolkerKinzel.RecentFiles.WPF.OpenRecentFile.CanExecute(System.Object)"/&gt; has changed.</T>
-  <T ID="A54E171F43F00D3B">Method, that executes the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt;.</T>
-  <T ID="2417AB4CD2766DA7">The filename selected for opening.</T>
   <T ID="4A0B8AF5E75493BB">&lt;see cref ="T:System.EventArgs"/&gt; for the &lt;see cref ="E:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.RecentFileSelected"/&gt; event.</T>
   <T ID="4905820F055A0953">Initializes a &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs"/&gt; object.</T>
   <T ID="2BED5186F8AAA734">The filename of the selected file.</T>
@@ -101,4 +83,11 @@
   <T ID="59642D32BB77EA2C">Event, that is fired, if the return value of &lt;see cref="M:FolkerKinzel.RecentFiles.WPF.OpenRecentFile.CanExecute(System.Object)"/&gt; has changed.</T>
   <T ID="C9D04CC43F00D3B">Method that executes the &lt;see cref ="T:System.Windows.Input.ICommand"/&gt;.</T>
   <T ID="7414349D2766DA7">The filename selected for opening.</T>
+  <T ID="F5D9A3E83A9E4862"></T>
+  <T ID="10EF2A3687FCA7D1"></T>
+  <T ID="326265CFC333693A"></T>
+  <T ID="EDD863C64E29D1FA"></T>
+  <T ID="DAB9035DD098878B"></T>
+  <T ID="D74F640D9F7AE75F"></T>
+  <T ID="704D5E94C284A497"></T>
 </Tsltn>

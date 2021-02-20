@@ -13,16 +13,19 @@ Recent files menu for WPF applications.
 
 ```
 nuget Package Manager:
-PM> Install-Package FolkerKinzel.RecentFiles.WPF -Version 1.3.1
+PM> Install-Package FolkerKinzel.RecentFiles.WPF -Version 1.3.2
 
 .NET CLI:
-> dotnet add package FolkerKinzel.RecentFiles.WPF --version 1.3.1
+> dotnet add package FolkerKinzel.RecentFiles.WPF --version 1.3.2
 
 PackageReference (Visual Studio Project File):
-<PackageReference Include="FolkerKinzel.RecentFiles.WPF" Version="1.3.1" />
+<PackageReference Include="FolkerKinzel.RecentFiles.WPF" Version="1.3.2" />
 
 Paket CLI:
-> paket add FolkerKinzel.RecentFiles.WPF --version 1.3.1
+> paket add FolkerKinzel.RecentFiles.WPF --version 1.3.2
+
+F# Interactive:
+> #r "nuget: FolkerKinzel.RecentFiles.WPF, 1.3.2"
 ```
 
 * [Download Reference (English)](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/FolkerKinzel.RecentFiles.WPF.Reference.en/Help/FolkerKinzel.RecentFiles.WPF.Reference.en.chm)
