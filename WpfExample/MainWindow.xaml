@@ -16,19 +16,19 @@
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="Open" Executed="Open_Executed" />
-        <CommandBinding Command="SaveAs" Executed="SaveAs_Executed" />
+        <!--<CommandBinding Command="SaveAs" Executed="SaveAs_Executed" />-->
     </Window.CommandBindings>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Command="Open"/>
-                <MenuItem Command="SaveAs"/>
+                <!--<MenuItem Command="SaveAs"/>-->
                 <MenuItem Name="_miRecentFiles" Header="RecentFiles"/>
                 <Separator/>
                 <MenuItem Header="Quit" Click="Quit_Click"/>
             </MenuItem>
         </Menu>
-        <Image Name="imgIcon" Source="{Binding ImageSource}" Width="32" Height="32" DockPanel.Dock="Top"/>
+        <!--<Image Name="imgIcon" Source="{Binding ImageSource}" Width="32" Height="32" DockPanel.Dock="Top"/>-->
         <Grid DockPanel.Dock="Top">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock FontSize="24" FontWeight="Bold" TextAlignment="Center">Open some files to see the RecentFilesMenu in action.</TextBlock>

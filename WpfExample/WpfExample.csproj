@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="App-Doku.xaml.cs" />
     <Compile Remove="DefaultIcons.cs" />
     <Compile Remove="DefaultIcons2.cs" />
   </ItemGroup>

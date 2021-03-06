@@ -12,9 +12,6 @@ namespace WpfExample
     {
         private void Application_Startup(object? sender, StartupEventArgs e)
         {
-            //Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-            //Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
-
             // The example initializes a new RecentFilesMenu which persists its data in
             // the same directory, where the program exe-file is. The constructor has 
             // optional parameters to substitute the text "Clear list" to something in

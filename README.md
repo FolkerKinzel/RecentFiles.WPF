@@ -13,24 +13,24 @@ Recent files menu for WPF applications.
 
 ```
 nuget Package Manager:
-PM> Install-Package FolkerKinzel.RecentFiles.WPF -Version 1.3.2
+PM> Install-Package FolkerKinzel.RecentFiles.WPF -Version 1.3.3
 
 .NET CLI:
-> dotnet add package FolkerKinzel.RecentFiles.WPF --version 1.3.2
+> dotnet add package FolkerKinzel.RecentFiles.WPF --version 1.3.3
 
 PackageReference (Visual Studio Project File):
-<PackageReference Include="FolkerKinzel.RecentFiles.WPF" Version="1.3.2" />
+<PackageReference Include="FolkerKinzel.RecentFiles.WPF" Version="1.3.3" />
 
 Paket CLI:
-> paket add FolkerKinzel.RecentFiles.WPF --version 1.3.2
+> paket add FolkerKinzel.RecentFiles.WPF --version 1.3.3
 
 F# Interactive:
-> #r "nuget: FolkerKinzel.RecentFiles.WPF, 1.3.2"
+> #r "nuget: FolkerKinzel.RecentFiles.WPF, 1.3.3"
 ```
 
-* [Download Reference (English)](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/ProjectReference/1.3.2/FolkerKinzel.RecentFiles.WPF.Reference.en.chm)
+* [Download Reference (English)](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/ProjectReference/1.3.3/FolkerKinzel.RecentFiles.WPF.Reference.en.chm)
 
-* [Projektdokumentation (Deutsch) herunterladen](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/ProjectReference/1.3.2/FolkerKinzel.RecentFiles.Doku.de.chm)
+* [Projektdokumentation (Deutsch) herunterladen](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/ProjectReference/1.3.3/FolkerKinzel.RecentFiles.Doku.de.chm)
 
 > IMPORTANT: On some systems, the content of the CHM file is blocked. Before opening the file
 >  right click on it, select Properties, and check the "Allow" checkbox - if it 
@@ -41,9 +41,7 @@ F# Interactive:
 #### Initializing a RecentFilesMenu object: 
 ```c#
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
-using System.Threading;
 using System.Windows;
 using FolkerKinzel.RecentFiles.WPF;
 
@@ -54,7 +52,7 @@ namespace WpfExample
     /// </summary>
     public partial class App : Application
     {
-        private void Application_Startup(object sender, StartupEventArgs e)
+        private void Application_Startup(object? sender, StartupEventArgs e)
         {
             // The example initializes a new RecentFilesMenu which persists its data in
             // the same directory, where the program exe-file is. The constructor has 
@@ -62,13 +60,13 @@ namespace WpfExample
             // another language and to control the maximum number of files to be displayed.
             string persistenceDirectoryPath =
                 Path.GetDirectoryName(Process.GetCurrentProcess().MainModule!.FileName)!;
+
             var rfm = new RecentFilesMenu(persistenceDirectoryPath);
 
             new MainWindow(rfm).Show();
         }
     }
 }
-
 ```
 
 #### Including RecentFilesMenu into a WPF-Window: 
@@ -125,7 +123,7 @@ namespace WpfExample
         }
 
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object? sender, RoutedEventArgs e)
         {
             // Assign the RecentFilesMenu the MenuItem next to which the 
             // RecentFilesMenu is to be displayed:
@@ -137,7 +135,7 @@ namespace WpfExample
         }
 
 
-        private async void Window_Closed(object sender, EventArgs e)
+        private async void Window_Closed(object? sender, EventArgs e)
         {
             // Wait all tasks to be finished before disposing the
             // recent files menu:
@@ -146,7 +144,7 @@ namespace WpfExample
         }
 
 
-        private void Quit_Click(object sender, RoutedEventArgs e) => Close();
+        private void Quit_Click(object? sender, RoutedEventArgs e) => Close();
 
 
         private void RecentFilesMenu_RecentFileSelected(
@@ -154,7 +152,7 @@ namespace WpfExample
             RecentFileSelectedEventArgs e) => OpenFile(e.FileName);
 
 
-        private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void Open_Executed(object? sender, ExecutedRoutedEventArgs e)
         {
             var dialog = new OpenFileDialog();
 
@@ -179,32 +177,6 @@ namespace WpfExample
             }
 
             CurrentFile = fileName;
-        }
-
-
-        private void SaveAs_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            var dialog = new SaveFileDialog();
-
-            if (CurrentFile != null)
-            {
-                dialog.InitialDirectory = Path.GetDirectoryName(CurrentFile);
-                dialog.FileName = Path.GetFileName(CurrentFile);
-            }
-
-            if (dialog.ShowDialog(this) == true)
-            {
-                try
-                {
-                    //  Save the file here!
-
-                    CurrentFile = dialog.FileName;
-                }
-                catch (IOException)
-                {
-
-                }
-            }
         }
 
 

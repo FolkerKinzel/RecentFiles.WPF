@@ -49,7 +49,7 @@ namespace WpfExample
         }
 
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object? sender, RoutedEventArgs e)
         {
             // Assign the RecentFilesMenu the MenuItem next to which the 
             // RecentFilesMenu is to be displayed:
@@ -61,7 +61,7 @@ namespace WpfExample
         }
 
 
-        private async void Window_Closed(object sender, EventArgs e)
+        private async void Window_Closed(object? sender, EventArgs e)
         {
             // Wait all tasks to be finished before disposing the
             // recent files menu:
@@ -70,7 +70,7 @@ namespace WpfExample
         }
 
 
-        private void Quit_Click(object sender, RoutedEventArgs e) => Close();
+        private void Quit_Click(object? sender, RoutedEventArgs e) => Close();
 
 
         private void RecentFilesMenu_RecentFileSelected(
@@ -78,7 +78,7 @@ namespace WpfExample
             RecentFileSelectedEventArgs e) => OpenFile(e.FileName);
 
 
-        private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void Open_Executed(object? sender, ExecutedRoutedEventArgs e)
         {
             var dialog = new OpenFileDialog();
 
@@ -103,32 +103,6 @@ namespace WpfExample
             }
 
             CurrentFile = fileName;
-        }
-
-
-        private void SaveAs_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            var dialog = new SaveFileDialog();
-
-            if (CurrentFile != null)
-            {
-                dialog.InitialDirectory = Path.GetDirectoryName(CurrentFile);
-                dialog.FileName = Path.GetFileName(CurrentFile);
-            }
-
-            if (dialog.ShowDialog(this) == true)
-            {
-                try
-                {
-                    //  Save the file here!
-
-                    CurrentFile = dialog.FileName;
-                }
-                catch (IOException)
-                {
-
-                }
-            }
         }
 
 

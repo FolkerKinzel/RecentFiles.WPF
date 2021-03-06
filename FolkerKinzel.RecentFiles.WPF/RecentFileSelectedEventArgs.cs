@@ -11,7 +11,7 @@ namespace FolkerKinzel.RecentFiles.WPF
         /// Initialisiert ein <see cref="RecentFileSelectedEventArgs"/>-Objekt.
         /// </summary>
         /// <param name="fileName">Der Dateiname der ausgewählten Datei.</param>
-        public RecentFileSelectedEventArgs(string fileName) => FileName = fileName;
+        internal RecentFileSelectedEventArgs(string fileName) => FileName = fileName;
 
         /// <summary>
         /// Der ausgewählte Dateiname.
