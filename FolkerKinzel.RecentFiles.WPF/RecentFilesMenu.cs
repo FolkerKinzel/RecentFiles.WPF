@@ -99,7 +99,7 @@ namespace FolkerKinzel.RecentFiles.WPF
             this._clearListText = string.IsNullOrWhiteSpace(clearListText) ? null : clearListText;
 
             _persistence = new RecentFilesPersistence(persistenceDirectoryPath);
-            _openRecentFileCommand = new OpenRecentFile(new Action<object>(OpenRecentFile_Executed));
+            _openRecentFileCommand = new OpenRecentFile(new Action<object?>(OpenRecentFile_Executed));
             _clearRecentFilesCommand = new ClearRecentFiles(new Action(ClearRecentFiles_Executed));
         }
 
@@ -200,12 +200,7 @@ namespace FolkerKinzel.RecentFiles.WPF
 
         #endregion
 
-
         #region private
-
-        private void OnRecentFileSelected(string fileName) 
-            => RecentFileSelected?.Invoke(this, new RecentFileSelectedEventArgs(fileName));
-
 
         #region miRecentFiles_Loaded
 
@@ -213,7 +208,7 @@ namespace FolkerKinzel.RecentFiles.WPF
 #if !NET461
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0057:Bereichsoperator verwenden", Justification = "<Ausstehend>")]
 #endif
-        private async void miRecentFiles_Loaded(object sender, RoutedEventArgs e)
+        private async void miRecentFiles_Loaded(object? sender, RoutedEventArgs e)
         {
             if (_miRecentFiles is null)
             {
@@ -262,7 +257,7 @@ namespace FolkerKinzel.RecentFiles.WPF
                                     Source = _icons.GetIcon(currentFile)
                                 }
 
-                                
+
                             };
 
                             _ = _miRecentFiles.Items.Add(mi);
@@ -318,8 +313,13 @@ namespace FolkerKinzel.RecentFiles.WPF
 
         #region Command-Execute-Handler
 
-        private void OpenRecentFile_Executed(object fileName) 
-            => OnRecentFileSelected((string)fileName);
+        private void OpenRecentFile_Executed(object? fileName)
+        {
+            if (fileName is string s)
+            {
+                RecentFileSelected?.Invoke(this, new RecentFileSelectedEventArgs(s)); 
+            }
+        }
 
 
         private void ClearRecentFiles_Executed()

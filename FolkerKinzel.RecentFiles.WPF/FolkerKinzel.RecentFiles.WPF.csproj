@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net461</TargetFrameworks>
+    <TargetFrameworks>net5.0-windows;netcoreapp3.1;net461</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <NeutralLanguage>en</NeutralLanguage>
     <Copyright>Copyright © 2020 Folker Kinzel</Copyright>
@@ -13,7 +13,7 @@
     <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
     <Product>FolkerKinzel.RecentFiles.WPF</Product>
     <Version>1.3.2</Version>
-    <FileVersion>1.3.2.2</FileVersion>
+    <FileVersion>1.3.2.4</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <PackageReleaseNotes>Dependency update</PackageReleaseNotes>
     <PackageTags>recent menu WPF</PackageTags>
