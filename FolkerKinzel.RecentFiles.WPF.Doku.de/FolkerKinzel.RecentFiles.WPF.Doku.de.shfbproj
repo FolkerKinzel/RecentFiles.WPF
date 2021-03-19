@@ -15,7 +15,7 @@
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.8</FrameworkVersion>
     <OutputPath>.\Help\</OutputPath>
-    <HtmlHelpName>FolkerKinzel.RecentFiles.Doku.de</HtmlHelpName>
+    <HtmlHelpName>FolkerKinzel.RecentFiles.WPF.Doku.de</HtmlHelpName>
     <Language>de-DE</Language>
     <TransformComponentArguments>
       <Argument Key="logoFile" Value="Help.png" xmlns="" />
@@ -39,7 +39,7 @@
     <IndentHtml>False</IndentHtml>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
-    <HelpTitle>FolkerKinzel.RecentFiles</HelpTitle>
+    <HelpTitle>FolkerKinzel.RecentFiles.WPF</HelpTitle>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
     <NamingMethod>Guid</NamingMethod>
     <ContentPlacement>AboveNamespaces</ContentPlacement>

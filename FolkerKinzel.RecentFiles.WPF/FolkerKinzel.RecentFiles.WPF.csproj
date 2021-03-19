@@ -17,7 +17,9 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <PackageReleaseNotes>
       Fixed an issue with nullable reference types.
+      
       Added a .NET 5.0 - Windows 7.0 dll to the package.
+      
       The constructor of RecentFileSelectedEventArgs is now internal.
     </PackageReleaseNotes>
     <PackageTags>recent menu WPF</PackageTags>
