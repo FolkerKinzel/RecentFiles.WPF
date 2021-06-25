@@ -1,5 +1,6 @@
 # FolkerKinzel.RecentFiles.WPF
 [![NuGet](https://img.shields.io/nuget/v/FolkerKinzel.RecentFiles.WPF)](https://www.nuget.org/packages/FolkerKinzel.RecentFiles.WPF/)
+![GitHub](https://img.shields.io/github/license/FolkerKinzel/RecentFiles.WPF)
 
 
 Recent files menu for WPF applications.
