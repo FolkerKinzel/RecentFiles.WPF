@@ -1,6 +1,6 @@
 # FolkerKinzel.RecentFiles.WPF
 [![NuGet](https://img.shields.io/nuget/v/FolkerKinzel.RecentFiles.WPF)](https://www.nuget.org/packages/FolkerKinzel.RecentFiles.WPF/)
-![GitHub](https://img.shields.io/github/license/FolkerKinzel/RecentFiles.WPF)
+[![GitHub](https://img.shields.io/github/license/FolkerKinzel/RecentFiles.WPF)](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/LICENSE)
 
 
 Recent files menu for WPF applications.
@@ -12,22 +12,7 @@ Recent files menu for WPF applications.
 
 ![Screenshot](screenshot.png)
 
-```
-nuget Package Manager:
-PM> Install-Package FolkerKinzel.RecentFiles.WPF -Version 1.3.3
 
-.NET CLI:
-> dotnet add package FolkerKinzel.RecentFiles.WPF --version 1.3.3
-
-PackageReference (Visual Studio Project File):
-<PackageReference Include="FolkerKinzel.RecentFiles.WPF" Version="1.3.3" />
-
-Paket CLI:
-> paket add FolkerKinzel.RecentFiles.WPF --version 1.3.3
-
-F# Interactive:
-> #r "nuget: FolkerKinzel.RecentFiles.WPF, 1.3.3"
-```
 
 * [Download Reference (English)](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/ProjectReference/1.3.3/FolkerKinzel.RecentFiles.WPF.Reference.en.chm)
 
