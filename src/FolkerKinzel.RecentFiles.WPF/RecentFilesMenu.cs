@@ -39,7 +39,7 @@ namespace FolkerKinzel.RecentFiles.WPF
     /// </example>
     public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     {
-        private const int MAX_DISPLAYED_FILE_PATH_LENGTH = 60;
+        private const int MAX_DISPLAYED_FILE_PATH_LENGTH = 100;
 
 
         /// <summary>
@@ -249,15 +249,13 @@ namespace FolkerKinzel.RecentFiles.WPF
 
                                 HorizontalContentAlignment = HorizontalAlignment.Stretch,
                                 VerticalContentAlignment = VerticalAlignment.Stretch,
-
+                                
                                 Icon = new Image()
                                 {
                                     Width = 16.0,
                                     Height = 16.0,
                                     Source = _icons.GetIcon(currentFile)
                                 }
-
-
                             };
 
                             _ = _miRecentFiles.Items.Add(mi);
@@ -288,11 +286,19 @@ namespace FolkerKinzel.RecentFiles.WPF
             {
                 if (fileName.Length > MAX_DISPLAYED_FILE_PATH_LENGTH)
                 {
-                    int fileNameLength = Path.GetFileName(fileName).Length + 1;
-                    int restLength = MAX_DISPLAYED_FILE_PATH_LENGTH - fileNameLength - 3;
-                    fileName = restLength >= 0 ?
-                        fileName.Substring(0, restLength) + "..." + fileName.Substring(fileName.Length - fileNameLength) :
-                        fileName;
+                    const int QUARTER_DISPLAYED_FILE_PATH_LENGTH = MAX_DISPLAYED_FILE_PATH_LENGTH / 4;
+                    const int THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH = QUARTER_DISPLAYED_FILE_PATH_LENGTH * 3;
+
+                    fileName =
+#if NET461
+                        fileName.Substring(0, QUARTER_DISPLAYED_FILE_PATH_LENGTH - 3) + 
+                        "..." + 
+                        fileName.Substring(fileName.Length - THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH);
+#else
+                        string.Concat(fileName.AsSpan(0, QUARTER_DISPLAYED_FILE_PATH_LENGTH - 3),
+                                      "...", 
+                                      fileName.AsSpan(fileName.Length - THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH));
+#endif
                 }
 
                 if (i < 9)
@@ -317,7 +323,7 @@ namespace FolkerKinzel.RecentFiles.WPF
         {
             if (fileName is string s)
             {
-                RecentFileSelected?.Invoke(this, new RecentFileSelectedEventArgs(s)); 
+                RecentFileSelected?.Invoke(this, new RecentFileSelectedEventArgs(s));
             }
         }
 

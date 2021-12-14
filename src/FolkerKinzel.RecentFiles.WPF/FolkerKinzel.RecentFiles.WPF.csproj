@@ -12,8 +12,8 @@
     <!-- nuget-Package: -->
     <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
     <Product>FolkerKinzel.RecentFiles.WPF</Product>
-    <Version>1.3.3</Version>
-    <FileVersion>1.3.3.13</FileVersion>
+    <Version>1.4.0</Version>
+    <FileVersion>1.4.0</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <PackageReleaseNotes>
       Fixed an issue with nullable reference types.

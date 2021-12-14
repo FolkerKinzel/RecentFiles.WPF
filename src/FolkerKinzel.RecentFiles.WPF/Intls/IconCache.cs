@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -99,8 +100,10 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
 
         private static ImageSource ToImageSource(System.Drawing.Icon icon)
         {
+            var bmp = icon.ToBitmap();
+
             using var ms = new MemoryStream();
-            icon.Save(ms);
+            bmp.Save(ms, ImageFormat.Png);
             ms.Position = 0;
             return BitmapFrame.Create(ms, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
         }
