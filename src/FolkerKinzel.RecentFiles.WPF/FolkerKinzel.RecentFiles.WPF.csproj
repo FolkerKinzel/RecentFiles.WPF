@@ -13,15 +13,9 @@
     <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
     <Product>FolkerKinzel.RecentFiles.WPF</Product>
     <Version>1.4.0</Version>
-    <FileVersion>1.4.0</FileVersion>
+    <FileVersion>1.4.0.0</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <PackageReleaseNotes>
-      Fixed an issue with nullable reference types.
-      
-      Added a .NET 5.0 - Windows 7.0 dll to the package.
-      
-      The constructor of RecentFileSelectedEventArgs is now internal.
-    </PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/docs/PackageReleaseNotes/1.4.0/ReleaseNotes.md</PackageReleaseNotes>
     <PackageTags>recent menu WPF</PackageTags>
     <Description>Recent files menu for WPF applications.</Description>
     <Authors>Folker Kinzel</Authors>
@@ -45,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Icons\DefaultFileIcon.ico" />
+    <None Remove="Resources\Icons\DefaultFileIcon.png" />
     <None Remove="Resources\Icons\DirectoryIcon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -71,7 +66,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Icons\DefaultFileIcon.ico" />
+    <EmbeddedResource Include="Resources\Icons\DefaultFileIcon.png" />
     <EmbeddedResource Include="Resources\Icons\DirectoryIcon.png" />
   </ItemGroup>
   <ItemGroup>

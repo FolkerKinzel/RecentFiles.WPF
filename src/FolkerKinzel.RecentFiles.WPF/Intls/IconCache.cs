@@ -17,6 +17,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
 
         private readonly Dictionary<string, ImageSource> _iconDic = new Dictionary<string, ImageSource>(StringComparer.OrdinalIgnoreCase);
 
+        internal IconCache() => _iconDic[DIRECTORY] = GetDirectoryIcon();
 
         internal ImageSource GetIcon(string path)
         {
@@ -37,24 +38,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             }
             else if (Utility.IsPathDirectory(path))
             {
-                if (_iconDic.TryGetValue(DIRECTORY, out icon))
-                {
-                    return icon;
-                }
-                else
-                {
-                    using Stream stream = 
-                        Assembly
-                        .GetExecutingAssembly()
-                        .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DirectoryIcon.png")!;
-
-                    icon = BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
-
-                    _iconDic[DIRECTORY] = icon;
-
-                    return icon;
-
-                }
+                return _iconDic[DIRECTORY];
             }
             else
             {
@@ -74,6 +58,16 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             }
         }
 
+
+        private static ImageSource GetDirectoryIcon()
+        {
+            using Stream stream = Assembly
+                                    .GetExecutingAssembly()
+                                    .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DirectoryIcon.png")!;
+            return BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+        }
+
+
         private static bool TryGetFileIcon(string path, [NotNullWhen(true)] out ImageSource? icon)
         {
             icon = null;
@@ -87,7 +81,6 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
                 }
 
                 icon = ToImageSource(ic);
-
                 return true;
             }
             catch
@@ -98,7 +91,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
         }
 
 
-        private static ImageSource ToImageSource(System.Drawing.Icon icon)
+        private static ImageSource ToImageSource(Icon icon)
         {
             var bmp = icon.ToBitmap();
 
@@ -113,7 +106,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
         {
             using Stream stream = Assembly
                 .GetExecutingAssembly()
-                .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DefaultFileIcon.ico")!;
+                .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DefaultFileIcon.png")!;
 
             return BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
         }
