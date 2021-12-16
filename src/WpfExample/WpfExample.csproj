@@ -1,22 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <UseWPF>true</UseWPF>
-	  <UseWindowsForms>true</UseWindowsForms>
-    <LangVersion>8.0</LangVersion>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<UseWindowsForms>true</UseWindowsForms>
+		<LangVersion>10.0</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="App-Doku.xaml.cs" />
-    <Compile Remove="DefaultIcons.cs" />
-    <Compile Remove="DefaultIcons2.cs" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="App-Doku.xaml.cs" />
+		<Compile Remove="DefaultIcons.cs" />
+		<Compile Remove="DefaultIcons2.cs" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\FolkerKinzel.RecentFiles.WPF\FolkerKinzel.RecentFiles.WPF.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\FolkerKinzel.RecentFiles.WPF\FolkerKinzel.RecentFiles.WPF.csproj" />
+	</ItemGroup>
 
 </Project>

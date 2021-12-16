@@ -15,7 +15,7 @@
         </Style>
     </Window.Resources>
     <Window.CommandBindings>
-        <CommandBinding Command="Open" Executed="Open_Executed" />
+        <CommandBinding Command="Open" Executed="OpenFile_Executed" />
         <CommandBinding Command="Find" Executed="OpenDirectory_Executed" />
 
         <!--<CommandBinding Command="SaveAs" Executed="SaveAs_Executed" />-->
