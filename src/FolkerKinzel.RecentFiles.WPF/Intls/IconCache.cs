@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -37,6 +38,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
 
         internal ImageSource GetIcon(string path)
         {
+            Debug.Assert(!string.IsNullOrWhiteSpace(path));
             string? extension;
 
             try
@@ -48,7 +50,9 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
                 return GetDefaultFileIcon();
             }
 
-            if (extension != null && _iconDic.TryGetValue(extension, out ImageSource? icon))
+            Debug.Assert(extension != null);
+
+            if (_iconDic.TryGetValue(extension, out ImageSource? icon))
             {
                 return icon;
             }
@@ -56,22 +60,16 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             {
                 return Directory.GetParent(path) is null ? _iconDic[DRIVE] : _iconDic[DIRECTORY];
             }
-            else if (!string.IsNullOrEmpty(extension))
+            else if (extension.Length != 0)
             {
                 if (TryGetFileIcon(path, out icon))
                 {
                     _iconDic[extension] = icon;
                     return icon;
                 }
-                else
-                {
-                    return GetDefaultFileIcon();
-                }
             }
-            else
-            {
-                return GetDefaultFileIcon();
-            }
+            
+            return GetDefaultFileIcon();
         }
 
         private static bool TryGetFileIcon(string path, [NotNullWhen(true)] out ImageSource? icon)

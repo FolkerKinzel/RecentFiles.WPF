@@ -2,6 +2,7 @@
 using FolkerKinzel.RecentFiles.WPF.Resources;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -135,25 +136,30 @@ namespace FolkerKinzel.RecentFiles.WPF
         /// <returns>Der <see cref="Task"/>, auf dessen Beendigung gewartet werden kann.</returns>
         public async Task AddRecentFileAsync(string fileName)
         {
-            if (!string.IsNullOrWhiteSpace(fileName))
+            try
             {
-                await _persistence.LoadAsync().ConfigureAwait(false);
-
-                List<string> recentFiles = _persistence.RecentFiles;
-
-                lock (recentFiles)
-                {
-                    _ = recentFiles.Remove(fileName);
-                    recentFiles.Insert(0, fileName);
-
-                    if (recentFiles.Count > _maxFiles)
-                    {
-                        recentFiles.RemoveAt(_maxFiles);
-                    }
-                }
-
-                await _persistence.SaveAsync().ConfigureAwait(false);
+                fileName = Path.GetFullPath(fileName);
             }
+            catch
+            {
+                return;
+            }
+            await _persistence.LoadAsync().ConfigureAwait(false);
+
+            List<string> recentFiles = _persistence.RecentFiles;
+
+            lock (recentFiles)
+            {
+                _ = recentFiles.Remove(fileName);
+                recentFiles.Insert(0, fileName);
+
+                if (recentFiles.Count > _maxFiles)
+                {
+                    recentFiles.RemoveAt(_maxFiles);
+                }
+            }
+
+            await _persistence.SaveAsync().ConfigureAwait(false);
         }
 
 
@@ -236,10 +242,11 @@ namespace FolkerKinzel.RecentFiles.WPF
                         for (int i = 0; i < recentFiles.Count; i++)
                         {
                             string currentFile = recentFiles[i];
-                            //if (currentFile is null)
-                            //{
-                            //    continue;
-                            //}
+
+                            if (string.IsNullOrWhiteSpace(currentFile))
+                            {
+                                continue;
+                            }
 
                             var mi = new MenuItem
                             {
@@ -249,11 +256,11 @@ namespace FolkerKinzel.RecentFiles.WPF
 
                                 HorizontalContentAlignment = HorizontalAlignment.Stretch,
                                 VerticalContentAlignment = VerticalAlignment.Stretch,
-                                
+
                                 Icon = new Image()
                                 {
-                                    Width = 16.0,
-                                    Height = 16.0,
+                                    //Width = 16.0,
+                                    //Height = 16.0,
                                     Source = _icons.GetIcon(currentFile)
                                 }
                             };
@@ -296,7 +303,7 @@ namespace FolkerKinzel.RecentFiles.WPF
                         fileName.Substring(fileName.Length - THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH);
 #else
                         string.Concat(fileName.AsSpan(0, QUARTER_DISPLAYED_FILE_PATH_LENGTH - 3),
-                                      "...", 
+                                      "...",
                                       fileName.AsSpan(fileName.Length - THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH));
 #endif
                 }
