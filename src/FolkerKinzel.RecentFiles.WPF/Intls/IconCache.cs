@@ -95,16 +95,6 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             }
         }
 
-        private static ImageSource GetDefaultFileIcon()
-        {
-            using Stream stream = Assembly
-                .GetExecutingAssembly()
-                .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DefaultFileIcon.png")!;
-
-            return BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
-        }
-
-
         private static ImageSource ToImageSource(Icon icon)
         {
             using Bitmap bmp2 = icon.Width == 16 && icon.Height == 16 ? icon.ToBitmap() : ResizeIcon(icon, 16, 16);
@@ -146,6 +136,15 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             }
 
             return destImage;
+        }
+
+        private static ImageSource GetDefaultFileIcon()
+        {
+            using Stream stream = Assembly
+                .GetExecutingAssembly()
+                .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DefaultFileIcon.png")!;
+
+            return BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
         }
     }
 }
