@@ -78,6 +78,17 @@ namespace WpfExample
             RecentFileSelectedEventArgs e) => OpenFile(e.FileName);
 
 
+        private void OpenDirectory_Executed(object? sender, ExecutedRoutedEventArgs e)
+        {
+            using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
+            {
+                if(dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    OpenFile(dialog.SelectedPath);
+                }
+            }
+        }
+
         private void Open_Executed(object? sender, ExecutedRoutedEventArgs e)
         {
             var dialog = new OpenFileDialog();
