@@ -7,7 +7,6 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
-using System.Text;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -58,7 +57,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             }
             else if (Utility.IsPathDirectory(path))
             {
-                return Directory.GetParent(path) is null ? _iconDic[DRIVE] : _iconDic[DIRECTORY];
+                return Utility.IsPathDrive(path) ? _iconDic[DRIVE] : _iconDic[DIRECTORY];
             }
             else if (extension.Length != 0)
             {
@@ -68,7 +67,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
                     return icon;
                 }
             }
-            
+
             return GetDefaultFileIcon();
         }
 

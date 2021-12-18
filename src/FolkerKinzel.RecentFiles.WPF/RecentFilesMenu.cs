@@ -3,6 +3,7 @@ using FolkerKinzel.RecentFiles.WPF.Resources;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -169,7 +170,7 @@ namespace FolkerKinzel.RecentFiles.WPF
         /// </summary>
         /// <param name="fileName">Der zu entfernende Dateiname.</param>
         /// <returns>Der <see cref="Task"/>, auf dessen Beendigung gewartet werden kann.</returns>
-        public Task RemoveRecentFileAsync(string fileName)
+        public async Task RemoveRecentFileAsync(string fileName)
         {
             bool result;
             lock (_persistence.RecentFiles)
@@ -177,7 +178,10 @@ namespace FolkerKinzel.RecentFiles.WPF
                 result = _persistence.RecentFiles.Remove(fileName);
             }
 
-            return result ? _persistence.SaveAsync() : Task.CompletedTask;
+            if(result)
+            {
+                await _persistence.SaveAsync().ConfigureAwait(false);
+            }
         }
 
 
@@ -326,6 +330,7 @@ namespace FolkerKinzel.RecentFiles.WPF
 
         #region Command-Execute-Handler
 
+        [ExcludeFromCodeCoverage]
         private void OpenRecentFile_Executed(object? fileName)
         {
             if (fileName is string s)
@@ -335,13 +340,13 @@ namespace FolkerKinzel.RecentFiles.WPF
         }
 
 
-        private void ClearRecentFiles_Executed()
+        private async void ClearRecentFiles_Executed()
         {
             lock (_persistence.RecentFiles)
             {
                 _persistence.RecentFiles.Clear();
             }
-            _ = _persistence.SaveAsync();
+            await _persistence.SaveAsync().ConfigureAwait(false);
         }
 
         #endregion

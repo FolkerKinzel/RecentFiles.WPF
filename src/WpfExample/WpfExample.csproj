@@ -11,6 +11,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Using Remove="System.Windows.Forms"/>
+	</ItemGroup>
+
+	<ItemGroup>
 		<Compile Remove="App-Doku.xaml.cs" />
 		<Compile Remove="DefaultIcons.cs" />
 		<Compile Remove="DefaultIcons2.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace FolkerKinzel.RecentFiles.WPF.Intls
@@ -23,5 +24,8 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
                 return false;
             }
         }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static bool IsPathDrive(string path) => Directory.GetParent(path) is null;
     }
 }
