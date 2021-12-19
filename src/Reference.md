@@ -1,4 +1,4 @@
-# FolkerKinzel.RecentFiles.WPF
+[![GitHub](https://img.shields.io/github/license/FolkerKinzel/RecentFiles.WPF)](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/LICENSE)
 
 ![Screenshot](https://raw.githubusercontent.com/FolkerKinzel/RecentFiles.WPF/master/screenshot.png)
 
