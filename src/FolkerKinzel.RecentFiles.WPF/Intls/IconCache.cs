@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -14,26 +15,43 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
 {
     internal sealed class IconCache
     {
-        private const string DIRECTORY = @"\DIRECTORY\";
-        private const string DRIVE = @"\DRIVE\";
+        private static class PathTypes
+        {
+            public const string Directory = @"\DIRECTORY\";
+            public const string Drive = @"\DRIVE\";
+            public const string Default = @"\DEFAULT\";
+        }
 
         private readonly Dictionary<string, ImageSource> _iconDic = new Dictionary<string, ImageSource>(4, StringComparer.OrdinalIgnoreCase);
 
+        private const string iconsPath = "FolkerKinzel.RecentFiles.WPF.Resources.Icons.";
+        private const string directoryIconName = "DirectoryIcon.png";
+        private const string driveIconName = "DriveIcon.png";
+        private const string defaultIconName = "DefaultFileIcon.png";
+
+
+
         internal IconCache()
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            using (Stream stream = assembly
-                                    .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DirectoryIcon.png")!)
-            {
-                _iconDic[DIRECTORY] = BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
-            }
+            //var assembly = Assembly.GetExecutingAssembly();
+            //using (Stream stream = assembly
+            //                        .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DirectoryIcon.png")!)
+            //{
+            //    _iconDic[PathTypes.Directory] = BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+            //}
 
-            using (Stream stream = assembly
-                                    .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DriveIcon.png")!)
-            {
-                _iconDic[DRIVE] = BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
-            }
+            //using (Stream stream = assembly
+            //                        .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DriveIcon.png")!)
+            //{
+            //    _iconDic[PathTypes.Drive] = BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+            //}
+
+            _ = GetDirectoryIcon();
+            _ = GetDriveIcon();
+
         }
+
+
 
         internal ImageSource GetIcon(string path)
         {
@@ -51,22 +69,31 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
 
             Debug.Assert(extension != null);
 
+            if (extension.Length == 0)
+            {
+                if (Utility.IsPathDirectory(path))
+                {
+                    return Utility.IsPathDrive(path) ? GetDriveIcon() : GetDirectoryIcon();
+                }
+                return GetDefaultFileIcon();
+            }
+
             if (_iconDic.TryGetValue(extension, out ImageSource? icon))
             {
                 return icon;
             }
-            else if (Utility.IsPathDirectory(path))
+            //else if (Utility.IsPathDirectory(path))
+            //{
+            //    return Utility.IsPathDrive(path) ? _iconDic[PathTypes.Drive] : _iconDic[PathTypes.Directory];
+            //}
+            //else if (extension.Length != 0)
+            //{
+            if (TryGetFileIcon(path, out icon))
             {
-                return Utility.IsPathDrive(path) ? _iconDic[DRIVE] : _iconDic[DIRECTORY];
+                _iconDic[extension] = icon;
+                return icon;
             }
-            else if (extension.Length != 0)
-            {
-                if (TryGetFileIcon(path, out icon))
-                {
-                    _iconDic[extension] = icon;
-                    return icon;
-                }
-            }
+            //}
 
             return GetDefaultFileIcon();
         }
@@ -135,13 +162,35 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             return destImage;
         }
 
-        private static ImageSource GetDefaultFileIcon()
-        {
-            using Stream stream = Assembly
-                .GetExecutingAssembly()
-                .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DefaultFileIcon.png")!;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private ImageSource GetDefaultFileIcon() => GetResourceIcon(PathTypes.Default, defaultIconName);
+        //{
+        //    using Stream stream = Assembly
+        //        .GetExecutingAssembly()
+        //        .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DefaultFileIcon.png")!;
 
-            return BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+        //    return BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+        //}
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private ImageSource GetDriveIcon() => GetResourceIcon(PathTypes.Drive, driveIconName);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private ImageSource GetDirectoryIcon() => GetResourceIcon(PathTypes.Directory, directoryIconName);
+
+        private ImageSource GetResourceIcon(string pathType, string iconName)
+        {
+            if (_iconDic.TryGetValue(pathType, out ImageSource? icon))
+            {
+                return icon;
+            }
+
+            using Stream stream = Assembly
+                                    .GetExecutingAssembly()
+                                    .GetManifestResourceStream(string.Concat(iconsPath, iconName))!;
+            icon = BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+            _iconDic[pathType] = icon;
+            return icon;
         }
     }
 }
