@@ -22,13 +22,13 @@
     </Window.CommandBindings>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="File">
+            <MenuItem Header="_File">
                 <MenuItem Command="Open"/>
-                <MenuItem Command="Find" Header="Open Directory"/>
+                <MenuItem Command="Find" Header="Open _Directory"/>
                 <!--<MenuItem Command="SaveAs"/>-->
-                <MenuItem Name="_miRecentFiles" Header="RecentFiles"/>
+                <MenuItem Name="_miRecentFiles" Header="_Recent Files"/>
                 <Separator/>
-                <MenuItem Header="Quit" Click="Quit_Click"/>
+                <MenuItem Header="_Quit" Click="Quit_Click"/>
             </MenuItem>
         </Menu>
         <!--<Image Name="imgIcon" Source="{Binding ImageSource}" Width="32" Height="32" DockPanel.Dock="Top"/>-->
