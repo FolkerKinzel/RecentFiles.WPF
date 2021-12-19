@@ -19,7 +19,9 @@ public class IconCacheTests
     {
         var cache = new IconCache();
 
-        ImageSource img = cache.GetIcon("C:\\");
+        string path = "C:\\";
+
+        ImageSource img = cache.GetIcon(path);
         
         Assert.IsNotNull(img);
         Assert.IsTrue(img.Width > 15);
@@ -27,6 +29,8 @@ public class IconCacheTests
         Assert.IsTrue(img.Width < 17);
         Assert.IsTrue(img.Height < 17);
 
+        ImageSource img2 = cache.GetIcon(path);
+        Assert.AreSame(img, img2);
     }
 
     [TestMethod]
@@ -34,7 +38,8 @@ public class IconCacheTests
     {
         var cache = new IconCache();
 
-        ImageSource img = cache.GetIcon(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+        ImageSource img = cache.GetIcon(path);
 
         Assert.IsNotNull(img);
         Assert.IsTrue(img.Width > 15);
@@ -42,6 +47,8 @@ public class IconCacheTests
         Assert.IsTrue(img.Width < 17);
         Assert.IsTrue(img.Height < 17);
 
+        ImageSource img2 = cache.GetIcon(path);
+        Assert.AreSame(img, img2);
     }
 
     [TestMethod]
@@ -58,7 +65,6 @@ public class IconCacheTests
         Assert.IsTrue(img.Height < 17);
 
         ImageSource img2 = cache.GetIcon(TestFiles.Test2Txt);
-
         Assert.AreSame(img, img2);
 
     }
@@ -68,6 +74,7 @@ public class IconCacheTests
     {
         var cache = new IconCache();
 
+        string path = "C:\\nixda.abc";
         ImageSource img = cache.GetIcon("C:\\nixda.abc");
 
         Assert.IsNotNull(img);
@@ -75,6 +82,9 @@ public class IconCacheTests
         Assert.IsTrue(img.Height > 15);
         Assert.IsTrue(img.Width < 17);
         Assert.IsTrue(img.Height < 17);
+
+        ImageSource img2 = cache.GetIcon(path);
+        Assert.AreSame(img, img2);
     }
 
     [TestMethod]
@@ -93,7 +103,6 @@ public class IconCacheTests
         Assert.IsTrue(img.Height < 17);
 
         ImageSource img2 = cache.GetIcon(path);
-
         Assert.AreSame(img, img2);
 
     }
@@ -112,6 +121,9 @@ public class IconCacheTests
         Assert.IsTrue(img.Height > 15);
         Assert.IsTrue(img.Width < 17);
         Assert.IsTrue(img.Height < 17);
+
+        ImageSource img2 = cache.GetIcon(path);
+        Assert.AreSame(img, img2);
 
     }
 }
