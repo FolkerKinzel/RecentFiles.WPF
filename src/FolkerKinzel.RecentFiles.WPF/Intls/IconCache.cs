@@ -22,35 +22,12 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             public const string Default = @"\DEFAULT\";
         }
 
-        private readonly Dictionary<string, ImageSource> _iconDic = new Dictionary<string, ImageSource>(4, StringComparer.OrdinalIgnoreCase);
+        private readonly Dictionary<string, ImageSource> _iconDic = new Dictionary<string, ImageSource>(1, StringComparer.OrdinalIgnoreCase);
 
-        private const string iconsPath = "FolkerKinzel.RecentFiles.WPF.Resources.Icons.";
-        private const string directoryIconName = "DirectoryIcon.png";
-        private const string driveIconName = "DriveIcon.png";
-        private const string defaultIconName = "DefaultFileIcon.png";
-
-
-
-        internal IconCache()
-        {
-            //var assembly = Assembly.GetExecutingAssembly();
-            //using (Stream stream = assembly
-            //                        .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DirectoryIcon.png")!)
-            //{
-            //    _iconDic[PathTypes.Directory] = BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
-            //}
-
-            //using (Stream stream = assembly
-            //                        .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DriveIcon.png")!)
-            //{
-            //    _iconDic[PathTypes.Drive] = BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
-            //}
-
-            _ = GetDirectoryIcon();
-            _ = GetDriveIcon();
-
-        }
-
+        private const string ICONS_PATH = "FolkerKinzel.RecentFiles.WPF.Resources.Icons.";
+        private const string DIRECTORY_ICON_NAME = "DirectoryIcon.png";
+        private const string DRIVE_ICON_NAME = "DriveIcon.png";
+        private const string DEFAULT_ICON_NAME = "DefaultFileIcon.png";
 
 
         internal ImageSource GetIcon(string path)
@@ -82,24 +59,40 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             {
                 return icon;
             }
-            //else if (Utility.IsPathDirectory(path))
-            //{
-            //    return Utility.IsPathDrive(path) ? _iconDic[PathTypes.Drive] : _iconDic[PathTypes.Directory];
-            //}
-            //else if (extension.Length != 0)
-            //{
-            if (TryGetFileIcon(path, out icon))
+
+            if (TryGetFileIcon(path, extension, out icon))
             {
                 _iconDic[extension] = icon;
                 return icon;
             }
-            //}
 
             return GetDefaultFileIcon();
         }
 
-        private static bool TryGetFileIcon(string path, [NotNullWhen(true)] out ImageSource? icon)
+
+        private static bool TryGetFileIcon(string path, string extension, [NotNullWhen(true)] out ImageSource? icon)
         {
+            FileInfo? tmpFile = null;
+            if(!File.Exists(path))
+            {
+                // The method Icon.ExtractAssociatedIcon(path) throws an exception if the file
+                // does not exist. So the hack is to create an empty temporary file an delete it
+                // afterwards. (Elsewhere a default icon would be displayed.)
+                path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName() + extension);
+
+                while(File.Exists(path)) // Don't overwrite anything!
+                {
+                    path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName() + extension);
+                }
+
+                try
+                {
+                    tmpFile = new FileInfo(path);
+                    tmpFile.Create().Close();
+                }
+                catch {}
+            }
+
             icon = null;
             try
             {
@@ -117,19 +110,30 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             {
                 return false;
             }
+            finally
+            {
+                if (tmpFile != null)
+                {
+                    try
+                    {
+                        tmpFile.Delete();
+                    }
+                    catch { }
+                }
+            }
         }
+
 
         private static ImageSource ToImageSource(Icon icon)
         {
             using Bitmap bmp2 = icon.Width == 16 && icon.Height == 16 ? icon.ToBitmap() : ResizeIcon(icon, 16, 16);
-            //using Bitmap bmp2 = icon.ToBitmap();
-
 
             using var ms = new MemoryStream();
             bmp2.Save(ms, ImageFormat.Png);
             ms.Position = 0;
             return BitmapFrame.Create(ms, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
         }
+
 
         /// <summary>
         /// Resize the icon to the specified width and height.
@@ -163,20 +167,13 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private ImageSource GetDefaultFileIcon() => GetResourceIcon(PathTypes.Default, defaultIconName);
-        //{
-        //    using Stream stream = Assembly
-        //        .GetExecutingAssembly()
-        //        .GetManifestResourceStream("FolkerKinzel.RecentFiles.WPF.Resources.Icons.DefaultFileIcon.png")!;
-
-        //    return BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
-        //}
+        private ImageSource GetDefaultFileIcon() => GetResourceIcon(PathTypes.Default, DEFAULT_ICON_NAME);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private ImageSource GetDriveIcon() => GetResourceIcon(PathTypes.Drive, driveIconName);
+        private ImageSource GetDriveIcon() => GetResourceIcon(PathTypes.Drive, DRIVE_ICON_NAME);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private ImageSource GetDirectoryIcon() => GetResourceIcon(PathTypes.Directory, directoryIconName);
+        private ImageSource GetDirectoryIcon() => GetResourceIcon(PathTypes.Directory, DIRECTORY_ICON_NAME);
 
         private ImageSource GetResourceIcon(string pathType, string iconName)
         {
@@ -187,7 +184,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
 
             using Stream stream = Assembly
                                     .GetExecutingAssembly()
-                                    .GetManifestResourceStream(string.Concat(iconsPath, iconName))!;
+                                    .GetManifestResourceStream(string.Concat(ICONS_PATH, iconName))!;
             icon = BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
             _iconDic[pathType] = icon;
             return icon;
