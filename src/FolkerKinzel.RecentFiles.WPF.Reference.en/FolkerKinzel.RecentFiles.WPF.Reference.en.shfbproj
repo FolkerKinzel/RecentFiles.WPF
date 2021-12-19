@@ -13,7 +13,7 @@
     <RootNamespace>FolkerKinzel.RecentFiles.WPF.Reference.en</RootNamespace>
     <Name>FolkerKinzel.RecentFiles.WPF.Reference.en</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>.NET Framework 4.8</FrameworkVersion>
+    <FrameworkVersion>.NET Core/.NET Standard/.NET 5.0+</FrameworkVersion>
     <OutputPath>.\Help\</OutputPath>
     <HtmlHelpName>FolkerKinzel.RecentFiles.WPF.Reference.en</HtmlHelpName>
     <Language>en-US</Language>
@@ -27,8 +27,7 @@
       <Argument Key="maxVersionParts" Value="" xmlns="" />
     </TransformComponentArguments>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\FolkerKinzel.RecentFiles.WPF\bin\Release\net461\FolkerKinzel.RecentFiles.WPF.xml" xmlns="" />
-      <DocumentationSource sourceFile="..\FolkerKinzel.RecentFiles.WPF\bin\Release\net461\FolkerKinzel.RecentFiles.WPF.dll" xmlns="" />
+      <DocumentationSource sourceFile="..\FolkerKinzel.RecentFiles.WPF\FolkerKinzel.RecentFiles.WPF.csproj" />
     </DocumentationSources>
     <HelpFileFormat>HtmlHelp1</HelpFileFormat>
     <SyntaxFilters>Standard</SyntaxFilters>

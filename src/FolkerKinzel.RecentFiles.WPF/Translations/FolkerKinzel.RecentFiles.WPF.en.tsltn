@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Tsltn Version="1.0" SourceFile="..\bin\Release\net461\de\FolkerKinzel.RecentFiles.WPF.xml" SourceLanguage="de" TargetLanguage="en">
+<Tsltn Version="1.0" SourceFile="..\bin\Release\net6.0-windows\de\FolkerKinzel.RecentFiles.WPF.xml" SourceLanguage="de" TargetLanguage="en">
   <T ID="A8D9919A06BA40F1">Initializes a &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.Intls.RecentFilesPersistence"/&gt; object.</T>
   <T ID="4925195BF97131B2">Absolute path of the directory, into the &lt;see cref ="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/&gt;
              is persisted.</T>
@@ -90,4 +90,9 @@
   <T ID="DAB9035DD098878B"></T>
   <T ID="D74F640D9F7AE75F"></T>
   <T ID="704D5E94C284A497"></T>
+  <T ID="2D5041289CFD10AC"></T>
+  <T ID="AA2997E6AE3CBC88"></T>
+  <T ID="A40DA1DC20868A65"></T>
+  <T ID="54BDBAF3428B21EC"></T>
+  <T ID="D26B983FAC258539"></T>
 </Tsltn>
