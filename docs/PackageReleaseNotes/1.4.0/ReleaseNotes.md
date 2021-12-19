@@ -5,3 +5,4 @@
 - Fixed an issue that Icons have been sometimes displayed with a dark background.
 - Better formatting when displaying long file paths.
 - Better performance.
+- Very high code coverage of the unit tests.

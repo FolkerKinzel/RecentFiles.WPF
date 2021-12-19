@@ -339,14 +339,14 @@ namespace FolkerKinzel.RecentFiles.WPF
             }
         }
 
-
-        private async void ClearRecentFiles_Executed()
+        [ExcludeFromCodeCoverage]
+        private void ClearRecentFiles_Executed()
         {
             lock (_persistence.RecentFiles)
             {
                 _persistence.RecentFiles.Clear();
             }
-            await _persistence.SaveAsync().ConfigureAwait(false);
+            _ = _persistence.SaveAsync();
         }
 
         #endregion
