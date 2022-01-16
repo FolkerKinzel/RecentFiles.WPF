@@ -28,6 +28,10 @@
     <PackageProjectUrl>https://github.com/FolkerKinzel/RecentFiles.WPF</PackageProjectUrl>
     <PackageIconUrl />
   </PropertyGroup>
+	<PropertyGroup>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
