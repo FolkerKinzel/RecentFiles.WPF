@@ -99,6 +99,42 @@
       <DependentUpon>Res.resx</DependentUpon>
     </Compile>
   </ItemGroup>
+	<ItemGroup>
+		<None Include="Translations\en\FolkerKinzel.RecentFiles.WPF.xml">
+			<Pack>True</Pack>
+			<PackagePath>lib\net6.0-windows</PackagePath>
+		</None>
+		<None Include="Translations\en\FolkerKinzel.RecentFiles.WPF.xml">
+			<Pack>True</Pack>
+			<PackagePath>lib\net5.0-windows</PackagePath>
+		</None>
+		<None Include="Translations\en\FolkerKinzel.RecentFiles.WPF.xml">
+			<Pack>True</Pack>
+			<PackagePath>lib\netcoreapp3.1</PackagePath>
+		</None>
+		<None Include="Translations\en\FolkerKinzel.RecentFiles.WPF.xml">
+			<Pack>True</Pack>
+			<PackagePath>lib\net461</PackagePath>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="Translations\de\FolkerKinzel.RecentFiles.WPF.xml">
+			<Pack>True</Pack>
+			<PackagePath>lib\net6.0-windows\de</PackagePath>
+		</None>
+		<None Include="Translations\de\FolkerKinzel.RecentFiles.WPF.xml">
+			<Pack>True</Pack>
+			<PackagePath>lib\net5.0-windows\de</PackagePath>
+		</None>
+		<None Include="Translations\de\FolkerKinzel.RecentFiles.WPF.xml">
+			<Pack>True</Pack>
+			<PackagePath>lib\netcoreapp3.1\de</PackagePath>
+		</None>
+		<None Include="Translations\de\FolkerKinzel.RecentFiles.WPF.xml">
+			<Pack>True</Pack>
+			<PackagePath>lib\net461\de</PackagePath>
+		</None>
+	</ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="if $(ConfigurationName) == Release if '$(TargetFramework)' == 'netcoreapp3.1' dotnet $(SolutionDir)IncVersion\IncVersion.dll $(ProjectDir)$(ProjectFileName) --revision" />
   </Target>
