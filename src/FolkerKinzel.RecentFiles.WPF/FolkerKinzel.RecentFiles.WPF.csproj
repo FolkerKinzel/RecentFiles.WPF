@@ -15,7 +15,7 @@
     <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
     <Product>FolkerKinzel.RecentFiles.WPF</Product>
     <Version>1.4.1</Version>
-    <FileVersion>1.4.1.2</FileVersion>
+    <FileVersion>1.4.1.3</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/docs/PackageReleaseNotes/1.4.1/ReleaseNotes.md</PackageReleaseNotes>
@@ -99,7 +99,6 @@
       <DependentUpon>Res.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-  
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="if $(ConfigurationName) == Release if '$(TargetFramework)' == 'netcoreapp3.1' dotnet $(SolutionDir)IncVersion\IncVersion.dll $(ProjectDir)$(ProjectFileName) --revision" />
   </Target>

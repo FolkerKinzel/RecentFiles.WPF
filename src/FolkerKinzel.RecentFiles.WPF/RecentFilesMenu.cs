@@ -28,7 +28,7 @@ namespace FolkerKinzel.RecentFiles.WPF;
 /// </remarks>
 /// <example>
 /// <para>Initialisieren von <see cref="RecentFilesMenu"/>:</para>
-/// <code language="cs" source="..\WpfExample\App-Doku.xaml.cs" />
+/// <code language="cs" source="..\WpfExample\App.xaml.cs" />
 /// <para>Einbinden von <see cref="RecentFilesMenu"/> in ein WPF-<see cref="Window"/>:</para>
 /// <code language="cs" source="..\WpfExample\MainWindow.xaml.cs" />
 /// </example>

@@ -170,7 +170,7 @@
             </remarks>
             <example>
             <para>Initialisieren von <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/>:</para>
-            <code language="cs" source="..\WpfExample\App-Doku.xaml.cs" />
+            <code language="cs" source="..\WpfExample\App.xaml.cs" />
             <para>Einbinden von <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> in ein WPF-<see cref="T:System.Windows.Window"/>:</para>
             <code language="cs" source="..\WpfExample\MainWindow.xaml.cs" />
             </example>
