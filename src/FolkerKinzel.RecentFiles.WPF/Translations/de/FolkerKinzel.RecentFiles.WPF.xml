@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FolkerKinzel.RecentFiles.WPF</name>
+    </assembly>
+    <members>
+        <member name="T:FolkerKinzel.RecentFiles.WPF.Intls.ClearRecentFiles">
+            <summary>
+            <see cref="T:System.Windows.Input.ICommand"/> zum Löschen der Liste der zuletzt benutzten Dateien.
+            </summary>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.Intls.ClearRecentFiles.#ctor(System.Action)">
+            <summary>
+            Initialisiert das <see cref="T:System.Windows.Input.ICommand"/>.
+            </summary>
+            <param name="execute"><see cref="T:System.Action"/>-Delegate, das das <see cref="T:System.Windows.Input.ICommand"/> ausführt.</param>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.Intls.ClearRecentFiles.CanExecute(System.Object)">
+            <summary>
+            Methode, die prüft, ob das <see cref="T:System.Windows.Input.ICommand"/> ausgeführt werden kann.
+            </summary>
+            <param name="parameter">Vom <see cref="T:System.Windows.Input.ICommand"/> verwendete Daten oder <c>null</c>.</param>
+            <returns><c>true</c>, wenn das <see cref="T:System.Windows.Input.ICommand"/> ausgeführt werden kann.</returns>
+        </member>
+        <member name="E:FolkerKinzel.RecentFiles.WPF.Intls.ClearRecentFiles.CanExecuteChanged">
+            <summary>
+            Event, dass gefeuert wird, wenn sich der Rückgabewert von <see cref="M:FolkerKinzel.RecentFiles.WPF.Intls.ClearRecentFiles.CanExecute(System.Object)"/> ändert.
+            </summary>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.Intls.ClearRecentFiles.Execute(System.Object)">
+            <summary>
+            Methode, die das <see cref="T:System.Windows.Input.ICommand"/> ausführt.
+            </summary>
+            <param name="parameter">Vom <see cref="T:System.Windows.Input.ICommand"/> verwendete Daten oder <c>null</c>.</param>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.Intls.IconCache.ResizeIcon(System.Drawing.Icon,System.Int32,System.Int32)">
+            <summary>
+            Resize the icon to the specified width and height.
+            </summary>
+            <param name="icon">The icon to resize.</param>
+            <param name="width">The width to resize to.</param>
+            <param name="height">The height to resize to.</param>
+            <returns>The resized image.</returns>
+        </member>
+        <member name="T:FolkerKinzel.RecentFiles.WPF.Intls.OpenRecentFile">
+            <summary>
+            <see cref="T:System.Windows.Input.ICommand"/> zum Öffnen einer aus dem <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> ausgewählten Datei.
+            </summary>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.Intls.OpenRecentFile.#ctor(System.Action{System.Object})">
+            <summary>
+            Initialisiert das <see cref="T:System.Windows.Input.ICommand"/>.
+            </summary>
+            <param name="execute"><see cref="T:System.Action`1"/>-Delegate, das das <see cref="T:System.Windows.Input.ICommand"/> ausführt.</param>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.Intls.OpenRecentFile.CanExecute(System.Object)">
+            <summary>
+            Methode, die prüft, ob das <see cref="T:System.Windows.Input.ICommand"/> ausgeführt werden kann.
+            </summary>
+            <param name="parameter">Vom <see cref="T:System.Windows.Input.ICommand"/> verwendete Daten oder <c>null</c>.</param>
+            <returns><c>true</c>, wenn das <see cref="T:System.Windows.Input.ICommand"/> ausgeführt werden kann.</returns>
+        </member>
+        <member name="E:FolkerKinzel.RecentFiles.WPF.Intls.OpenRecentFile.CanExecuteChanged">
+            <summary>
+            Event, dass gefeuert wird, wenn sich der Rückgabewert von <see cref="M:FolkerKinzel.RecentFiles.WPF.Intls.OpenRecentFile.CanExecute(System.Object)"/> ändert.
+            </summary>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.Intls.OpenRecentFile.Execute(System.Object)">
+            <summary>
+            Methode, die das <see cref="T:System.Windows.Input.ICommand"/> ausführt.
+            </summary>
+            <param name="parameter">Der zum Öffnen ausgewählte Dateiname.</param>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.Intls.RecentFilesPersistence.#ctor(System.String)">
+            <summary>
+            Initialisiert ein <see cref="T:FolkerKinzel.RecentFiles.WPF.Intls.RecentFilesPersistence"/>-Objekt.
+            </summary>
+            <param name="persistenceDirectoryPath">Absoluter Pfad des Verzeichnisses, in das <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/>
+            persistiert wird.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="persistenceDirectoryPath"/> ist <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">
+            <para>
+            <paramref name="persistenceDirectoryPath"/> enthält mindestens eines der in <see cref="M:System.IO.Path.GetInvalidPathChars"/> definierten ungültigen Zeichen
+            </para>
+            <para>- oder -</para>
+            <para>
+            <paramref name="persistenceDirectoryPath"/> ist kein absoluter Pfad
+            </para>
+            <para>- oder -</para>
+            <para>
+            <paramref name="persistenceDirectoryPath"/> verweist nicht auf einen existierenden Ordner.
+            </para>
+            </exception>
+        </member>
+        <member name="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu">
+            <summary>
+            Interface, das die öffentliche Schnittstelle von <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> darstellt.
+            </summary>
+        </member>
+        <member name="E:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.RecentFileSelected">
+            <summary>
+            Event, das gefeuert wird, wenn der Benutzer im Menü eine Datei zum Öffnen auswählt.
+            </summary>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.Initialize(System.Windows.Controls.MenuItem)">
+            <summary>
+            Weist dem <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> das <see cref="T:System.Windows.Controls.MenuItem"/> zu, als dessen Submenü das
+            <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> angezeigt wird. Diese Methode muss vor allen anderen aufgerufen werden!
+            </summary>
+            <param name="miRecentFiles">Das <see cref="T:System.Windows.Controls.MenuItem"/>, als dessen Submenü das
+            <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> angezeigt wird.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="miRecentFiles"/> ist <c>null</c>.</exception>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.AddRecentFileAsync(System.String)">
+            <summary>
+            Fügt <paramref name="fileName"/> zur Liste hinzu, wenn 
+            <paramref name="fileName"/> einen Dateinamen enthält.
+            </summary>
+            <param name="fileName">Ein hinzuzufügender Dateiname. Wenn <paramref name="fileName"/>&#160;<c>null</c>, 
+            leer oder Whitespace ist, wird nichts hinzugefügt.</param>
+            <returns>Der <see cref="T:System.Threading.Tasks.Task"/>, auf dessen Beendigung gewartet werden kann.</returns>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.GetMostRecentFileAsync">
+            <summary>
+            Gibt den Namen der zuletzt geöffneten Datei zurück oder <c>null</c>, wenn dieser nicht existiert.
+            </summary>
+            <returns>Name der zuletzt geöffneten Datei oder <c>null</c>, wenn dieser nicht existiert.</returns>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.RemoveRecentFileAsync(System.String)">
+            <summary>
+            Enfernt einen Dateinamen aus der Liste.
+            </summary>
+            <param name="fileName">Der zu entfernende Dateiname.</param>
+            <returns>Der <see cref="T:System.Threading.Tasks.Task"/>, auf dessen Beendigung gewartet werden kann.</returns>
+        </member>
+        <member name="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs">
+            <summary>
+            <see cref="T:System.EventArgs"/> für das <see cref="E:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.RecentFileSelected"/>-Event.
+            </summary>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs.#ctor(System.String)">
+            <summary>
+            Initialisiert ein <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs"/>-Objekt.
+            </summary>
+            <param name="fileName">Der Dateiname der ausgewählten Datei.</param>
+        </member>
+        <member name="P:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs.FileName">
+            <summary>
+            Der ausgewählte Dateiname.
+            </summary>
+        </member>
+        <member name="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu">
+            <summary>
+            Klasse, die der WPF-Anwendung ein Menü mit den zuletzt verwendeten Dateien hinzufügt.
+            </summary>
+            <remarks>
+            <para>Fügen Sie Ihrer Anwendung ein <see cref="T:System.Windows.Controls.MenuItem"/> hinzu, als dessen Untermenü <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> angezeigt werden soll und 
+            übergeben Sie dieses der Methode <see cref="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.Initialize(System.Windows.Controls.MenuItem)"/> - dann ist das Menü startklar.</para>
+            <para>Um einen Dateinamen zum Menü hinzuzufügen, muss <see cref="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.AddRecentFileAsync(System.String)"/>
+            aufgerufen werden. Das sollte immer nach dem Öffnen oder Speichern einer Datei geschehen (z.B. in einer Property "CurrentFileName").</para>
+            <para>Um eine Datei zu öffnen, muss das Event <see cref="E:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.RecentFileSelected"/> abonniert werden. Der Dateiname wird in den 
+            <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs"/> geliefert.</para> 
+            <para><see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> persistiert sich in kleinen Textdateien mit der Namenskonvention
+            [<see cref="P:System.Environment.MachineName"/>].[<see cref="P:System.Environment.UserName"/>].RF.txt. Beachten Sie, dass der Programmname nicht 
+            enthalten ist. Deshalb sollte <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> in einem Ordner persistiert werden, auf den andere Programme nicht
+            zugreifen.</para>
+            <para>Beim Beenden der Anwendung sollten Sie sämtliche offenen Tasks des <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/>s mit <see cref="M:System.Threading.Tasks.Task.WhenAll(System.Collections.Generic.IEnumerable{System.Threading.Tasks.Task})"/> abwarten und dann 
+            <see cref="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.Dispose"/> aufrufen um den systemweiten <see cref="T:System.Threading.Mutex"/> freizugeben, der verwendet wird, um
+            die Persistenz von <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> zwischen mehreren Instanzen derselben Anwendung zu synchronisieren.</para>
+            </remarks>
+            <example>
+            <para>Initialisieren von <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/>:</para>
+            <code language="cs" source="..\WpfExample\App-Doku.xaml.cs" />
+            <para>Einbinden von <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> in ein WPF-<see cref="T:System.Windows.Window"/>:</para>
+            <code language="cs" source="..\WpfExample\MainWindow.xaml.cs" />
+            </example>
+        </member>
+        <member name="E:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.RecentFileSelected">
+            <summary>
+            Event, das gefeuert wird, wenn der Benutzer im Menü eine Datei zum Öffnen auswählt.
+            </summary>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.#ctor(System.String,System.Int32,System.String)">
+            <summary>
+            Initialisiert ein <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/>.
+            </summary>
+            <param name="persistenceDirectoryPath">Absoluter Pfad des Verzeichnisses, in das <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/>
+            persistiert wird. Dies sollte ein Ordner sein, auf den andere Programme nicht zugreifen.</param>
+            <param name="maxFiles">Maximalanzahl der im Menü anzuzeigenden Dateinamen (zwischen 1 und 10).</param>
+            <param name="clearListText">Text für den Menüpunkt "Liste leeren" oder <c>null</c>, um den Text aus den Ressourcen zu 
+            nutzen. (Es gibt Ressourcen für Deutsch und Englisch.)</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="persistenceDirectoryPath"/> ist <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="maxFiles"/> ist kleiner als 1 oder größer als 10.</exception>
+            <exception cref="T:System.ArgumentException">
+            <para>
+            <paramref name="persistenceDirectoryPath"/> enthält mindestens eines der in <see cref="M:System.IO.Path.GetInvalidPathChars"/> definierten ungültigen Zeichen
+            </para>
+            <para>- oder -</para>
+            <para>
+            <paramref name="persistenceDirectoryPath"/> ist kein absoluter Pfad
+            </para>
+            <para>- oder -</para>
+            <para>
+            <paramref name="persistenceDirectoryPath"/> verweist nicht auf einen existierenden Ordner.
+            </para></exception>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.Initialize(System.Windows.Controls.MenuItem)">
+            <summary>
+            Weist dem <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> das <see cref="T:System.Windows.Controls.MenuItem"/> zu, als dessen Submenü das
+            <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> angezeigt wird. Diese Methode muss vor allen anderen aufgerufen werden!
+            </summary>
+            <param name="miRecentFiles">Das <see cref="T:System.Windows.Controls.MenuItem"/>, als dessen Submenü das
+            <see cref="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu"/> angezeigt wird.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="miRecentFiles"/> ist <c>null</c>.</exception>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.AddRecentFileAsync(System.String)">
+            <summary>
+            Fügt <paramref name="fileName"/> zur Liste hinzu, wenn 
+            <paramref name="fileName"/> einen Dateinamen enthält.
+            </summary>
+            <param name="fileName">Ein hinzuzufügender Dateiname. Wenn <paramref name="fileName"/>&#160;<c>null</c>, 
+            leer oder Whitespace ist, wird nichts hinzugefügt.</param>
+            <returns>Der <see cref="T:System.Threading.Tasks.Task"/>, auf dessen Beendigung gewartet werden kann.</returns>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.RemoveRecentFileAsync(System.String)">
+            <summary>
+            Enfernt einen Dateinamen aus der Liste.
+            </summary>
+            <param name="fileName">Der zu entfernende Dateiname.</param>
+            <returns>Der <see cref="T:System.Threading.Tasks.Task"/>, auf dessen Beendigung gewartet werden kann.</returns>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.GetMostRecentFileAsync">
+            <summary>
+            Gibt den Namen der zuletzt geöffneten Datei zurück oder <c>null</c>, wenn dieser nicht existiert.
+            </summary>
+            <returns>Name der zuletzt geöffneten Datei oder <c>null</c>, wenn dieser nicht existiert.</returns>
+        </member>
+        <member name="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.Dispose">
+            <summary>
+            Gibt die Ressourcen frei.
+            </summary>
+            <remarks>
+            Eine solche Ressource ist der systemweite <see cref="T:System.Threading.Mutex"/>.
+            </remarks>
+        </member>
+        <member name="T:FolkerKinzel.RecentFiles.WPF.Resources.Res">
+            <summary>
+              Eine stark typisierte Ressourcenklasse zum Suchen von lokalisierten Zeichenfolgen usw.
+            </summary>
+        </member>
+        <member name="P:FolkerKinzel.RecentFiles.WPF.Resources.Res.ResourceManager">
+            <summary>
+              Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
+            </summary>
+        </member>
+        <member name="P:FolkerKinzel.RecentFiles.WPF.Resources.Res.Culture">
+            <summary>
+              Überschreibt die CurrentUICulture-Eigenschaft des aktuellen Threads für alle
+              Ressourcenzuordnungen, die diese stark typisierte Ressourcenklasse verwenden.
+            </summary>
+        </member>
+        <member name="P:FolkerKinzel.RecentFiles.WPF.Resources.Res.ClearList">
+            <summary>
+              Sucht eine lokalisierte Zeichenfolge, die Clear list ähnelt.
+            </summary>
+        </member>
+        <member name="P:FolkerKinzel.RecentFiles.WPF.Resources.Res.FilePathNotFullyQualified">
+            <summary>
+              Sucht eine lokalisierte Zeichenfolge, die {0} is not a fully qualified path. ähnelt.
+            </summary>
+        </member>
+        <member name="P:FolkerKinzel.RecentFiles.WPF.Resources.Res.NotAnExistingDirectory">
+            <summary>
+              Sucht eine lokalisierte Zeichenfolge, die {0} doesn&apos;t refer to an existing directory. ähnelt.
+            </summary>
+        </member>
+        <member name="P:FolkerKinzel.RecentFiles.WPF.Resources.Res.NotInitialized">
+            <summary>
+              Sucht eine lokalisierte Zeichenfolge, die The MenuItem has not yet been assigned. Call {0} first! ähnelt.
+            </summary>
+        </member>
+    </members>
+</doc>

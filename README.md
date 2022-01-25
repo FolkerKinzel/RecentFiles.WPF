@@ -62,9 +62,6 @@ using FolkerKinzel.RecentFiles.WPF;
 
 namespace WpfExample;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
 public sealed partial class MainWindow : Window, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;

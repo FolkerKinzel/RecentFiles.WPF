@@ -28,7 +28,7 @@
     </TransformComponentArguments>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\FolkerKinzel.RecentFiles.WPF\FolkerKinzel.RecentFiles.WPF.csproj" />
-      <DocumentationSource sourceFile="..\FolkerKinzel.RecentFiles.WPF\bin\Release\net6.0-windows\de\FolkerKinzel.RecentFiles.WPF.xml" />
+      <DocumentationSource sourceFile="..\FolkerKinzel.RecentFiles.WPF\Translations\de\FolkerKinzel.RecentFiles.WPF.xml" />
     </DocumentationSources>
     <HelpFileFormat>HtmlHelp1</HelpFileFormat>
     <SyntaxFilters>Standard</SyntaxFilters>
