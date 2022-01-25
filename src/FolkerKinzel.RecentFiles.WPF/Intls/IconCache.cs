@@ -22,7 +22,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
             public const string Default = @"\DEFAULT\";
         }
 
-        private readonly Dictionary<string, ImageSource> _iconDic = new Dictionary<string, ImageSource>(1, StringComparer.OrdinalIgnoreCase);
+        private readonly Dictionary<string, ImageSource> _iconDic = new(1, StringComparer.OrdinalIgnoreCase);
 
         private const string ICONS_PATH = "FolkerKinzel.RecentFiles.WPF.Resources.Icons.";
         private const string DIRECTORY_ICON_NAME = "DirectoryIcon.png";
@@ -48,11 +48,8 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls
 
             if (extension.Length == 0)
             {
-                if (Utility.IsPathDirectory(path))
-                {
-                    return Utility.IsPathDrive(path) ? GetDriveIcon() : GetDirectoryIcon();
-                }
-                return GetDefaultFileIcon();
+                return Utility.IsPathDirectory(path) ? Utility.IsPathDrive(path) ? GetDriveIcon() : GetDirectoryIcon() 
+                                                     : GetDefaultFileIcon();
             }
 
             if (_iconDic.TryGetValue(extension, out ImageSource? icon))

@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.CompilerServices;
 using System.Windows;
 
 [assembly: InternalsVisibleTo("FolkerKinzel.RecentFiles.WPF.Tests")]

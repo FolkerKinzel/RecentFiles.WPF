@@ -1,41 +1,38 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
-namespace FolkerKinzel.RecentFiles.WPF.Intls
-{ 
+namespace FolkerKinzel.RecentFiles.WPF.Intls;
+
+/// <summary>
+/// <see cref="ICommand"/> zum Löschen der Liste der zuletzt benutzten Dateien.
+/// </summary>
+internal sealed class ClearRecentFiles : ICommand
+{
+    private readonly Action _executeHandler;
+
     /// <summary>
-    /// <see cref="ICommand"/> zum Löschen der Liste der zuletzt benutzten Dateien.
+    /// Initialisiert das <see cref="ICommand"/>.
     /// </summary>
-    internal sealed class ClearRecentFiles : ICommand
-    {
-        private readonly Action _executeHandler;
+    /// <param name="execute"><see cref="Action"/>-Delegate, das das <see cref="ICommand"/> ausführt.</param>
+    public ClearRecentFiles(Action execute) => _executeHandler = execute;
 
-        /// <summary>
-        /// Initialisiert das <see cref="ICommand"/>.
-        /// </summary>
-        /// <param name="execute"><see cref="Action"/>-Delegate, das das <see cref="ICommand"/> ausführt.</param>
-        public ClearRecentFiles(Action execute) => _executeHandler = execute;
+    /// <summary>
+    /// Methode, die prüft, ob das <see cref="ICommand"/> ausgeführt werden kann.
+    /// </summary>
+    /// <param name="parameter">Vom <see cref="ICommand"/> verwendete Daten oder <c>null</c>.</param>
+    /// <returns><c>true</c>, wenn das <see cref="ICommand"/> ausgeführt werden kann.</returns>
+    public bool CanExecute(object? parameter) => true;
 
-        /// <summary>
-        /// Methode, die prüft, ob das <see cref="ICommand"/> ausgeführt werden kann.
-        /// </summary>
-        /// <param name="parameter">Vom <see cref="ICommand"/> verwendete Daten oder <c>null</c>.</param>
-        /// <returns><c>true</c>, wenn das <see cref="ICommand"/> ausgeführt werden kann.</returns>
-        public bool CanExecute(object? parameter) => true;
-
-
-        /// <summary>
-        /// Event, dass gefeuert wird, wenn sich der Rückgabewert von <see cref="CanExecute(object)"/> ändert.
-        /// </summary>
+    /// <summary>
+    /// Event, dass gefeuert wird, wenn sich der Rückgabewert von <see cref="CanExecute(object)"/> ändert.
+    /// </summary>
 #pragma warning disable 67
-        public event EventHandler? CanExecuteChanged;
+    public event EventHandler? CanExecuteChanged;
+#pragma warning restore 67
 
 
-        /// <summary>
-        /// Methode, die das <see cref="ICommand"/> ausführt.
-        /// </summary>
-        /// <param name="parameter">Vom <see cref="ICommand"/> verwendete Daten oder <c>null</c>.</param>
-        public void Execute(object? parameter) => _executeHandler();
-    }
-
+    /// <summary>
+    /// Methode, die das <see cref="ICommand"/> ausführt.
+    /// </summary>
+    /// <param name="parameter">Vom <see cref="ICommand"/> verwendete Daten oder <c>null</c>.</param>
+    public void Execute(object? parameter) => _executeHandler();
 }

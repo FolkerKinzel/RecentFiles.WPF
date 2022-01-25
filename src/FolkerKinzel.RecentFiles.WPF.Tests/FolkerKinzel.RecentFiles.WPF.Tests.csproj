@@ -7,7 +7,7 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>false</IsPackable>
-		
+		<NeutralLanguage>en</NeutralLanguage>
 		
 		
 	</PropertyGroup>

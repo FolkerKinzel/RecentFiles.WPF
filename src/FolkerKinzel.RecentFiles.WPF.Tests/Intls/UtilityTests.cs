@@ -11,16 +11,10 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls.Tests;
 public class UtilityTests
 {
     [TestMethod]
-    public void IsPathDirectoryTest1()
-    {
-        Assert.IsFalse(Utility.IsPathDirectory("\""));
-    }
+    public void IsPathDirectoryTest1() => Assert.IsFalse(Utility.IsPathDirectory("\""));
 
     [TestMethod]
-    public void IsPathDirectoryTest2()
-    {
-        Assert.IsTrue(Utility.IsPathDirectory(Environment.CurrentDirectory));
-    }
+    public void IsPathDirectoryTest2() => Assert.IsTrue(Utility.IsPathDirectory(Environment.CurrentDirectory));
 
     [TestMethod]
     public void IsPathDriveTest2()

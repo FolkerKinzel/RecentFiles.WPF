@@ -55,7 +55,7 @@ namespace FolkerKinzel.RecentFiles.WPF
         private readonly RecentFilesPersistence _persistence;
         private readonly ICommand _openRecentFileCommand;
         private readonly ICommand _clearRecentFilesCommand;
-        private readonly IconCache _icons = new IconCache();
+        private readonly IconCache _icons = new();
 
         private MenuItem? _miRecentFiles;
 
@@ -92,7 +92,7 @@ namespace FolkerKinzel.RecentFiles.WPF
         /// </para></exception>
         public RecentFilesMenu(string persistenceDirectoryPath, int maxFiles = 10, string? clearListText = null)
         {
-            if (maxFiles < 1 || maxFiles > 10)
+            if (maxFiles is < 1 or > 10)
             {
                 throw new ArgumentOutOfRangeException(nameof(maxFiles));
             }
@@ -216,7 +216,7 @@ namespace FolkerKinzel.RecentFiles.WPF
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Benennungsstile", Justification = "<Ausstehend>")]
 #if !NET461
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0057:Bereichsoperator verwenden", Justification = "<Ausstehend>")]
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0057:Bereichsoperator verwenden", Justification = "<Ausstehend>")]
 #endif
         private async void miRecentFiles_Loaded(object? sender, RoutedEventArgs e)
         {

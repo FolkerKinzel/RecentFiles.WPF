@@ -1,33 +1,33 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-  <PropertyGroup>
-    <TargetFrameworks>net6.0-windows;net5.0-windows;netcoreapp3.1;net461</TargetFrameworks>
-    <UseWPF>true</UseWPF>
-    <NeutralLanguage>en</NeutralLanguage>
-    <Copyright>Copyright © 2020 Folker Kinzel</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <LangVersion>8.0</LangVersion>
-    <Nullable>enable</Nullable>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <!-- nuget-Package: -->
-    <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
-    <Product>FolkerKinzel.RecentFiles.WPF</Product>
-    <Version>1.4.0</Version>
-    <FileVersion>1.4.0.17</FileVersion>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/docs/PackageReleaseNotes/1.4.0/ReleaseNotes.md</PackageReleaseNotes>
-    <PackageTags>recent menu WPF</PackageTags>
-    <Description>Recent files menu for WPF applications.</Description>
-    <Authors>Folker Kinzel</Authors>
-    <Copyright>Copyright © 2020 Folker Kinzel</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageIcon>Logo.png</PackageIcon>
-    <RepositoryUrl>https://github.com/FolkerKinzel/RecentFiles.WPF.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/FolkerKinzel/RecentFiles.WPF</PackageProjectUrl>
-    <PackageIconUrl />
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-windows;net5.0-windows;netcoreapp3.1;net461</TargetFrameworks>
+		<UseWPF>true</UseWPF>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Copyright>Copyright © 2020 Folker Kinzel</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<LangVersion>10.0</LangVersion>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<!-- nuget-Package: -->
+		<PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
+		<Product>FolkerKinzel.RecentFiles.WPF</Product>
+		<Version>1.4.1</Version>
+		<FileVersion>1.4.1.0</FileVersion>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/docs/PackageReleaseNotes/1.4.1/ReleaseNotes.md</PackageReleaseNotes>
+		<PackageTags>recent menu WPF</PackageTags>
+		<Description>Recent files menu for WPF applications.</Description>
+		<Authors>Folker Kinzel</Authors>
+		<Copyright>Copyright © 2020 Folker Kinzel</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageIcon>Logo.png</PackageIcon>
+		<RepositoryUrl>https://github.com/FolkerKinzel/RecentFiles.WPF.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageProjectUrl>https://github.com/FolkerKinzel/RecentFiles.WPF</PackageProjectUrl>
+		<PackageIconUrl />
+	</PropertyGroup>
 	<PropertyGroup>
 		<!-- Optional: Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -36,68 +36,71 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net461'">
-    <NoWarn>$(NoWarn);8600;8601;8602;8603;8604</NoWarn>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Resources\Icons\alt\**" />
-    <Compile Remove="Translations\**" />
-    <EmbeddedResource Remove="Resources\Icons\alt\**" />
-    <EmbeddedResource Remove="Translations\**" />
-    <None Remove="Resources\Icons\alt\**" />
-    <None Remove="Translations\**" />
-    <Page Remove="Resources\Icons\alt\**" />
-    <Page Remove="Translations\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Resources\Icons\DefaultFileIcon.ico" />
-    <None Remove="Resources\Icons\DefaultFileIcon.png" />
-    <None Remove="Resources\Icons\DirectoryIcon.png" />
-    <None Remove="Resources\Icons\DriveIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Nullable" Version="1.3.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\Res.de.resx">
-      <SubType>Designer</SubType>
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Res.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Res.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\..\Nuget-Logo\Logo.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Icons\DefaultFileIcon.png" />
-    <EmbeddedResource Include="Resources\Icons\DirectoryIcon.png" />
-    <EmbeddedResource Include="Resources\Icons\DriveIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Resources\Res.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Res.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Release copy /v /b /y &quot;$(OutDir)$(ProjectName).xml&quot; &quot;$(OutDir)de/$(ProjectName).xml&quot;&#xD;&#xA;if $(ConfigurationName) == Release if '$(TargetFramework)' == 'netcoreapp3.1' dotnet $(SolutionDir)IncVersion\IncVersion.dll $(ProjectDir)$(ProjectFileName) --revision" />
-  </Target>
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net461'">
+		<NoWarn>$(NoWarn);8600;8601;8602;8603;8604</NoWarn>
+	</PropertyGroup>
+	<ItemGroup>
+		<Using Include="System.Runtime.CompilerServices"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Resources\Icons\alt\**" />
+		<Compile Remove="Translations\**" />
+		<EmbeddedResource Remove="Resources\Icons\alt\**" />
+		<EmbeddedResource Remove="Translations\**" />
+		<None Remove="Resources\Icons\alt\**" />
+		<None Remove="Translations\**" />
+		<Page Remove="Resources\Icons\alt\**" />
+		<Page Remove="Translations\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="Resources\Icons\DefaultFileIcon.ico" />
+		<None Remove="Resources\Icons\DefaultFileIcon.png" />
+		<None Remove="Resources\Icons\DirectoryIcon.png" />
+		<None Remove="Resources\Icons\DriveIcon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Nullable" Version="1.3.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Resources\Res.de.resx">
+			<SubType>Designer</SubType>
+			<Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Res.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Res.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\..\..\Nuget-Logo\Logo.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Resources\Icons\DefaultFileIcon.png" />
+		<EmbeddedResource Include="Resources\Icons\DirectoryIcon.png" />
+		<EmbeddedResource Include="Resources\Icons\DriveIcon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Update="Resources\Res.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Res.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="if $(ConfigurationName) == Release copy /v /b /y &quot;$(OutDir)$(ProjectName).xml&quot; &quot;$(OutDir)de/$(ProjectName).xml&quot;&#xD;&#xA;if $(ConfigurationName) == Release if '$(TargetFramework)' == 'netcoreapp3.1' dotnet $(SolutionDir)IncVersion\IncVersion.dll $(ProjectDir)$(ProjectFileName) --revision" />
+	</Target>
 </Project>

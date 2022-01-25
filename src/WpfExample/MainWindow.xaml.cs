@@ -15,7 +15,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    private readonly ConcurrentBag<Task> _tasks = new ConcurrentBag<Task>();
+    private readonly ConcurrentBag<Task> _tasks = new();
     private readonly IRecentFilesMenu _recentFilesMenu;
     private string? _currentFile;
 
