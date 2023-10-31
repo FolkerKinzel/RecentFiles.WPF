@@ -15,7 +15,7 @@
     <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
     <Product>FolkerKinzel.RecentFiles.WPF</Product>
     <Version>1.4.1</Version>
-    <FileVersion>1.4.1.14</FileVersion>
+    <FileVersion>1.4.1.15</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/docs/PackageReleaseNotes/1.4.1/ReleaseNotes.md</PackageReleaseNotes>
     <PackageTags>recent menu WPF</PackageTags>
@@ -98,42 +98,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Res.resx</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Translations\en\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\net6.0-windows7.0</PackagePath>
-    </None>
-    <None Include="Translations\en\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\net5.0-windows7.0</PackagePath>
-    </None>
-    <None Include="Translations\en\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\netcoreapp3.1</PackagePath>
-    </None>
-    <None Include="Translations\en\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\net461</PackagePath>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Translations\de\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\net6.0-windows7.0\de</PackagePath>
-    </None>
-    <None Include="Translations\de\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\net5.0-windows7.0\de</PackagePath>
-    </None>
-    <None Include="Translations\de\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\netcoreapp3.1\de</PackagePath>
-    </None>
-    <None Include="Translations\de\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\net461\de</PackagePath>
-    </None>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="if $(ConfigurationName) == Release if '$(TargetFramework)' == 'netcoreapp3.1' dotnet $(SolutionDir)IncVersion\IncVersion.dll $(ProjectDir)$(ProjectFileName) --revision" />
