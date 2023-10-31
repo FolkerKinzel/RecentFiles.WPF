@@ -5,10 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace FolkerKinzel.RecentFiles.WPF.Tests;
 
@@ -64,8 +67,20 @@ public class RecentFilesMenuTests
     public void InitializeTest2()
     {
         using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
+        var menuItem = new System.Windows.Controls.MenuItem();
+        menu.Initialize(menuItem);
 
-        menu.Initialize(new System.Windows.Controls.MenuItem());
+        menuItem.RaiseEvent(new System.Windows.RoutedEventArgs(FrameworkElement.LoadedEvent));
+    }
+
+    [WpfTestMethod()]
+    [DoNotParallelize]
+    public void HandleLoadedTest1()
+    {
+        using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
+        var menuItem = new System.Windows.Controls.MenuItem();
+        menu.Initialize(menuItem);
+        //menu.HandleLoaded();
     }
 
     [TestMethod()]

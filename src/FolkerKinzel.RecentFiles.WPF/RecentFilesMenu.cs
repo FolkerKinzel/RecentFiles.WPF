@@ -204,12 +204,16 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
 
     #region miRecentFiles_Loaded
 
-    [ExcludeFromCodeCoverage]
     [SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     private async void miRecentFiles_Loaded(object? sender, RoutedEventArgs e)
     {
         Debug.Assert(_miRecentFiles != null);
+        await _miRecentFiles.Dispatcher.InvokeAsync(HandleLoaded);
+    }
 
+    [ExcludeFromCodeCoverage]
+    internal async Task HandleLoaded()
+    { 
         await _persistence.LoadAsync().ConfigureAwait(true);
 
         _miRecentFiles.Items.Clear();
@@ -331,8 +335,11 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
         {
             _persistence.RecentFiles.Clear();
         }
-        _ = _persistence.SaveAsync();
+        
+        SaveAsync();
     }
+
+    private async void SaveAsync() => await _persistence.SaveAsync().ConfigureAwait(false);
 
     #endregion
 

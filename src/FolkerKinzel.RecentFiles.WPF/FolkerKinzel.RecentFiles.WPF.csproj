@@ -13,7 +13,7 @@
     <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
     <Product>FolkerKinzel.RecentFiles.WPF</Product>
     <Version>1.5.0</Version>
-    <FileVersion>1.5.0.9</FileVersion>
+    <FileVersion>1.5.0.11</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/releases/tag/v1.5.0</PackageReleaseNotes>
     <PackageTags>recent menu WPF</PackageTags>
