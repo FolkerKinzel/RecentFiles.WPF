@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-  <PropertyGroup Condition="False And '$(TargetFramework)' == 'net6.0-windows' And '$(Configuration)'=='Release'">
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
@@ -15,7 +15,7 @@
     <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
     <Product>FolkerKinzel.RecentFiles.WPF</Product>
     <Version>1.4.1</Version>
-    <FileVersion>1.4.1.15</FileVersion>
+    <FileVersion>1.4.1.16</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/docs/PackageReleaseNotes/1.4.1/ReleaseNotes.md</PackageReleaseNotes>
     <PackageTags>recent menu WPF</PackageTags>
