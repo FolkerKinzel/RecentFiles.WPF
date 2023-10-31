@@ -211,9 +211,11 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
         await _miRecentFiles.Dispatcher.InvokeAsync(HandleLoaded);
     }
 
-    [ExcludeFromCodeCoverage]
-    internal async Task HandleLoaded()
-    { 
+    [ExcludeFromCodeCoverage] // Code coverage doesn't recognize ev'rything after await LoadAsync()
+    private async Task HandleLoaded()
+    {
+        Debug.Assert(_miRecentFiles != null);
+
         await _persistence.LoadAsync().ConfigureAwait(true);
 
         _miRecentFiles.Items.Clear();
@@ -339,6 +341,7 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
         SaveAsync();
     }
 
+    [ExcludeFromCodeCoverage]
     private async void SaveAsync() => await _persistence.SaveAsync().ConfigureAwait(false);
 
     #endregion

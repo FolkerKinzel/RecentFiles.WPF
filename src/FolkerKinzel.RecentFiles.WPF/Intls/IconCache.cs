@@ -33,7 +33,7 @@ internal sealed class IconCache
         try
         {
 #endif
-            extension = Path.GetExtension(path);
+        extension = Path.GetExtension(path);
 #if NET462
     }
         catch (ArgumentException)
@@ -47,8 +47,8 @@ internal sealed class IconCache
 
         if (extension.Length == 0)
         {
-            return Utility.IsPathDirectory(path) ? Utility.IsPathDrive(path) 
-                                                    ? GetDriveIcon() 
+            return Utility.IsPathDirectory(path) ? Utility.IsPathDrive(path)
+                                                    ? GetDriveIcon()
                                                     : GetDirectoryIcon()
                                                  : GetDefaultFileIcon();
         }
@@ -125,7 +125,7 @@ internal sealed class IconCache
 
     private static ImageSource ToImageSource(Icon icon)
     {
-        using Bitmap bmp2 = icon.Width == 16 && icon.Height == 16 ? icon.ToBitmap() 
+        using Bitmap bmp2 = icon.Width == 16 && icon.Height == 16 ? icon.ToBitmap()
                                                                   : ResizeIcon(icon, 16, 16);
         using var ms = new MemoryStream();
         bmp2.Save(ms, ImageFormat.Png);
@@ -176,7 +176,7 @@ internal sealed class IconCache
         => GetResourceIcon(PathTypes.Default, DEFAULT_ICON_NAME);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private ImageSource GetDriveIcon() 
+    private ImageSource GetDriveIcon()
         => GetResourceIcon(PathTypes.Drive, DRIVE_ICON_NAME);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

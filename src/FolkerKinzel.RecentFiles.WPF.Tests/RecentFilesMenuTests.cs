@@ -53,22 +53,14 @@ public class RecentFilesMenuTests
     }
 
     [WpfTestMethod()]
-    public void InitializeTest2()
+    public void MenuLoadedTest1()
     {
         using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
         var menuItem = new System.Windows.Controls.MenuItem();
         menu.Initialize(menuItem);
 
         menuItem.RaiseEvent(new System.Windows.RoutedEventArgs(FrameworkElement.LoadedEvent));
-    }
-
-    [WpfTestMethod()]
-    public void HandleLoadedTest1()
-    {
-        using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
-        var menuItem = new System.Windows.Controls.MenuItem();
-        menu.Initialize(menuItem);
-        //menu.HandleLoaded();
+        DispatcherUtil.DoEventsSync();
     }
 
     [TestMethod()]
@@ -173,8 +165,4 @@ public class RecentFilesMenuTests
         string? fileName = Path.GetFileName(mostRecent);
         Assert.AreEqual(path, fileName);
     }
-
-
-    
-
 }
