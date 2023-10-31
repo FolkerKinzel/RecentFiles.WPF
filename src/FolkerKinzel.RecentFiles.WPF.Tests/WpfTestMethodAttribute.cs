@@ -5,7 +5,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Tests;
 
 public class WpfTestMethodAttribute : TestMethodAttribute
 {
-    public override TestResult[]? Execute(ITestMethod testMethod)
+    public override TestResult[] Execute(ITestMethod testMethod)
     {
         if (Thread.CurrentThread.GetApartmentState() == ApartmentState.STA)
         {
@@ -17,7 +17,7 @@ public class WpfTestMethodAttribute : TestMethodAttribute
         thread.SetApartmentState(ApartmentState.STA);
         thread.Start();
         thread.Join();
-        return result;
+        return result!;
     }
 
     private static TestResult[] Invoke(ITestMethod testMethod) => new[] { testMethod.Invoke(null) };

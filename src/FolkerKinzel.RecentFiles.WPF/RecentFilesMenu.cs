@@ -291,7 +291,7 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
                 const int THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH = QUARTER_DISPLAYED_FILE_PATH_LENGTH * 3;
 
                 fileName =
-#if NET461
+#if NET462
                         fileName.Substring(0, QUARTER_DISPLAYED_FILE_PATH_LENGTH - 3) + 
                         "..." + 
                         fileName.Substring(fileName.Length - THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH);

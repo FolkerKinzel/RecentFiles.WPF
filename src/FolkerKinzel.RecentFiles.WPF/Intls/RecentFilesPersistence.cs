@@ -42,7 +42,7 @@ internal sealed class RecentFilesPersistence : IDisposable
 
         _fileName = Path.Combine(persistenceDirectoryPath, $"{Environment.MachineName}.{Environment.UserName}.RF.txt");
 
-#if NET461
+#if NET462
             if (!Utility.IsPathFullyQualified(_fileName))
 #else
         if (!Path.IsPathFullyQualified(_fileName))

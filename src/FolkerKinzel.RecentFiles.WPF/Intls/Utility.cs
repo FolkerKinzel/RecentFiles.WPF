@@ -4,7 +4,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls;
 
 internal static class Utility
 {
-#if NET461
+#if NET462
         internal static bool IsPathFullyQualified(string path) 
             => StringComparer.OrdinalIgnoreCase.Equals(Path.GetFullPath(path), path);
 #endif

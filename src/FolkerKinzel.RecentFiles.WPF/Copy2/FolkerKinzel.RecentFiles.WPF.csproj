@@ -1,23 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-  <PropertyGroup Condition="False And '$(TargetFramework)' == 'net6.0-windows' And '$(Configuration)'=='Release'">
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
+<Project Sdk="Microsoft.NET.Sdk">
+ 
   <PropertyGroup>
+<TargetFramework>net7.0-windows</TargetFramework>
+<UseWPF>true</UseWPF>
+
+<!--
     <TargetFrameworks>net7.0-windows;net6.0-windows;net5.0-windows;netcoreapp3.1;net462</TargetFrameworks>
-    <UseWPF>true</UseWPF>
+    
     <NeutralLanguage>en</NeutralLanguage>
     <Copyright>Copyright © 2020 Folker Kinzel</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+-->
     <!-- nuget-Package: -->
+<!--
     <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
     <Product>FolkerKinzel.RecentFiles.WPF</Product>
     <Version>1.4.1</Version>
-    <FileVersion>1.4.1.9</FileVersion>
+    <FileVersion>1.4.1.26</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/docs/PackageReleaseNotes/1.4.1/ReleaseNotes.md</PackageReleaseNotes>
     <PackageTags>recent menu WPF</PackageTags>
     <Description>Recent files menu for WPF applications.</Description>
@@ -30,8 +33,11 @@
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/FolkerKinzel/RecentFiles.WPF</PackageProjectUrl>
     <PackageIconUrl />
+-->
     <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
   </PropertyGroup>
+
+
   <PropertyGroup>
     <!-- Optional: Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -40,6 +46,12 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>"
+   
+
   <PropertyGroup Condition="'$(TargetFramework)' == 'net462'">
     <NoWarn>$(NoWarn);8600;8601;8602;8603;8604</NoWarn>
   </PropertyGroup>
@@ -100,42 +112,8 @@
       <DependentUpon>Res.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Translations\en\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\net6.0-windows7.0</PackagePath>
-    </None>
-    <None Include="Translations\en\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\net5.0-windows7.0</PackagePath>
-    </None>
-    <None Include="Translations\en\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\netcoreapp3.1</PackagePath>
-    </None>
-    <None Include="Translations\en\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\net461</PackagePath>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Translations\de\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\net6.0-windows7.0\de</PackagePath>
-    </None>
-    <None Include="Translations\de\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\net5.0-windows7.0\de</PackagePath>
-    </None>
-    <None Include="Translations\de\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\netcoreapp3.1\de</PackagePath>
-    </None>
-    <None Include="Translations\de\FolkerKinzel.RecentFiles.WPF.xml">
-      <Pack>True</Pack>
-      <PackagePath>lib\net461\de</PackagePath>
-    </None>
-  </ItemGroup>
+ 
+  
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="if $(ConfigurationName) == Release if '$(TargetFramework)' == 'netcoreapp3.1' dotnet $(SolutionDir)IncVersion\IncVersion.dll $(ProjectDir)$(ProjectFileName) --revision" />
   </Target>
