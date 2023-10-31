@@ -15,9 +15,8 @@
     <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
     <Product>FolkerKinzel.RecentFiles.WPF</Product>
     <Version>1.4.1</Version>
-    <FileVersion>1.4.1.13</FileVersion>
+    <FileVersion>1.4.1.14</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/docs/PackageReleaseNotes/1.4.1/ReleaseNotes.md</PackageReleaseNotes>
     <PackageTags>recent menu WPF</PackageTags>
     <Description>Recent files menu for WPF applications.</Description>
