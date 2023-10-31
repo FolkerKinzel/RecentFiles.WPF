@@ -29,14 +29,19 @@ internal sealed class IconCache
         Debug.Assert(!string.IsNullOrWhiteSpace(path));
         string? extension;
 
+#if NET462
         try
         {
+#endif
             extension = Path.GetExtension(path);
-        }
+#if NET462
+    }
         catch (ArgumentException)
         {
             return GetDefaultFileIcon();
         }
+#endif
+
 
         Debug.Assert(extension != null);
 
@@ -70,7 +75,7 @@ internal sealed class IconCache
         if (!File.Exists(path))
         {
             // The method Icon.ExtractAssociatedIcon(path) throws an exception if the file
-            // does not exist. So the hack is to create an empty temporary file an delete it
+            // does not exist. So the hack is to create an empty temporary file and delete it
             // afterwards. (Elsewhere a default icon would be displayed.)
             path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName() + extension);
 

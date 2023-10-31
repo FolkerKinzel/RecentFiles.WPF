@@ -126,7 +126,4 @@
   <data name="NotAnExistingDirectory" xml:space="preserve">
     <value>{0} doesn't refer to an existing directory.</value>
   </data>
-  <data name="NotInitialized" xml:space="preserve">
-    <value>The MenuItem has not yet been assigned. Call {0} first!</value>
-  </data>
 </root>

@@ -204,13 +204,11 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
 
     #region miRecentFiles_Loaded
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Benennungsstile", Justification = "<Ausstehend>")]
+    [ExcludeFromCodeCoverage]
+    [SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     private async void miRecentFiles_Loaded(object? sender, RoutedEventArgs e)
     {
-        if (_miRecentFiles is null)
-        {
-            throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Res.NotInitialized, nameof(Initialize)));
-        }
+        Debug.Assert(_miRecentFiles != null);
 
         await _persistence.LoadAsync().ConfigureAwait(true);
 
@@ -280,6 +278,7 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
 
         ////////////////////////////////////////////////////////////////////
 
+        [ExcludeFromCodeCoverage]
         static string GetMenuItemHeaderFromFilename(string fileName, int i)
         {
             if (fileName.Length > MAX_DISPLAYED_FILE_PATH_LENGTH)

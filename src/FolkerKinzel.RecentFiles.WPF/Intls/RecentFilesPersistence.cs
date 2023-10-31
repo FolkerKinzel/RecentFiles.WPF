@@ -11,7 +11,7 @@ internal sealed class RecentFilesPersistence : IDisposable
     private readonly string _fileName;
     private readonly Mutex _mutex;
 
-    public List<string> RecentFiles { get; } = new List<string>();
+    internal List<string> RecentFiles { get; } = new List<string>();
 
     /// <summary>Initializes a <see cref="RecentFilesPersistence" /> instance.</summary>
     /// <param name="persistenceDirectoryPath">Absolute path of the directory, into
@@ -37,7 +37,7 @@ internal sealed class RecentFilesPersistence : IDisposable
     /// <paramref name="persistenceDirectoryPath" /> does not refer to an existing directory.
     /// </para>
     /// </exception>
-    public RecentFilesPersistence(string persistenceDirectoryPath)
+    internal RecentFilesPersistence(string persistenceDirectoryPath)
     {
         if (persistenceDirectoryPath is null)
         {
@@ -70,13 +70,14 @@ internal sealed class RecentFilesPersistence : IDisposable
         this._mutex = new Mutex(false, $"Global\\{_fileName.Replace('\\', '_')}");
     }
 
-    public Task LoadAsync()
+    internal Task LoadAsync()
     {
         return Task.Run(() =>
         {
             if (File.Exists(_fileName))
             {
                 string[] arr = Array.Empty<string>();
+
                 try
                 {
                     if (_mutex.WaitOne(MUTEX_TIMEOUT))
@@ -92,11 +93,7 @@ internal sealed class RecentFilesPersistence : IDisposable
                         }
                     }
                 }
-                catch (AbandonedMutexException)
-                {
-                    return;
-                }
-                catch (ObjectDisposedException)
+                catch
                 {
                     return;
                 }
@@ -110,7 +107,7 @@ internal sealed class RecentFilesPersistence : IDisposable
         });
     }
 
-    public Task SaveAsync()
+    internal Task SaveAsync()
     {
         return Task.Run(() =>
         {
@@ -132,10 +129,7 @@ internal sealed class RecentFilesPersistence : IDisposable
                     }
                 }
             }
-            catch (AbandonedMutexException)
-            {
-            }
-            catch (ObjectDisposedException)
+            catch
             {
             }
         });
