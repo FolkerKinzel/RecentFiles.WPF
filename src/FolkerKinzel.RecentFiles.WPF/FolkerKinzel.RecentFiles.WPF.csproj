@@ -60,7 +60,6 @@
     <None Remove="Resources\Icons\DefaultFileIcon.png" />
     <None Remove="Resources\Icons\DirectoryIcon.png" />
     <None Remove="Resources\Icons\DriveIcon.png" />
-    <None Remove="Translations\FolkerKinzel.RecentFiles.WPF.en.tsltn" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
