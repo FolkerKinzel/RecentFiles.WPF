@@ -16,17 +16,6 @@ using System.Windows.Threading;
 namespace FolkerKinzel.RecentFiles.WPF.Tests;
 
 [TestClass]
-public class IconCacheTests
-{
-    [TestMethod]
-    public void GetIconTest()
-    {
-        var cache = new IconCache();
-        Assert.IsNotNull(cache.GetIcon(new string(Path.GetInvalidPathChars())));
-    }
-}
-
-[TestClass]
 public class RecentFilesMenuTests
 {
     private readonly string _fileName = Path.Combine(Environment.CurrentDirectory, $"{Environment.MachineName}.{Environment.UserName}.RF.txt");
@@ -74,7 +63,6 @@ public class RecentFilesMenuTests
     }
 
     [WpfTestMethod()]
-    [DoNotParallelize]
     public void HandleLoadedTest1()
     {
         using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
