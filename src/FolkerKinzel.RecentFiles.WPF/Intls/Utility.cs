@@ -1,12 +1,12 @@
-﻿using System.IO;
+using System.IO;
 
 namespace FolkerKinzel.RecentFiles.WPF.Intls;
 
 internal static class Utility
 {
 #if NET462
-        internal static bool IsPathFullyQualified(string path) 
-            => StringComparer.OrdinalIgnoreCase.Equals(Path.GetFullPath(path), path);
+    internal static bool IsPathFullyQualified(string path) 
+        => StringComparer.OrdinalIgnoreCase.Equals(Path.GetFullPath(path), path);
 #endif
 
     internal static bool IsPathDirectory(string path)

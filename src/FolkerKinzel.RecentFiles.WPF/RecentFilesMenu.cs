@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,42 +8,54 @@ using FolkerKinzel.RecentFiles.WPF.Resources;
 
 namespace FolkerKinzel.RecentFiles.WPF;
 
-/// <summary>
-/// Klasse, die der WPF-Anwendung ein Menü mit den zuletzt verwendeten Dateien hinzufügt.
-/// </summary>
+/// <summary>Class that adds a menu of recently used files to the WPF application.</summary>
 /// <remarks>
-/// <para>Fügen Sie Ihrer Anwendung ein <see cref="MenuItem"/> hinzu, als dessen Untermenü <see cref="RecentFilesMenu"/> angezeigt werden soll und 
-/// übergeben Sie dieses der Methode <see cref="RecentFilesMenu.Initialize(MenuItem)"/> - dann ist das Menü startklar.</para>
-/// <para>Um einen Dateinamen zum Menü hinzuzufügen, muss <see cref="AddRecentFileAsync(string)"/>
-/// aufgerufen werden. Das sollte immer nach dem Öffnen oder Speichern einer Datei geschehen (z.B. in einer Property "CurrentFileName").</para>
-/// <para>Um eine Datei zu öffnen, muss das Event <see cref="RecentFileSelected"/> abonniert werden. Der Dateiname wird in den 
-/// <see cref="RecentFileSelectedEventArgs"/> geliefert.</para> 
-/// <para><see cref="RecentFilesMenu"/> persistiert sich in kleinen Textdateien mit der Namenskonvention
-/// [<see cref="Environment.MachineName"/>].[<see cref="Environment.UserName"/>].RF.txt. Beachten Sie, dass der Programmname nicht 
-/// enthalten ist. Deshalb sollte <see cref="RecentFilesMenu"/> in einem Ordner persistiert werden, auf den andere Programme nicht
-/// zugreifen.</para>
-/// <para>Beim Beenden der Anwendung sollten Sie sämtliche offenen Tasks des <see cref="RecentFilesMenu"/>s mit <see cref="Task.WhenAll(IEnumerable{Task})"/> abwarten und dann 
-/// <see cref="RecentFilesMenu.Dispose()"/> aufrufen um den systemweiten <see cref="Mutex"/> freizugeben, der verwendet wird, um
-/// die Persistenz von <see cref="RecentFilesMenu"/> zwischen mehreren Instanzen derselben Anwendung zu synchronisieren.</para>
+/// <para>
+/// Add a <see cref="MenuItem" /> to your application as its submenu 
+/// <see cref="RecentFilesMenu" /> is to be displayed and pass this to the method 
+/// <see cref="RecentFilesMenu.Initialize(MenuItem)" /> - then the menu is ready to start.
+/// </para>
+/// <para>
+/// To add a filename to the menu <see cref="AddRecentFileAsync(string)" /> has
+/// to be called. Do this always after opening or saving a file (e.g., in a property
+/// "CurrentFileName").
+/// </para>
+/// <para>
+/// To open a file selected from the menu the application has to subscribe to the
+/// event <see cref="RecentFilesMenu.RecentFileSelected" />. The filename is delivered
+/// in the <see cref="RecentFileSelectedEventArgs" />.
+/// </para>
+/// <para>
+/// <see cref="RecentFilesMenu" /> persists in small text files with the Naming
+/// convention 
+/// [<see cref="Environment.MachineName" />].[<see cref="Environment.UserName" />].RF.txt. 
+/// Note that the program name is not included. Therefore <see cref="RecentFilesMenu" /> 
+/// should be persisted in a folder that is not used by any other program.
+/// </para>
+/// <para>
+/// When exiting the application you should wait for all open tasks of the <see
+/// cref="RecentFilesMenu" /> (e.g., with <see cref="Task.WhenAll(IEnumerable{Task})" />) 
+/// and then call <see cref="RecentFilesMenu.Dispose()" /> to release the system
+/// wide <see cref="Mutex" />, which is used to synchronize the persistence of the
+/// <see cref="RecentFilesMenu" /> between multiple instances of the application.
+/// </para>
 /// </remarks>
 /// <example>
-/// <para>Initialisieren von <see cref="RecentFilesMenu"/>:</para>
+/// <para>
+/// Initializing the <see cref="RecentFilesMenu" />:
+/// </para>
 /// <code language="cs" source="..\WpfExample\App.xaml.cs" />
-/// <para>Einbinden von <see cref="RecentFilesMenu"/> in ein WPF-<see cref="Window"/>:</para>
+/// <para>
+/// Including a <see cref="RecentFilesMenu" /> into a WPF-<see cref="Window" />:
+/// </para>
 /// <code language="cs" source="..\WpfExample\MainWindow.xaml.cs" />
 /// </example>
 public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
 {
     private const int MAX_DISPLAYED_FILE_PATH_LENGTH = 100;
 
-
-    /// <summary>
-    /// Event, das gefeuert wird, wenn der Benutzer im Menü eine Datei zum Öffnen auswählt.
-    /// </summary>
+    /// <summary>Event that is fired when the user selects a file to open from the menu.</summary>
     public event EventHandler<RecentFileSelectedEventArgs>? RecentFileSelected;
-
-
-    #region private fields
 
     private readonly RecentFilesPersistence _persistence;
     private readonly ICommand _openRecentFileCommand;
@@ -52,38 +64,42 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
 
     private MenuItem? _miRecentFiles;
 
-
     private readonly int _maxFiles;
     private readonly string? _clearListText;
 
-    #endregion
-
-
-    #region ctor
-
-    /// <summary>
-    /// Initialisiert ein <see cref="RecentFilesMenu"/>.
-    /// </summary>
-    /// <param name="persistenceDirectoryPath">Absoluter Pfad des Verzeichnisses, in das <see cref="RecentFilesMenu"/>
-    /// persistiert wird. Dies sollte ein Ordner sein, auf den andere Programme nicht zugreifen.</param>
-    /// <param name="maxFiles">Maximalanzahl der im Menü anzuzeigenden Dateinamen (zwischen 1 und 10).</param>
-    /// <param name="clearListText">Text für den Menüpunkt "Liste leeren" oder <c>null</c>, um den Text aus den Ressourcen zu 
-    /// nutzen. (Es gibt Ressourcen für Deutsch und Englisch.)</param>
-    /// <exception cref="ArgumentNullException"><paramref name="persistenceDirectoryPath"/> ist <c>null</c>.</exception>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="maxFiles"/> ist kleiner als 1 oder größer als 10.</exception>
+    /// <summary>Initializes a <see cref="RecentFilesMenu" />.</summary>
+    /// <param name="persistenceDirectoryPath">Absolute path of the directory into the
+    /// <see cref="RecentFilesMenu" /> is persisted. This should be a folder, which
+    /// is not used by any other program.</param>
+    /// <param name="maxFiles">Maximum number of file names to be displayed in the menu
+    /// (between 1 and 10).</param>
+    /// <param name="clearListText">Text for the menu item "Clear list" or <c>null</c>
+    /// to add the text from the resources. (There are resources for German and English.)</param>
+    /// <exception cref="ArgumentNullException"> <paramref name="persistenceDirectoryPath"
+    /// /> is <c>null</c>.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"> <paramref name="maxFiles" />
+    /// is less than 1 or greater than 10.</exception>
     /// <exception cref="ArgumentException">
     /// <para>
-    /// <paramref name="persistenceDirectoryPath"/> enthält mindestens eines der in <see cref="Path.GetInvalidPathChars"/> definierten ungültigen Zeichen
+    /// <paramref name="persistenceDirectoryPath" /> contains at least one of the invalid
+    /// characters defined in <see cref="Path.GetInvalidPathChars" />
     /// </para>
-    /// <para>- oder -</para>
     /// <para>
-    /// <paramref name="persistenceDirectoryPath"/> ist kein absoluter Pfad
+    /// - or -
     /// </para>
-    /// <para>- oder -</para>
     /// <para>
-    /// <paramref name="persistenceDirectoryPath"/> verweist nicht auf einen existierenden Ordner.
-    /// </para></exception>
-    public RecentFilesMenu(string persistenceDirectoryPath, int maxFiles = 10, string? clearListText = null)
+    /// <paramref name="persistenceDirectoryPath" /> is not an absolute path
+    /// </para>
+    /// <para>
+    /// - or -
+    /// </para>
+    /// <para>
+    /// <paramref name="persistenceDirectoryPath" /> does not refer to an existing directory.
+    /// </para>
+    /// </exception>
+    public RecentFilesMenu(string persistenceDirectoryPath,
+                           int maxFiles = 10,
+                           string? clearListText = null)
     {
         if (maxFiles is < 1 or > 10)
         {
@@ -98,18 +114,13 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
         _clearRecentFilesCommand = new ClearRecentFiles(new Action(ClearRecentFiles_Executed));
     }
 
-    #endregion
-
-
-    #region public Methods
-
-    /// <summary>
-    /// Weist dem <see cref="RecentFilesMenu"/> das <see cref="MenuItem"/> zu, als dessen Submenü das
-    /// <see cref="RecentFilesMenu"/> angezeigt wird. Diese Methode muss vor allen anderen aufgerufen werden!
-    /// </summary>
-    /// <param name="miRecentFiles">Das <see cref="MenuItem"/>, als dessen Submenü das
-    /// <see cref="RecentFilesMenu"/> angezeigt wird.</param>
-    /// <exception cref="ArgumentNullException"><paramref name="miRecentFiles"/> ist <c>null</c>.</exception>
+    /// <summary>Assigns the <see cref="RecentFilesMenu" /> the <see cref="MenuItem"
+    /// /> as its submenu the <see cref="RecentFilesMenu" /> is displayed. This method
+    /// must be called before everyone else!</summary>
+    /// <param name="miRecentFiles">The <see cref="MenuItem" /> as its submenu the <see
+    /// cref="RecentFilesMenu" /> is displayed.</param>
+    /// <exception cref="ArgumentNullException"> <paramref name="miRecentFiles" /> is
+    /// <c>null</c>.</exception>
     public void Initialize(MenuItem miRecentFiles)
     {
         if (miRecentFiles is null)
@@ -121,13 +132,11 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
         _miRecentFiles.Loaded += miRecentFiles_Loaded;
     }
 
-    /// <summary>
-    /// Fügt <paramref name="fileName"/> zur Liste hinzu, wenn 
-    /// <paramref name="fileName"/> einen Dateinamen enthält.
-    /// </summary>
-    /// <param name="fileName">Ein hinzuzufügender Dateiname. Wenn <paramref name="fileName"/>&#160;<c>null</c>, 
-    /// leer oder Whitespace ist, wird nichts hinzugefügt.</param>
-    /// <returns>Der <see cref="Task"/>, auf dessen Beendigung gewartet werden kann.</returns>
+    /// <summary>Adds <paramref name="fileName" /> to the menu if <paramref name="fileName"
+    /// /> contains a filename.</summary>
+    /// <param name="fileName">A filename to add. If <paramref name="fileName" /> is
+    /// <c>null</c>, empty or whitespace, nothing is added.</param>
+    /// <returns>The <see cref="Task" /> that can be awaited.</returns>
     public async Task AddRecentFileAsync(string fileName)
     {
         try
@@ -156,13 +165,9 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
         await _persistence.SaveAsync().ConfigureAwait(false);
     }
 
-
-
-    /// <summary>
-    /// Enfernt einen Dateinamen aus der Liste.
-    /// </summary>
-    /// <param name="fileName">Der zu entfernende Dateiname.</param>
-    /// <returns>Der <see cref="Task"/>, auf dessen Beendigung gewartet werden kann.</returns>
+    /// <summary>Removes a filename from the menu.</summary>
+    /// <param name="fileName">The filename to remove.</param>
+    /// <returns>The <see cref="Task" /> that can be awaited.</returns>
     public async Task RemoveRecentFileAsync(string fileName)
     {
         bool result;
@@ -177,11 +182,10 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
         }
     }
 
-
-    /// <summary>
-    /// Gibt den Namen der zuletzt geöffneten Datei zurück oder <c>null</c>, wenn dieser nicht existiert.
-    /// </summary>
-    /// <returns>Name der zuletzt geöffneten Datei oder <c>null</c>, wenn dieser nicht existiert.</returns>
+    /// <summary>Returns the name of the most recently opened file or <c>null</c> if
+    /// the menu is empty.</summary>
+    /// <returns>Name of the most recently opened file or <c>null</c> if the menu is
+    /// empty.</returns>
     public async Task<string?> GetMostRecentFileAsync()
     {
         await _persistence.LoadAsync().ConfigureAwait(false);
@@ -192,16 +196,9 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
         }
     }
 
-
-    /// <summary>
-    /// Gibt die Ressourcen frei.
-    /// </summary>
-    /// <remarks>
-    /// Eine solche Ressource ist der systemweite <see cref="Mutex"/>.
-    /// </remarks>
+    /// <summary>Releases the resources.</summary>
+    /// <remarks>Such a resource is the system wide <see cref="Mutex" />.</remarks>
     public void Dispose() => _persistence.Dispose();
-
-    #endregion
 
     #region private
 
@@ -292,8 +289,8 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
 
                 fileName =
 #if NET462
-                        fileName.Substring(0, QUARTER_DISPLAYED_FILE_PATH_LENGTH - 3) + 
-                        "..." + 
+                        fileName.Substring(0, QUARTER_DISPLAYED_FILE_PATH_LENGTH - 3) +
+                        "..." +
                         fileName.Substring(fileName.Length - THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH);
 #else
                         string.Concat(fileName.AsSpan(0, QUARTER_DISPLAYED_FILE_PATH_LENGTH - 3),
@@ -316,7 +313,6 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     }
 
     #endregion
-
 
     #region Command-Execute-Handler
 
@@ -342,5 +338,4 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     #endregion
 
     #endregion
-
 }//class

@@ -1,45 +1,38 @@
-﻿using System.Windows.Controls;
+using System.Windows.Controls;
 
 namespace FolkerKinzel.RecentFiles.WPF;
 
-/// <summary>
-/// Interface, das die öffentliche Schnittstelle von <see cref="RecentFilesMenu"/> darstellt.
-/// </summary>
+/// <summary>Interface that represents the public interface of the 
+/// <see cref="RecentFilesMenu" /> class.</summary>
 public interface IRecentFilesMenu : IDisposable
 {
-    /// <summary>
-    /// Event, das gefeuert wird, wenn der Benutzer im Menü eine Datei zum Öffnen auswählt.
-    /// </summary>
+    /// <summary>Event that is fired when the user selects a file to open from the menu.</summary>
     event EventHandler<RecentFileSelectedEventArgs>? RecentFileSelected;
 
-    /// <summary>
-    /// Weist dem <see cref="RecentFilesMenu"/> das <see cref="MenuItem"/> zu, als dessen Submenü das
-    /// <see cref="RecentFilesMenu"/> angezeigt wird. Diese Methode muss vor allen anderen aufgerufen werden!
-    /// </summary>
-    /// <param name="miRecentFiles">Das <see cref="MenuItem"/>, als dessen Submenü das
-    /// <see cref="RecentFilesMenu"/> angezeigt wird.</param>
-    /// <exception cref="ArgumentNullException"><paramref name="miRecentFiles"/> ist <c>null</c>.</exception>
+    /// <summary>Assigns the <see cref="RecentFilesMenu" /> the <see cref="MenuItem"
+    /// /> as its submenu the <see cref="RecentFilesMenu" /> is displayed. This method
+    /// must be called before everyone else!</summary>
+    /// <param name="miRecentFiles">The <see cref="MenuItem" /> as its submenu the <see
+    /// cref="RecentFilesMenu" /> is displayed.</param>
+    /// <exception cref="ArgumentNullException"> <paramref name="miRecentFiles" /> is
+    /// <c>null</c>.</exception>
     void Initialize(MenuItem miRecentFiles);
 
-    /// <summary>
-    /// Fügt <paramref name="fileName"/> zur Liste hinzu, wenn 
-    /// <paramref name="fileName"/> einen Dateinamen enthält.
-    /// </summary>
-    /// <param name="fileName">Ein hinzuzufügender Dateiname. Wenn <paramref name="fileName"/>&#160;<c>null</c>, 
-    /// leer oder Whitespace ist, wird nichts hinzugefügt.</param>
-    /// <returns>Der <see cref="Task"/>, auf dessen Beendigung gewartet werden kann.</returns>
+    /// <summary>Adds <paramref name="fileName" /> to the menu if <paramref name="fileName"
+    /// /> contains a filename.</summary>
+    /// <param name="fileName">A filename to add. If <paramref name="fileName" /> is
+    /// <c>null</c>, empty or whitespace, nothing is added.</param>
+    /// <returns>The <see cref="Task" /> that can be awaited.</returns>
     Task AddRecentFileAsync(string fileName);
 
-    /// <summary>
-    /// Gibt den Namen der zuletzt geöffneten Datei zurück oder <c>null</c>, wenn dieser nicht existiert.
-    /// </summary>
-    /// <returns>Name der zuletzt geöffneten Datei oder <c>null</c>, wenn dieser nicht existiert.</returns>
+    /// <summary>Returns the name of the most recently opened file or <c>null</c> if
+    /// the menu is empty.</summary>
+    /// <returns>Name of the most recently opened file or <c>null</c> if the menu is
+    /// empty.</returns>
     Task<string?> GetMostRecentFileAsync();
 
-    /// <summary>
-    /// Enfernt einen Dateinamen aus der Liste.
-    /// </summary>
-    /// <param name="fileName">Der zu entfernende Dateiname.</param>
-    /// <returns>Der <see cref="Task"/>, auf dessen Beendigung gewartet werden kann.</returns>
+    /// <summary>Removes a filename from the menu.</summary>
+    /// <param name="fileName">The filename to remove.</param>
+    /// <returns>The <see cref="Task" /> that can be awaited.</returns>
     Task RemoveRecentFileAsync(string fileName);
 }

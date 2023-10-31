@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.IO;
 using FolkerKinzel.RecentFiles.WPF.Resources;
 
@@ -13,24 +13,28 @@ internal sealed class RecentFilesPersistence : IDisposable
 
     public List<string> RecentFiles { get; } = new List<string>();
 
-
-    /// <summary>
-    /// Initialisiert ein <see cref="RecentFilesPersistence"/>-Objekt.
-    /// </summary>
-    /// <param name="persistenceDirectoryPath">Absoluter Pfad des Verzeichnisses, in das <see cref="RecentFilesMenu"/>
-    /// persistiert wird.</param>
-    /// <exception cref="ArgumentNullException"><paramref name="persistenceDirectoryPath"/> ist <c>null</c>.</exception>
+    /// <summary>Initializes a <see cref="RecentFilesPersistence" /> instance.</summary>
+    /// <param name="persistenceDirectoryPath">Absolute path of the directory, into
+    /// the <see cref="RecentFilesMenu" /> is persisted.</param>
+    /// <exception cref="ArgumentNullException"> 
+    /// <paramref name="persistenceDirectoryPath" /> is <c>null</c>.
+    /// </exception>
     /// <exception cref="ArgumentException">
     /// <para>
-    /// <paramref name="persistenceDirectoryPath"/> enthält mindestens eines der in <see cref="Path.GetInvalidPathChars"/> definierten ungültigen Zeichen
+    /// <paramref name="persistenceDirectoryPath" /> contains at least one of the invalid
+    /// characters defined in <see cref="Path.GetInvalidPathChars" />
     /// </para>
-    /// <para>- oder -</para>
     /// <para>
-    /// <paramref name="persistenceDirectoryPath"/> ist kein absoluter Pfad
+    /// - or -
     /// </para>
-    /// <para>- oder -</para>
     /// <para>
-    /// <paramref name="persistenceDirectoryPath"/> verweist nicht auf einen existierenden Ordner.
+    /// <paramref name="persistenceDirectoryPath" /> is not an absolute path
+    /// </para>
+    /// <para>
+    /// - or -
+    /// </para>
+    /// <para>
+    /// <paramref name="persistenceDirectoryPath" /> does not refer to an existing directory.
     /// </para>
     /// </exception>
     public RecentFilesPersistence(string persistenceDirectoryPath)
@@ -40,20 +44,27 @@ internal sealed class RecentFilesPersistence : IDisposable
             throw new ArgumentNullException(persistenceDirectoryPath);
         }
 
-        _fileName = Path.Combine(persistenceDirectoryPath, $"{Environment.MachineName}.{Environment.UserName}.RF.txt");
+        _fileName = Path.Combine(persistenceDirectoryPath,
+                                 $"{Environment.MachineName}.{Environment.UserName}.RF.txt");
 
 #if NET462
-            if (!Utility.IsPathFullyQualified(_fileName))
+        if (!Utility.IsPathFullyQualified(_fileName))
 #else
         if (!Path.IsPathFullyQualified(_fileName))
 #endif
         {
-            throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, Res.FilePathNotFullyQualified, nameof(persistenceDirectoryPath)), nameof(persistenceDirectoryPath));
+            throw new ArgumentException(
+                string.Format(CultureInfo.InvariantCulture,
+                              Res.FilePathNotFullyQualified,
+                              nameof(persistenceDirectoryPath)), nameof(persistenceDirectoryPath));
         }
 
         if (!Utility.IsPathDirectory(persistenceDirectoryPath))
         {
-            throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, Res.NotAnExistingDirectory, nameof(persistenceDirectoryPath)), nameof(persistenceDirectoryPath));
+            throw new ArgumentException(
+                string.Format(CultureInfo.InvariantCulture,
+                              Res.NotAnExistingDirectory,
+                              nameof(persistenceDirectoryPath)), nameof(persistenceDirectoryPath));
         }
 
         this._mutex = new Mutex(false, $"Global\\{_fileName.Replace('\\', '_')}");

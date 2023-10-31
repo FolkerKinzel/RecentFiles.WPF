@@ -1,38 +1,31 @@
-﻿using System.Windows.Input;
+using System.Windows.Input;
 
 namespace FolkerKinzel.RecentFiles.WPF.Intls;
 
-/// <summary>
-/// <see cref="ICommand"/> zum Löschen der Liste der zuletzt benutzten Dateien.
-/// </summary>
+/// <summary> <see cref="ICommand" /> to delete the list of recently used files.</summary>
 internal sealed class ClearRecentFiles : ICommand
 {
     private readonly Action _executeHandler;
 
-    /// <summary>
-    /// Initialisiert das <see cref="ICommand"/>.
-    /// </summary>
-    /// <param name="execute"><see cref="Action"/>-Delegate, das das <see cref="ICommand"/> ausführt.</param>
+    /// <summary>Initializes the <see cref="ICommand" />.</summary>
+    /// <param name="execute"> <see cref="Action" /> delegate that executes the <see
+    /// cref="ICommand" />.</param>
     public ClearRecentFiles(Action execute) => _executeHandler = execute;
 
-    /// <summary>
-    /// Methode, die prüft, ob das <see cref="ICommand"/> ausgeführt werden kann.
-    /// </summary>
-    /// <param name="parameter">Vom <see cref="ICommand"/> verwendete Daten oder <c>null</c>.</param>
-    /// <returns><c>true</c>, wenn das <see cref="ICommand"/> ausgeführt werden kann.</returns>
+    /// <summary>Method that checks whether the <see cref="ICommand" /> can be executed.</summary>
+    /// <param name="parameter">Data used by the <see cref="ICommand" /> or <c>null</c>.</param>
+    /// <returns> <c>true</c> if the <see cref="ICommand" /> can be executed.</returns>
     public bool CanExecute(object? parameter) => true;
 
-    /// <summary>
-    /// Event, dass gefeuert wird, wenn sich der Rückgabewert von <see cref="CanExecute(object)"/> ändert.
-    /// </summary>
+    /// <summary>Event that is fired if the return value of 
+    /// <see cref="M:FolkerKinzel.RecentFiles.WPF.OpenRecentFile.CanExecute(System.Object)" /> 
+    /// has changed.</summary>
 #pragma warning disable 67
     public event EventHandler? CanExecuteChanged;
 #pragma warning restore 67
 
 
-    /// <summary>
-    /// Methode, die das <see cref="ICommand"/> ausführt.
-    /// </summary>
-    /// <param name="parameter">Vom <see cref="ICommand"/> verwendete Daten oder <c>null</c>.</param>
+    /// <summary>Method that executes the <see cref="ICommand" />.</summary>
+    /// <param name="parameter">Data used by the <see cref="ICommand" /> or <c>null</c>.</param>
     public void Execute(object? parameter) => _executeHandler();
 }

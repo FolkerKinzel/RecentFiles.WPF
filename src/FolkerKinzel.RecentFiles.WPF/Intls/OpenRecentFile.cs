@@ -1,36 +1,28 @@
-﻿using System.Windows.Input;
+using System.Windows.Input;
 
 namespace FolkerKinzel.RecentFiles.WPF.Intls;
 
-/// <summary>
-/// <see cref="ICommand"/> zum Öffnen einer aus dem <see cref="RecentFilesMenu"/> ausgewählten Datei.
-/// </summary>
+/// <summary> <see cref="ICommand" /> to open a file selected from the 
+/// <see cref="RecentFilesMenu" />.</summary>
 internal sealed class OpenRecentFile : ICommand
 {
     private readonly Action<object?> _executeHandler;
 
-    /// <summary>
-    /// Initialisiert das <see cref="ICommand"/>.
-    /// </summary>
-    /// <param name="execute"><see cref="Action{T}"/>-Delegate, das das <see cref="ICommand"/> ausführt.</param>
+    /// <summary>Initializes the <see cref="ICommand" />.</summary>
+    /// <param name="execute"> <see cref="Action" /> delegate that executes the 
+    /// <see cref="ICommand" />.</param>
     public OpenRecentFile(Action<object?> execute) => _executeHandler = execute;
 
-    /// <summary>
-    /// Methode, die prüft, ob das <see cref="ICommand"/> ausgeführt werden kann.
-    /// </summary>
-    /// <param name="parameter">Vom <see cref="ICommand"/> verwendete Daten oder <c>null</c>.</param>
-    /// <returns><c>true</c>, wenn das <see cref="ICommand"/> ausgeführt werden kann.</returns>
+    /// <summary>Method that checks whether the <see cref="ICommand" /> can be executed.</summary>
+    /// <param name="parameter">Data used by the <see cref="ICommand" /> or <c>null</c>.</param>
+    /// <returns> <c>true</c> if the <see cref="ICommand" /> can be executed.</returns>
     public bool CanExecute(object? parameter) => true;
 
-    /// <summary>
-    /// Event, dass gefeuert wird, wenn sich der Rückgabewert von <see cref="CanExecute(object?)"/> ändert.
-    /// </summary>
-#pragma warning disable 67
+    /// <summary>Event that is fired if the return value of 
+    /// <see cref="OpenRecentFile.CanExecute(object)" /> has changed.</summary>
     public event EventHandler? CanExecuteChanged;
 
-    /// <summary>
-    /// Methode, die das <see cref="ICommand"/> ausführt.
-    /// </summary>
-    /// <param name="parameter">Der zum Öffnen ausgewählte Dateiname.</param>
+    /// <summary>Method that executes the <see cref="ICommand" />.</summary>
+    /// <param name="parameter">The filename selected for opening.</param>
     public void Execute(object? parameter) => _executeHandler(parameter);
 }

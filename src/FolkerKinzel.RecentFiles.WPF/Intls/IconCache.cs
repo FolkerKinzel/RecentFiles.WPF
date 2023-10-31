@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
@@ -24,7 +24,6 @@ internal sealed class IconCache
     private const string DRIVE_ICON_NAME = "DriveIcon.png";
     private const string DEFAULT_ICON_NAME = "DefaultFileIcon.png";
 
-
     internal ImageSource GetIcon(string path)
     {
         Debug.Assert(!string.IsNullOrWhiteSpace(path));
@@ -43,7 +42,9 @@ internal sealed class IconCache
 
         if (extension.Length == 0)
         {
-            return Utility.IsPathDirectory(path) ? Utility.IsPathDrive(path) ? GetDriveIcon() : GetDirectoryIcon()
+            return Utility.IsPathDirectory(path) ? Utility.IsPathDrive(path) 
+                                                    ? GetDriveIcon() 
+                                                    : GetDirectoryIcon()
                                                  : GetDefaultFileIcon();
         }
 
@@ -61,8 +62,9 @@ internal sealed class IconCache
         return GetDefaultFileIcon();
     }
 
-
-    private static bool TryGetFileIcon(string path, string extension, [NotNullWhen(true)] out ImageSource? icon)
+    private static bool TryGetFileIcon(string path,
+                                       string extension,
+                                       [NotNullWhen(true)] out ImageSource? icon)
     {
         FileInfo? tmpFile = null;
         if (!File.Exists(path))
@@ -86,6 +88,7 @@ internal sealed class IconCache
         }
 
         icon = null;
+
         try
         {
             using var ic = Icon.ExtractAssociatedIcon(path);
@@ -115,21 +118,19 @@ internal sealed class IconCache
         }
     }
 
-
     private static ImageSource ToImageSource(Icon icon)
     {
-        using Bitmap bmp2 = icon.Width == 16 && icon.Height == 16 ? icon.ToBitmap() : ResizeIcon(icon, 16, 16);
-
+        using Bitmap bmp2 = icon.Width == 16 && icon.Height == 16 ? icon.ToBitmap() 
+                                                                  : ResizeIcon(icon, 16, 16);
         using var ms = new MemoryStream();
         bmp2.Save(ms, ImageFormat.Png);
         ms.Position = 0;
-        return BitmapFrame.Create(ms, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+        return BitmapFrame.Create(ms,
+                                  BitmapCreateOptions.PreservePixelFormat,
+                                  BitmapCacheOption.OnLoad);
     }
 
-
-    /// <summary>
-    /// Resize the icon to the specified width and height.
-    /// </summary>
+    /// <summary> Resizes the icon to the specified width and height. </summary>
     /// <param name="icon">The icon to resize.</param>
     /// <param name="width">The width to resize to.</param>
     /// <param name="height">The height to resize to.</param>
@@ -152,20 +153,30 @@ internal sealed class IconCache
 
             using var wrapMode = new ImageAttributes();
             wrapMode.SetWrapMode(WrapMode.TileFlipXY);
-            graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+            graphics.DrawImage(image,
+                               destRect,
+                               0,
+                               0,
+                               image.Width,
+                               image.Height,
+                               GraphicsUnit.Pixel,
+                               wrapMode);
         }
 
         return destImage;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private ImageSource GetDefaultFileIcon() => GetResourceIcon(PathTypes.Default, DEFAULT_ICON_NAME);
+    private ImageSource GetDefaultFileIcon()
+        => GetResourceIcon(PathTypes.Default, DEFAULT_ICON_NAME);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private ImageSource GetDriveIcon() => GetResourceIcon(PathTypes.Drive, DRIVE_ICON_NAME);
+    private ImageSource GetDriveIcon() 
+        => GetResourceIcon(PathTypes.Drive, DRIVE_ICON_NAME);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private ImageSource GetDirectoryIcon() => GetResourceIcon(PathTypes.Directory, DIRECTORY_ICON_NAME);
+    private ImageSource GetDirectoryIcon()
+        => GetResourceIcon(PathTypes.Directory, DIRECTORY_ICON_NAME);
 
     private ImageSource GetResourceIcon(string pathType, string iconName)
     {
@@ -177,7 +188,9 @@ internal sealed class IconCache
         using Stream stream = Assembly
                                 .GetExecutingAssembly()
                                 .GetManifestResourceStream(string.Concat(ICONS_PATH, iconName))!;
-        icon = BitmapFrame.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+        icon = BitmapFrame.Create(stream,
+                                  BitmapCreateOptions.PreservePixelFormat,
+                                  BitmapCacheOption.OnLoad);
         _iconDic[pathType] = icon;
         return icon;
     }
