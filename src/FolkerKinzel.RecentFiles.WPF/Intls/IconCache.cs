@@ -72,22 +72,15 @@ internal sealed class IconCache
                                        [NotNullWhen(true)] out ImageSource? icon)
     {
         FileInfo? tmpFile = null;
+
         if (!File.Exists(path))
         {
             // The method Icon.ExtractAssociatedIcon(path) throws an exception if the file
             // does not exist. So the hack is to create an empty temporary file and delete it
             // afterwards. (Elsewhere a default icon would be displayed.)
-            path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName() + extension);
-
-            while (File.Exists(path)) // Don't overwrite anything!
-            {
-                path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName() + extension);
-            }
-
             try
             {
-                tmpFile = new FileInfo(path);
-                tmpFile.Create().Close();
+                CreateTempFile(out path, extension, out tmpFile);
             }
             catch { }
         }
@@ -120,6 +113,20 @@ internal sealed class IconCache
                 }
                 catch { }
             }
+        }
+
+        static void CreateTempFile(out string path, string extension, out FileInfo? tmpFile)
+        {
+            path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName() + extension);
+
+            while (File.Exists(path)) // Don't overwrite anything!
+            {
+                path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName() + extension);
+            }
+
+
+            tmpFile = new FileInfo(path);
+            tmpFile.Create().Close();
         }
     }
 

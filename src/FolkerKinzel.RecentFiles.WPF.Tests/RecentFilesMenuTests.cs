@@ -20,6 +20,15 @@ public class RecentFilesMenuTests
 {
     private readonly string _fileName = Path.Combine(Environment.CurrentDirectory, $"{Environment.MachineName}.{Environment.UserName}.RF.txt");
 
+    [TestInitialize]
+    public void TestInitializer()
+    {
+        if (File.Exists(_fileName))
+        {
+            File.Delete(_fileName);
+        }
+    }
+
     [TestMethod()]
     public void RecentFilesMenuTest1()
     {
@@ -61,15 +70,59 @@ public class RecentFilesMenuTests
 
         menuItem.RaiseEvent(new System.Windows.RoutedEventArgs(FrameworkElement.LoadedEvent));
         DispatcherUtil.DoEventsSync();
+
+        Assert.IsFalse(menuItem.IsEnabled);
+    }
+
+    [WpfTestMethod()]
+    public void MenuLoadedTest2()
+    {
+        File.WriteAllText(_fileName, "C:\\test.txt");
+        using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
+
+        var menuItem = new System.Windows.Controls.MenuItem();
+        menu.Initialize(menuItem);
+
+        menuItem.RaiseEvent(new System.Windows.RoutedEventArgs(FrameworkElement.LoadedEvent));
+        DispatcherUtil.DoEventsSync();
+
+        Assert.IsTrue(menuItem.IsEnabled);
+    }
+
+    [WpfTestMethod()]
+    public void MenuLoadedTest3()
+    {
+        File.WriteAllText(_fileName,
+            """
+            C:\\test.txt
+                  
+            C:\\one\\two\\three\\four\\five\\six\\seven\\eight\\nine\\ten\\eleven\\twelve\\thirteen\\fourteen\\fifteen
+            C:\\test2.txt
+            C:\\test3.txt
+            C:\\test4.txt
+            C:\\test5.txt
+            C:\\test6.txt
+            C:\\test7.txt
+            C:\\test8.txt
+            """);
+        using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
+
+        var menuItem = new System.Windows.Controls.MenuItem();
+        menu.Initialize(menuItem);
+
+        menuItem.RaiseEvent(new System.Windows.RoutedEventArgs(FrameworkElement.LoadedEvent));
+        DispatcherUtil.DoEventsSync();
+
+        Assert.IsTrue(menuItem.IsEnabled);
     }
 
     [TestMethod()]
     public async Task AddRecentFileAsyncTest1()
     {
-        if (File.Exists(_fileName))
-        {
-            File.Delete(_fileName);
-        }
+        //if (File.Exists(_fileName))
+        //{
+        //    File.Delete(_fileName);
+        //}
         using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
 
         string path = "test";

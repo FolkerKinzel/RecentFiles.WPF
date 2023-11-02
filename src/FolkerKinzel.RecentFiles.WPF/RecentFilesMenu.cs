@@ -52,7 +52,6 @@ namespace FolkerKinzel.RecentFiles.WPF;
 /// </example>
 public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
 {
-    private const int MAX_DISPLAYED_FILE_PATH_LENGTH = 100;
 
     /// <summary>Event that is fired when the user selects a file to open from the menu.</summary>
     public event EventHandler<RecentFileSelectedEventArgs>? RecentFileSelected;
@@ -208,15 +207,13 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     private async void miRecentFiles_Loaded(object? sender, RoutedEventArgs e)
     {
         Debug.Assert(_miRecentFiles != null);
+        await _persistence.LoadAsync().ConfigureAwait(false);
         await _miRecentFiles.Dispatcher.InvokeAsync(HandleLoaded);
     }
 
-    [ExcludeFromCodeCoverage] // Code coverage doesn't recognize ev'rything after await LoadAsync()
-    private async Task HandleLoaded()
+    private void HandleLoaded()
     {
         Debug.Assert(_miRecentFiles != null);
-
-        await _persistence.LoadAsync().ConfigureAwait(true);
 
         _miRecentFiles.Items.Clear();
 
@@ -226,8 +223,8 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
         }
         else
         {
-            try
-            {
+            //try
+            //{
                 _miRecentFiles.IsEnabled = true;
 
                 List<string> recentFiles = _persistence.RecentFiles;
@@ -245,7 +242,7 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
 
                         var mi = new MenuItem
                         {
-                            Header = GetMenuItemHeaderFromFilename(currentFile, i),
+                            Header = FileNameFormatter.GetMenuItemHeaderFromFilename(currentFile, i),
                             Command = _openRecentFileCommand,
                             CommandParameter = recentFiles[i],
 
@@ -272,52 +269,18 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
 
                 _ = _miRecentFiles.Items.Add(new Separator());
                 _ = _miRecentFiles.Items.Add(menuItemClearList);
-            }
-            catch
-            {
-                _miRecentFiles.Items.Clear();
-                _miRecentFiles.IsEnabled = false;
+            //}
+            //catch
+            //{
+            //    _miRecentFiles.Items.Clear();
+            //    _miRecentFiles.IsEnabled = false;
 
-                ClearRecentFiles_Executed();
-            }
-        }
-
-        ////////////////////////////////////////////////////////////////////
-
-        [ExcludeFromCodeCoverage]
-        static string GetMenuItemHeaderFromFilename(string fileName, int i)
-        {
-            if (fileName.Length > MAX_DISPLAYED_FILE_PATH_LENGTH)
-            {
-                const int QUARTER_DISPLAYED_FILE_PATH_LENGTH = MAX_DISPLAYED_FILE_PATH_LENGTH / 4;
-                const int THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH = QUARTER_DISPLAYED_FILE_PATH_LENGTH * 3;
-
-                fileName =
-#if NET462
-                        fileName.Substring(0, QUARTER_DISPLAYED_FILE_PATH_LENGTH - 3) +
-                        "..." +
-                        fileName.Substring(fileName.Length - THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH);
-#else
-                        string.Concat(fileName.AsSpan(0, QUARTER_DISPLAYED_FILE_PATH_LENGTH - 3),
-                                  "...",
-                                  fileName.AsSpan(fileName.Length - THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH));
-#endif
-            }
-
-            if (i < 9)
-            {
-                fileName = "_" + (i + 1).ToString(CultureInfo.InvariantCulture) + ": " + fileName;
-            }
-            else if (i == 9)
-            {
-                fileName = "1_0: " + fileName;
-            }
-
-            return fileName;
+            //    ClearRecentFiles_Executed();
+            //}
         }
     }
 
-    #endregion
+#endregion
 
     #region Command-Execute-Handler
 
@@ -331,18 +294,15 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     }
 
     [ExcludeFromCodeCoverage]
-    private void ClearRecentFiles_Executed()
+    private async void ClearRecentFiles_Executed()
     {
         lock (_persistence.RecentFiles)
         {
             _persistence.RecentFiles.Clear();
         }
         
-        SaveAsync();
+        await _persistence.SaveAsync().ConfigureAwait(false);
     }
-
-    [ExcludeFromCodeCoverage]
-    private async void SaveAsync() => await _persistence.SaveAsync().ConfigureAwait(false);
 
     #endregion
 

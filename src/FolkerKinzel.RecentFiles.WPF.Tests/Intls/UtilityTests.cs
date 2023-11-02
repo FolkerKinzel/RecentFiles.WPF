@@ -32,4 +32,16 @@ public class UtilityTests
         Assert.IsTrue(Utility.IsPathDrive(path));
     }
 
+    [TestMethod]
+    public void IsPathDriveTest4() => Assert.IsFalse(Utility.IsPathDrive(new string(System.IO.Path.GetInvalidPathChars())));
+
+#if NET462
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void IsPathFullyQualifiedTest1() => Assert.IsFalse(Utility.IsPathFullyQualified(new string(System.IO.Path.GetInvalidPathChars())));
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void IsPathFullyQualifiedTest2() => Assert.IsFalse(Utility.IsPathFullyQualified("C:\\" + new string('a', 64000)));
+#endif
 }

@@ -5,8 +5,32 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls;
 internal static class Utility
 {
 #if NET462
-    internal static bool IsPathFullyQualified(string path) 
-        => StringComparer.OrdinalIgnoreCase.Equals(Path.GetFullPath(path), path);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="System.Security.SecurityException"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="NotSupportedException"></exception>
+    /// <exception cref="PathTooLongException"></exception>
+    internal static bool IsPathFullyQualified(string path)
+    {
+        try
+        {
+            return StringComparer.OrdinalIgnoreCase.Equals(Path.GetFullPath(path), path);
+        }
+        catch(ArgumentException)
+        {
+            throw;
+        }
+        catch(SystemException e)
+        { 
+            throw new ArgumentException(e.Message, "path", e);
+        }
+    }
 #endif
 
     internal static bool IsPathDirectory(string path)
@@ -22,5 +46,15 @@ internal static class Utility
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static bool IsPathDrive(string path) => Directory.GetParent(path) is null;
+    internal static bool IsPathDrive(string path)
+    {
+        try
+        {
+            return Directory.GetParent(path) is null;
+        }
+        catch
+        {
+            return false;
+        }
+    }
 }
