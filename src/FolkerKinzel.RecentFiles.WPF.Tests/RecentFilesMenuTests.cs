@@ -20,14 +20,7 @@ public class RecentFilesMenuTests
 {
     private readonly string _fileName = Path.Combine(Environment.CurrentDirectory, $"{Environment.MachineName}.{Environment.UserName}.RF.txt");
 
-    [TestInitialize]
-    public void TestInitializer()
-    {
-        if (File.Exists(_fileName))
-        {
-            File.Delete(_fileName);
-        }
-    }
+    
 
     [TestMethod()]
     public void RecentFilesMenuTest1()
@@ -64,6 +57,11 @@ public class RecentFilesMenuTests
     [WpfTestMethod()]
     public void MenuLoadedTest1()
     {
+        if (File.Exists(_fileName))
+        {
+            File.Delete(_fileName);
+        }
+
         using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
         var menuItem = new System.Windows.Controls.MenuItem();
         menu.Initialize(menuItem);
@@ -89,8 +87,22 @@ public class RecentFilesMenuTests
         Assert.IsTrue(menuItem.IsEnabled);
     }
 
+    [TestMethod()]
+    public async Task HandleClearRecentFilesTest1()
+    {
+        File.WriteAllText(_fileName, "C:\\test.txt");
+        using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
+
+        Assert.AreEqual(1, await menu.GetFilesCount());
+
+        await menu.HandleClearRecentFiles().ConfigureAwait(true);
+
+        Assert.AreEqual(0, await menu.GetFilesCount());
+    }
+
+
     [WpfTestMethod()]
-    public void MenuLoadedTest3()
+    public void MenuLoadedTest4()
     {
         File.WriteAllText(_fileName,
             """

@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 using FolkerKinzel.RecentFiles.WPF.Intls;
 using FolkerKinzel.RecentFiles.WPF.Resources;
 
@@ -11,7 +12,7 @@ namespace FolkerKinzel.RecentFiles.WPF;
 /// <summary>Class that adds a menu of recently used files to the WPF application.</summary>
 /// <remarks>
 /// <para>
-/// Add a <see cref="MenuItem" /> to your application as its submenu 
+/// Add a <see cref="MenuItem" /> to your application as its sub-menu 
 /// <see cref="RecentFilesMenu" /> is to be displayed and pass this to the method 
 /// <see cref="RecentFilesMenu.Initialize(MenuItem)" /> - then the menu is ready to start.
 /// </para>
@@ -199,6 +200,8 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     /// <remarks>Such a resource is the system wide <see cref="Mutex" />.</remarks>
     public void Dispose() => _persistence.Dispose();
 
+
+
     #region private
 
     #region miRecentFiles_Loaded
@@ -206,9 +209,13 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     [SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     private async void miRecentFiles_Loaded(object? sender, RoutedEventArgs e)
     {
-        Debug.Assert(_miRecentFiles != null);
+        // this must be the FIRST code line in the method 
+        // (otherwise it might not be executed async and blocks the UI thread)
+        // see https://weblog.west-wind.com/posts/2022/Apr/22/Async-and-Async-Void-Event-Handling-in-WPF
         await _persistence.LoadAsync().ConfigureAwait(false);
-        await _miRecentFiles.Dispatcher.InvokeAsync(HandleLoaded);
+
+        Debug.Assert(_miRecentFiles != null);
+        await _miRecentFiles.Dispatcher.InvokeAsync(HandleLoaded, DispatcherPriority.Send);
     }
 
     private void HandleLoaded()
@@ -223,64 +230,54 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
         }
         else
         {
-            //try
-            //{
-                _miRecentFiles.IsEnabled = true;
+            _miRecentFiles.IsEnabled = true;
 
-                List<string> recentFiles = _persistence.RecentFiles;
+            List<string> recentFiles = _persistence.RecentFiles;
 
-                lock (recentFiles)
+            lock (recentFiles)
+            {
+                for (int i = 0; i < recentFiles.Count; i++)
                 {
-                    for (int i = 0; i < recentFiles.Count; i++)
+                    string currentFile = recentFiles[i];
+
+                    if (string.IsNullOrWhiteSpace(currentFile))
                     {
-                        string currentFile = recentFiles[i];
-
-                        if (string.IsNullOrWhiteSpace(currentFile))
-                        {
-                            continue;
-                        }
-
-                        var mi = new MenuItem
-                        {
-                            Header = FileNameFormatter.GetMenuItemHeaderFromFilename(currentFile, i),
-                            Command = _openRecentFileCommand,
-                            CommandParameter = recentFiles[i],
-
-                            HorizontalContentAlignment = HorizontalAlignment.Stretch,
-                            VerticalContentAlignment = VerticalAlignment.Stretch,
-
-                            Icon = new Image()
-                            {
-                                //Width = 16.0,
-                                //Height = 16.0,
-                                Source = _icons.GetIcon(currentFile)
-                            }
-                        };
-
-                        _ = _miRecentFiles.Items.Add(mi);
+                        continue;
                     }
+
+                    var mi = new MenuItem
+                    {
+                        Header = FileNameFormatter.GetMenuItemHeaderFromFilename(currentFile, i),
+                        Command = _openRecentFileCommand,
+                        CommandParameter = recentFiles[i],
+
+                        HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                        VerticalContentAlignment = VerticalAlignment.Stretch,
+
+                        Icon = new Image()
+                        {
+                            //Width = 16.0,
+                            //Height = 16.0,
+                            Source = _icons.GetIcon(currentFile)
+                        }
+                    };
+
+                    _ = _miRecentFiles.Items.Add(mi);
                 }
+            }
 
-                var menuItemClearList = new MenuItem
-                {
-                    Header = _clearListText ?? Res.ClearList,
-                    Command = _clearRecentFilesCommand
-                };
+            var menuItemClearList = new MenuItem
+            {
+                Header = _clearListText ?? Res.ClearList,
+                Command = _clearRecentFilesCommand
+            };
 
-                _ = _miRecentFiles.Items.Add(new Separator());
-                _ = _miRecentFiles.Items.Add(menuItemClearList);
-            //}
-            //catch
-            //{
-            //    _miRecentFiles.Items.Clear();
-            //    _miRecentFiles.IsEnabled = false;
-
-            //    ClearRecentFiles_Executed();
-            //}
+            _ = _miRecentFiles.Items.Add(new Separator());
+            _ = _miRecentFiles.Items.Add(menuItemClearList);
         }
     }
 
-#endregion
+    #endregion
 
     #region Command-Execute-Handler
 
@@ -294,14 +291,31 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     }
 
     [ExcludeFromCodeCoverage]
-    private async void ClearRecentFiles_Executed()
+    private async void ClearRecentFiles_Executed() => await Dispatcher.CurrentDispatcher.InvokeAsync(HandleClearRecentFiles);
+
+    /// <summary>
+    /// Handles the clearing of the items.
+    /// </summary>
+    /// <returns>A <see cref="Task"/> to be awaitable.</returns>
+    /// <remarks>This method MUST be internal to be testable.</remarks>
+    internal async Task HandleClearRecentFiles()
     {
         lock (_persistence.RecentFiles)
         {
             _persistence.RecentFiles.Clear();
         }
-        
+
         await _persistence.SaveAsync().ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Helper method to support unit tests.
+    /// </summary>
+    /// <returns>The number of items that are currently in the instance.</returns>
+    internal async Task<int> GetFilesCount()
+    {
+        await _persistence.LoadAsync();
+        return _persistence.RecentFiles.Count;
     }
 
     #endregion
