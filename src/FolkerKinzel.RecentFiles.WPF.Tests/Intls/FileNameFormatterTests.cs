@@ -3,7 +3,7 @@
 namespace FolkerKinzel.RecentFiles.WPF.Intls.Tests;
 
 [TestClass]
-public class FileNameFormatterTest
+public class FileNameFormatterTests
 {
     [TestMethod]
     public void GetMenuItemHeaderFromFilenameTest1()
@@ -14,5 +14,13 @@ public class FileNameFormatterTest
 
         Assert.IsTrue(output.StartsWith("_1: C:\\one"));
         Assert.IsTrue(output.EndsWith("fifteen\\sixteen"));
+        StringAssert.Contains(output, FileNameFormatter.GetReplacement());
+    }
+
+    [TestMethod]
+    public void GetMenuItemHeaderFromFilenameTest2()
+    {
+        string output = FileNameFormatter.GetMenuItemHeaderFromFilename("C:\\test.txt", 9);
+        Assert.AreEqual(output, "1_0: C:\\test.txt", false);
     }
 }

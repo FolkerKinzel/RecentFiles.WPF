@@ -16,13 +16,11 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     private readonly IRecentFilesMenu _recentFilesMenu;
     private string? _currentFile;
 
-
     public MainWindow(IRecentFilesMenu recentFilesMenu)
     {
         this._recentFilesMenu = recentFilesMenu;
         InitializeComponent();
     }
-
 
     public string? CurrentFile
     {
@@ -42,7 +40,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
-
     private void Window_Loaded(object? sender, RoutedEventArgs e)
     {
         // Assign the RecentFilesMenu the MenuItem next to which the 
@@ -54,7 +51,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         _recentFilesMenu.RecentFileSelected += RecentFilesMenu_RecentFileSelected;
     }
 
-
     private async void Window_Closed(object? sender, EventArgs e)
     {
         // Wait all tasks to be finished before disposing the
@@ -63,14 +59,11 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         _recentFilesMenu.Dispose();
     }
 
-
     private void Quit_Click(object? sender, RoutedEventArgs e) => Close();
-
 
     private void RecentFilesMenu_RecentFileSelected(
         object? sender,
         RecentFileSelectedEventArgs e) => OpenFile(e.FileName);
-
 
     private void OpenDirectory_Executed(object? sender, ExecutedRoutedEventArgs e)
     {
@@ -91,7 +84,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
-
     private void OpenFile(string fileName)
     {
         try
@@ -107,7 +99,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
         CurrentFile = fileName;
     }
-
 
     private void OnPropertyChanged([CallerMemberName] string propName = "")
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));

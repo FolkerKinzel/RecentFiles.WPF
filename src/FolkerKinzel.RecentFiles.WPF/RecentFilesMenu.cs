@@ -244,6 +244,8 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
 
                     if (string.IsNullOrWhiteSpace(currentFile))
                     {
+                        recentFiles.RemoveAt(i);
+                        --i;
                         continue;
                     }
 

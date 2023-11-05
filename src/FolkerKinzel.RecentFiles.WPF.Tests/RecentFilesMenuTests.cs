@@ -75,7 +75,12 @@ public class RecentFilesMenuTests
     [WpfTestMethod()]
     public void MenuLoadedTest2()
     {
-        File.WriteAllText(_fileName, "C:\\test.txt");
+        File.WriteAllText(_fileName,
+            """
+            C:\\test1.txt
+                   
+            C:\\test2.txt
+            """);
         using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
 
         var menuItem = new System.Windows.Controls.MenuItem();
@@ -142,6 +147,7 @@ public class RecentFilesMenuTests
             C:\\test6.txt
             C:\\test7.txt
             C:\\test8.txt
+            C:\\test9.txt
             """);
         using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
 

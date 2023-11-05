@@ -5,6 +5,7 @@ namespace FolkerKinzel.RecentFiles.WPF.Intls;
 internal static class FileNameFormatter
 {
     private const int MAX_DISPLAYED_FILE_PATH_LENGTH = 88;
+    private const string REPLACEMENT = " \u2026 ";
 
     internal static string GetMenuItemHeaderFromFilename(string fileName, int i)
     {
@@ -16,11 +17,11 @@ internal static class FileNameFormatter
             fileName =
 #if NET462
                         fileName.Substring(0, QUARTER_DISPLAYED_FILE_PATH_LENGTH - 3) +
-                        "..." +
+                        REPLACEMENT +
                         fileName.Substring(fileName.Length - THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH);
 #else
                     string.Concat(fileName.AsSpan(0, QUARTER_DISPLAYED_FILE_PATH_LENGTH - 3),
-                              " \u2026 ",
+                              REPLACEMENT,
                               fileName.AsSpan(fileName.Length - THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH));
 #endif
         }
@@ -36,4 +37,11 @@ internal static class FileNameFormatter
 
         return fileName;
     }
+
+
+    /// <summary>
+    /// Helper method to support unit tests.
+    /// </summary>
+    /// <returns>The value of <see cref="REPLACEMENT"/>.</returns>
+    internal static string GetReplacement() => REPLACEMENT;
 }
