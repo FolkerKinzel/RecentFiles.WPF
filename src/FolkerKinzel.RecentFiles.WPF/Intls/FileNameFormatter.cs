@@ -20,7 +20,7 @@ internal static class FileNameFormatter
                         fileName.Substring(fileName.Length - THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH);
 #else
                     string.Concat(fileName.AsSpan(0, QUARTER_DISPLAYED_FILE_PATH_LENGTH - 3),
-                              "...",
+                              " \u2026 ",
                               fileName.AsSpan(fileName.Length - THREE_QUARTER_DISPLAYED_FILE_PATH_LENGTH));
 #endif
         }

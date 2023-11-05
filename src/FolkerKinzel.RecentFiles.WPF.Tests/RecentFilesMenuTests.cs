@@ -88,18 +88,44 @@ public class RecentFilesMenuTests
     }
 
     [TestMethod()]
-    public async Task HandleClearRecentFilesTest1()
+    public async Task ClearRecentFilesTest1()
     {
         File.WriteAllText(_fileName, "C:\\test.txt");
         using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
 
         Assert.AreEqual(1, await menu.GetFilesCount());
 
-        await menu.HandleClearRecentFiles().ConfigureAwait(true);
+        menu.TestClearRecentFiles();
+
+        await Task.Delay(500);
 
         Assert.AreEqual(0, await menu.GetFilesCount());
     }
 
+    [TestMethod]
+    public void OpenRecentFileExecuted()
+    {
+        bool opened = false;
+        using var menu = new RecentFilesMenu(Environment.CurrentDirectory);
+
+        menu.TestOpenRecentFile("test.txt");
+        Assert.IsFalse(opened);
+
+        menu.RecentFileSelected += Menu_RecentFileSelected;
+
+        menu.TestOpenRecentFile(null);
+        Assert.IsFalse(opened);
+
+        menu.TestOpenRecentFile(42);
+        Assert.IsFalse(opened);
+
+        menu.TestOpenRecentFile("test.txt");
+        Assert.IsTrue(opened);
+
+        void Menu_RecentFileSelected(object? sender, RecentFileSelectedEventArgs e) => opened = true;
+    }
+
+    
 
     [WpfTestMethod()]
     public void MenuLoadedTest4()

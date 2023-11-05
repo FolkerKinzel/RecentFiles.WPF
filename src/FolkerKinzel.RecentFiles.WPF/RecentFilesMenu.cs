@@ -17,12 +17,12 @@ namespace FolkerKinzel.RecentFiles.WPF;
 /// <see cref="RecentFilesMenu.Initialize(MenuItem)" /> - then the menu is ready to start.
 /// </para>
 /// <para>
-/// To add a filename to the menu <see cref="AddRecentFileAsync(string)" /> has
+/// To add a filename to the menu, <see cref="AddRecentFileAsync(string)" /> has
 /// to be called. Do this always after opening or saving a file (e.g., in a property
 /// "CurrentFileName").
 /// </para>
 /// <para>
-/// To open a file selected from the menu the application has to subscribe to the
+/// To open a file selected from the menu, the application has to subscribe to the
 /// event <see cref="RecentFilesMenu.RecentFileSelected" />. The filename is delivered
 /// in the <see cref="RecentFileSelectedEventArgs" />.
 /// </para>
@@ -68,13 +68,13 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     private readonly string? _clearListText;
 
     /// <summary>Initializes a <see cref="RecentFilesMenu" />.</summary>
-    /// <param name="persistenceDirectoryPath">Absolute path of the directory into the
-    /// <see cref="RecentFilesMenu" /> is persisted. This should be a folder, which
+    /// <param name="persistenceDirectoryPath">Absolute path of the directory into which the
+    /// <see cref="RecentFilesMenu" /> persists. This should be a folder that
     /// is not used by any other program.</param>
     /// <param name="maxFiles">Maximum number of file names to be displayed in the menu
     /// (between 1 and 10).</param>
     /// <param name="clearListText">Text for the menu item "Clear list" or <c>null</c>
-    /// to add the text from the resources. (There are resources for German and English.)</param>
+    /// to add the English text from the resources.</param>
     /// <exception cref="ArgumentNullException"> <paramref name="persistenceDirectoryPath"
     /// /> is <c>null</c>.</exception>
     /// <exception cref="ArgumentOutOfRangeException"> <paramref name="maxFiles" />
@@ -115,8 +115,9 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     }
 
     /// <summary>Assigns the <see cref="RecentFilesMenu" /> the <see cref="MenuItem"
-    /// /> as its submenu the <see cref="RecentFilesMenu" /> is displayed. This method
-    /// must be called before everyone else!</summary>
+    /// /> as its submenu the <see cref="RecentFilesMenu" /> is displayed. The 
+    /// <see cref="RecentFilesMenu" /> is only usable after this method has been
+    /// called.</summary>
     /// <param name="miRecentFiles">The <see cref="MenuItem" /> as its submenu the <see
     /// cref="RecentFilesMenu" /> is displayed.</param>
     /// <exception cref="ArgumentNullException"> <paramref name="miRecentFiles" /> is
@@ -147,6 +148,7 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
         {
             return;
         }
+
         await _persistence.LoadAsync().ConfigureAwait(false);
 
         List<string> recentFiles = _persistence.RecentFiles;
@@ -165,12 +167,13 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
         await _persistence.SaveAsync().ConfigureAwait(false);
     }
 
-    /// <summary>Removes a filename from the menu.</summary>
+    /// <summary>Removes a filename from the <see cref="RecentFilesMenu"/>.</summary>
     /// <param name="fileName">The filename to remove.</param>
-    /// <returns>The <see cref="Task" /> that can be awaited.</returns>
+    /// <returns>A <see cref="Task" /> that can be awaited.</returns>
     public async Task RemoveRecentFileAsync(string fileName)
     {
         bool result;
+
         lock (_persistence.RecentFiles)
         {
             result = _persistence.RecentFiles.Remove(fileName);
@@ -199,7 +202,6 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
     /// <summary>Releases the resources.</summary>
     /// <remarks>Such a resource is the system wide <see cref="Mutex" />.</remarks>
     public void Dispose() => _persistence.Dispose();
-
 
 
     #region private
@@ -281,7 +283,6 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
 
     #region Command-Execute-Handler
 
-    [ExcludeFromCodeCoverage]
     private void OpenRecentFile_Executed(object? fileName)
     {
         if (fileName is string s)
@@ -290,23 +291,30 @@ public sealed class RecentFilesMenu : IRecentFilesMenu, IDisposable
         }
     }
 
-    [ExcludeFromCodeCoverage]
-    private async void ClearRecentFiles_Executed() => await Dispatcher.CurrentDispatcher.InvokeAsync(HandleClearRecentFiles);
-
-    /// <summary>
-    /// Handles the clearing of the items.
-    /// </summary>
-    /// <returns>A <see cref="Task"/> to be awaitable.</returns>
-    /// <remarks>This method MUST be internal to be testable.</remarks>
-    internal async Task HandleClearRecentFiles()
+    private void ClearRecentFiles_Executed()
     {
         lock (_persistence.RecentFiles)
         {
             _persistence.RecentFiles.Clear();
         }
 
-        await _persistence.SaveAsync().ConfigureAwait(false);
+        Task.Run(_persistence.SaveAsync);
     }
+
+    #endregion
+
+    #region Unit test helpers
+
+    /// <summary>
+    /// Helper method to unit test <see cref="ClearRecentFiles_Executed"/>.
+    /// </summary>
+    internal void TestClearRecentFiles() => ClearRecentFiles_Executed();
+
+    /// <summary>
+    /// Helper method to unit test <see cref="OpenRecentFile_Executed(object?)"/>
+    /// </summary>
+    /// <param name="fileName">The file name to open.</param>
+    internal void TestOpenRecentFile(object? fileName) => OpenRecentFile_Executed(fileName);
 
     /// <summary>
     /// Helper method to support unit tests.
