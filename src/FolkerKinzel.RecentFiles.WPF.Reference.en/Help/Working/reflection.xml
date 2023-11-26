@@ -1,0 +1,792 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<reflection>
+  <assemblies>
+    <assembly name="FolkerKinzel.RecentFiles.WPF">
+      <assemblydata version="1.0.0.0" culture="" key="" hash="SHA1" />
+      <attributes>
+        <attribute>
+          <type api="T:System.Reflection.AssemblyFileVersionAttribute" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>1.6.0.4</value>
+          </argument>
+        </attribute>
+        <attribute>
+          <type api="T:System.Reflection.AssemblyInformationalVersionAttribute" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2</value>
+          </argument>
+        </attribute>
+      </attributes>
+    </assembly>
+  </assemblies>
+  <apis>
+    <api id="N:FolkerKinzel.RecentFiles.WPF">
+      <topicdata group="api" />
+      <apidata name="FolkerKinzel.RecentFiles.WPF" group="namespace" />
+      <elements>
+        <element api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" />
+        <element api="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs" />
+        <element api="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu" />
+      </elements>
+      <file name="b66bb0eb-caa5-c965-c327-cceb63e7194d" />
+    </api>
+    <api id="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu">
+      <topicdata group="api" />
+      <apidata name="IRecentFilesMenu" group="type" subgroup="interface" />
+      <typedata visibility="public" abstract="true" serializable="false" />
+      <implements>
+        <type api="T:System.IDisposable" ref="true" />
+      </implements>
+      <implementors>
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu" ref="true" />
+      </implementors>
+      <elements>
+        <element api="E:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.RecentFileSelected" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.AddRecentFileAsync(System.String)" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.GetMostRecentFileAsync" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.Initialize(System.Windows.Controls.MenuItem)" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.RemoveRecentFileAsync(System.String)" />
+        <element api="M:System.IDisposable.Dispose">
+          <apidata name="Dispose" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata abstract="true" virtual="true" />
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.IDisposable" ref="true" />
+          </containers>
+        </element>
+      </elements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+      </containers>
+      <file name="a9c1e659-6941-fa77-2ef8-e3124910ab1a" />
+    </api>
+    <api id="Methods.T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu">
+      <topicdata name="IRecentFilesMenu" group="list" subgroup="Methods" typeTopicId="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" />
+      <apidata name="IRecentFilesMenu" group="type" subgroup="interface" />
+      <typedata visibility="public" abstract="true" serializable="false" />
+      <elements>
+        <element api="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.AddRecentFileAsync(System.String)" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.GetMostRecentFileAsync" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.Initialize(System.Windows.Controls.MenuItem)" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.RemoveRecentFileAsync(System.String)" />
+        <element api="M:System.IDisposable.Dispose">
+          <apidata name="Dispose" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata abstract="true" virtual="true" />
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.IDisposable" ref="true" />
+          </containers>
+        </element>
+      </elements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" />
+      </containers>
+      <file name="67e94495-b946-4390-d4dd-4c0eb2dc6d96" />
+    </api>
+    <api id="Events.T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu">
+      <topicdata name="IRecentFilesMenu" group="list" subgroup="Events" typeTopicId="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" />
+      <apidata name="IRecentFilesMenu" group="type" subgroup="interface" />
+      <typedata visibility="public" abstract="true" serializable="false" />
+      <elements>
+        <element api="E:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.RecentFileSelected" />
+      </elements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" />
+      </containers>
+      <file name="7c6f846c-9234-24fd-743b-371b5b803649" />
+    </api>
+    <api id="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.AddRecentFileAsync(System.String)">
+      <topicdata group="api" />
+      <apidata name="AddRecentFileAsync" group="member" subgroup="method" />
+      <memberdata visibility="public" />
+      <proceduredata abstract="true" virtual="true" />
+      <parameters>
+        <parameter name="fileName">
+          <type api="T:System.String" ref="true" />
+        </parameter>
+      </parameters>
+      <returns>
+        <type api="T:System.Threading.Tasks.Task" ref="true" />
+      </returns>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+          <noAptca />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" ref="true" />
+      </containers>
+      <file name="cddd6e67-fe60-224f-9a89-932e7927c9ff" />
+    </api>
+    <api id="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.GetMostRecentFileAsync">
+      <topicdata group="api" />
+      <apidata name="GetMostRecentFileAsync" group="member" subgroup="method" />
+      <memberdata visibility="public" />
+      <proceduredata abstract="true" virtual="true" />
+      <returns>
+        <type api="T:System.Threading.Tasks.Task`1" ref="true">
+          <specialization>
+            <type nullable="true" api="T:System.String" ref="true" />
+          </specialization>
+        </type>
+      </returns>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+          <noAptca />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" ref="true" />
+      </containers>
+      <file name="72367220-5be8-2547-0c09-8bb2d8899c59" />
+    </api>
+    <api id="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.Initialize(System.Windows.Controls.MenuItem)">
+      <topicdata group="api" />
+      <apidata name="Initialize" group="member" subgroup="method" />
+      <memberdata visibility="public" />
+      <proceduredata abstract="true" virtual="true" />
+      <parameters>
+        <parameter name="miRecentFiles">
+          <type api="T:System.Windows.Controls.MenuItem" ref="true" />
+        </parameter>
+      </parameters>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+          <noAptca />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" ref="true" />
+      </containers>
+      <file name="90b64d3e-3c16-8023-2d26-f3cba3c2427f" />
+    </api>
+    <api id="E:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.RecentFileSelected">
+      <topicdata group="api" />
+      <apidata name="RecentFileSelected" group="member" subgroup="event" />
+      <memberdata visibility="public" />
+      <proceduredata abstract="true" virtual="true" />
+      <eventdata add="true" remove="true" />
+      <adder name="add_RecentFileSelected" />
+      <remover name="remove_RecentFileSelected" />
+      <eventhandler>
+        <type api="T:System.EventHandler`1" ref="true">
+          <specialization>
+            <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs" ref="true" />
+          </specialization>
+        </type>
+      </eventhandler>
+      <eventargs>
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs" ref="true" />
+      </eventargs>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+          <noAptca />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" ref="true" />
+      </containers>
+      <file name="2a7c0af0-1318-bd3c-3277-38ec49bcc316" />
+    </api>
+    <api id="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.RemoveRecentFileAsync(System.String)">
+      <topicdata group="api" />
+      <apidata name="RemoveRecentFileAsync" group="member" subgroup="method" />
+      <memberdata visibility="public" />
+      <proceduredata abstract="true" virtual="true" />
+      <parameters>
+        <parameter name="fileName">
+          <type api="T:System.String" ref="true" />
+        </parameter>
+      </parameters>
+      <returns>
+        <type api="T:System.Threading.Tasks.Task" ref="true" />
+      </returns>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+          <noAptca />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" ref="true" />
+      </containers>
+      <file name="54c9e14e-5016-a1cb-f4a8-b57c41d20d1a" />
+    </api>
+    <api id="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs">
+      <topicdata group="api" />
+      <apidata name="RecentFileSelectedEventArgs" group="type" subgroup="class" />
+      <typedata visibility="public" sealed="true" serializable="false" />
+      <family>
+        <ancestors>
+          <type api="T:System.EventArgs" ref="true" />
+          <type api="T:System.Object" ref="true" />
+        </ancestors>
+      </family>
+      <elements>
+        <element api="M:System.Object.Equals(System.Object)">
+          <apidata name="Equals" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="true" />
+          <parameters>
+            <parameter name="obj">
+              <type nullable="true" api="T:System.Object" ref="true" />
+            </parameter>
+          </parameters>
+          <returns>
+            <type api="T:System.Boolean" ref="false" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+        <element api="M:System.Object.GetHashCode">
+          <apidata name="GetHashCode" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="true" />
+          <returns>
+            <type api="T:System.Int32" ref="false" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+        <element api="M:System.Object.GetType">
+          <apidata name="GetType" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="false" />
+          <returns>
+            <type api="T:System.Type" ref="true" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+        <element api="M:System.Object.ToString">
+          <apidata name="ToString" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="true" />
+          <returns>
+            <type nullable="true" api="T:System.String" ref="true" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+        <element api="P:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs.FileName" />
+      </elements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+      </containers>
+      <file name="1116c209-06cf-5415-cd71-a8a1308f279e" />
+    </api>
+    <api id="Methods.T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs">
+      <topicdata name="RecentFileSelectedEventArgs" group="list" subgroup="Methods" typeTopicId="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs" />
+      <apidata name="RecentFileSelectedEventArgs" group="type" subgroup="class" />
+      <typedata visibility="public" sealed="true" serializable="false" />
+      <elements>
+        <element api="M:System.Object.Equals(System.Object)">
+          <apidata name="Equals" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="true" />
+          <parameters>
+            <parameter name="obj">
+              <type nullable="true" api="T:System.Object" ref="true" />
+            </parameter>
+          </parameters>
+          <returns>
+            <type api="T:System.Boolean" ref="false" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+        <element api="M:System.Object.GetHashCode">
+          <apidata name="GetHashCode" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="true" />
+          <returns>
+            <type api="T:System.Int32" ref="false" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+        <element api="M:System.Object.GetType">
+          <apidata name="GetType" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="false" />
+          <returns>
+            <type api="T:System.Type" ref="true" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+        <element api="M:System.Object.ToString">
+          <apidata name="ToString" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="true" />
+          <returns>
+            <type nullable="true" api="T:System.String" ref="true" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+      </elements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs" />
+      </containers>
+      <file name="b91bc759-c737-2733-1be2-106dc97640f5" />
+    </api>
+    <api id="Properties.T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs">
+      <topicdata name="RecentFileSelectedEventArgs" group="list" subgroup="Properties" typeTopicId="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs" />
+      <apidata name="RecentFileSelectedEventArgs" group="type" subgroup="class" />
+      <typedata visibility="public" sealed="true" serializable="false" />
+      <elements>
+        <element api="P:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs.FileName" />
+      </elements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs" />
+      </containers>
+      <file name="ebbd7d49-60c6-a89a-f415-d6270da8d7b4" />
+    </api>
+    <api id="P:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs.FileName">
+      <topicdata group="api" />
+      <apidata name="FileName" group="member" subgroup="property" />
+      <memberdata visibility="public" />
+      <proceduredata virtual="false" />
+      <propertydata get="true" />
+      <getter name="get_FileName" />
+      <returns>
+        <type api="T:System.String" ref="true" />
+      </returns>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+          <noAptca />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs" ref="true" />
+      </containers>
+      <file name="0c12754f-c939-f0cc-1aef-7451ddd2388b" />
+    </api>
+    <api id="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu">
+      <topicdata group="api" />
+      <apidata name="RecentFilesMenu" group="type" subgroup="class" />
+      <typedata visibility="public" sealed="true" serializable="false" />
+      <family>
+        <ancestors>
+          <type api="T:System.Object" ref="true" />
+        </ancestors>
+      </family>
+      <implements>
+        <type api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" ref="true" />
+        <type api="T:System.IDisposable" ref="true" />
+      </implements>
+      <elements>
+        <element api="E:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.RecentFileSelected" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.#ctor(System.String,System.Int32,System.String)" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.AddRecentFileAsync(System.String)" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.Dispose" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.GetMostRecentFileAsync" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.Initialize(System.Windows.Controls.MenuItem)" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.RemoveRecentFileAsync(System.String)" />
+        <element api="M:System.Object.Equals(System.Object)">
+          <apidata name="Equals" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="true" />
+          <parameters>
+            <parameter name="obj">
+              <type nullable="true" api="T:System.Object" ref="true" />
+            </parameter>
+          </parameters>
+          <returns>
+            <type api="T:System.Boolean" ref="false" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+        <element api="M:System.Object.GetHashCode">
+          <apidata name="GetHashCode" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="true" />
+          <returns>
+            <type api="T:System.Int32" ref="false" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+        <element api="M:System.Object.GetType">
+          <apidata name="GetType" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="false" />
+          <returns>
+            <type api="T:System.Type" ref="true" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+        <element api="M:System.Object.ToString">
+          <apidata name="ToString" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="true" />
+          <returns>
+            <type nullable="true" api="T:System.String" ref="true" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+      </elements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+      </containers>
+      <file name="b31e940d-ba45-7f25-5672-b7ed72b2c1f7" />
+    </api>
+    <api id="Methods.T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu">
+      <topicdata name="RecentFilesMenu" group="list" subgroup="Methods" typeTopicId="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu" />
+      <apidata name="RecentFilesMenu" group="type" subgroup="class" />
+      <typedata visibility="public" sealed="true" serializable="false" />
+      <elements>
+        <element api="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.AddRecentFileAsync(System.String)" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.Dispose" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.GetMostRecentFileAsync" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.Initialize(System.Windows.Controls.MenuItem)" />
+        <element api="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.RemoveRecentFileAsync(System.String)" />
+        <element api="M:System.Object.Equals(System.Object)">
+          <apidata name="Equals" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="true" />
+          <parameters>
+            <parameter name="obj">
+              <type nullable="true" api="T:System.Object" ref="true" />
+            </parameter>
+          </parameters>
+          <returns>
+            <type api="T:System.Boolean" ref="false" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+        <element api="M:System.Object.GetHashCode">
+          <apidata name="GetHashCode" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="true" />
+          <returns>
+            <type api="T:System.Int32" ref="false" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+        <element api="M:System.Object.GetType">
+          <apidata name="GetType" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="false" />
+          <returns>
+            <type api="T:System.Type" ref="true" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+        <element api="M:System.Object.ToString">
+          <apidata name="ToString" group="member" subgroup="method" />
+          <memberdata visibility="public" />
+          <proceduredata virtual="true" />
+          <returns>
+            <type nullable="true" api="T:System.String" ref="true" />
+          </returns>
+          <containers>
+            <library assembly="System.Runtime" module="System.Runtime" kind="DynamicallyLinkedLibrary" />
+            <namespace api="N:System" />
+            <type api="T:System.Object" ref="true" />
+          </containers>
+        </element>
+      </elements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu" />
+      </containers>
+      <file name="5f99a472-df87-5c81-fa41-65434b1d7107" />
+    </api>
+    <api id="Events.T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu">
+      <topicdata name="RecentFilesMenu" group="list" subgroup="Events" typeTopicId="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu" />
+      <apidata name="RecentFilesMenu" group="type" subgroup="class" />
+      <typedata visibility="public" sealed="true" serializable="false" />
+      <elements>
+        <element api="E:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.RecentFileSelected" />
+      </elements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu" />
+      </containers>
+      <file name="a67cc7ef-2f35-1bb5-9bf7-3468cfe8c5dc" />
+    </api>
+    <api id="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.#ctor(System.String,System.Int32,System.String)">
+      <topicdata group="api" />
+      <apidata name=".ctor" group="member" subgroup="constructor" />
+      <memberdata visibility="public" special="true" />
+      <parameters>
+        <parameter name="persistenceDirectoryPath">
+          <type api="T:System.String" ref="true" />
+        </parameter>
+        <parameter name="maxFiles" optional="true">
+          <type api="T:System.Int32" ref="false" />
+          <argument>
+            <type api="T:System.Int32" ref="false" />
+            <value>10</value>
+          </argument>
+        </parameter>
+        <parameter name="clearListText" optional="true">
+          <type nullable="true" api="T:System.String" ref="true" />
+          <argument>
+            <type api="T:System.Object" ref="true" />
+            <nullValue />
+          </argument>
+        </parameter>
+      </parameters>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+          <noAptca />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu" ref="true" />
+      </containers>
+      <file name="f47f5845-ce00-3825-ee5c-435bf3cad45c" />
+    </api>
+    <api id="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.AddRecentFileAsync(System.String)">
+      <topicdata group="api" />
+      <apidata name="AddRecentFileAsync" group="member" subgroup="method" />
+      <memberdata visibility="public" />
+      <proceduredata virtual="true" final="true" />
+      <parameters>
+        <parameter name="fileName">
+          <type api="T:System.String" ref="true" />
+        </parameter>
+      </parameters>
+      <returns>
+        <type api="T:System.Threading.Tasks.Task" ref="true" />
+      </returns>
+      <implements>
+        <member api="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.AddRecentFileAsync(System.String)">
+          <type api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" ref="true" />
+        </member>
+      </implements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+          <noAptca />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu" ref="true" />
+      </containers>
+      <file name="e2353e86-4fa9-ae29-3931-4005a139a22f" />
+    </api>
+    <api id="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.Dispose">
+      <topicdata group="api" />
+      <apidata name="Dispose" group="member" subgroup="method" />
+      <memberdata visibility="public" />
+      <proceduredata virtual="true" final="true" />
+      <implements>
+        <member api="M:System.IDisposable.Dispose">
+          <type api="T:System.IDisposable" ref="true" />
+        </member>
+      </implements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+          <noAptca />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu" ref="true" />
+      </containers>
+      <file name="f04c7175-e0ae-12f1-8bc0-24e263b43bc8" />
+    </api>
+    <api id="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.GetMostRecentFileAsync">
+      <topicdata group="api" />
+      <apidata name="GetMostRecentFileAsync" group="member" subgroup="method" />
+      <memberdata visibility="public" />
+      <proceduredata virtual="true" final="true" />
+      <returns>
+        <type api="T:System.Threading.Tasks.Task`1" ref="true">
+          <specialization>
+            <type nullable="true" api="T:System.String" ref="true" />
+          </specialization>
+        </type>
+      </returns>
+      <implements>
+        <member api="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.GetMostRecentFileAsync">
+          <type api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" ref="true" />
+        </member>
+      </implements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+          <noAptca />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu" ref="true" />
+      </containers>
+      <file name="71643a90-eab5-2a41-9866-c708754e8873" />
+    </api>
+    <api id="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.Initialize(System.Windows.Controls.MenuItem)">
+      <topicdata group="api" />
+      <apidata name="Initialize" group="member" subgroup="method" />
+      <memberdata visibility="public" />
+      <proceduredata virtual="true" final="true" />
+      <parameters>
+        <parameter name="miRecentFiles">
+          <type api="T:System.Windows.Controls.MenuItem" ref="true" />
+        </parameter>
+      </parameters>
+      <implements>
+        <member api="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.Initialize(System.Windows.Controls.MenuItem)">
+          <type api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" ref="true" />
+        </member>
+      </implements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+          <noAptca />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu" ref="true" />
+      </containers>
+      <file name="12da3776-a8f0-dd4a-8838-e7b53e1e776c" />
+    </api>
+    <api id="E:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.RecentFileSelected">
+      <topicdata group="api" />
+      <apidata name="RecentFileSelected" group="member" subgroup="event" />
+      <memberdata visibility="public" />
+      <proceduredata virtual="true" final="true" />
+      <eventdata add="true" remove="true" />
+      <adder name="add_RecentFileSelected" />
+      <remover name="remove_RecentFileSelected" />
+      <eventhandler>
+        <type api="T:System.EventHandler`1" ref="true">
+          <specialization>
+            <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs" ref="true" />
+          </specialization>
+        </type>
+      </eventhandler>
+      <eventargs>
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFileSelectedEventArgs" ref="true" />
+      </eventargs>
+      <implements>
+        <member api="E:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.RecentFileSelected">
+          <type api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" ref="true" />
+        </member>
+      </implements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+          <noAptca />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu" ref="true" />
+      </containers>
+      <file name="1fc089b3-499c-4eef-d28d-2b445977d071" />
+    </api>
+    <api id="M:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu.RemoveRecentFileAsync(System.String)">
+      <topicdata group="api" />
+      <apidata name="RemoveRecentFileAsync" group="member" subgroup="method" />
+      <memberdata visibility="public" />
+      <proceduredata virtual="true" final="true" />
+      <parameters>
+        <parameter name="fileName">
+          <type api="T:System.String" ref="true" />
+        </parameter>
+      </parameters>
+      <returns>
+        <type api="T:System.Threading.Tasks.Task" ref="true" />
+      </returns>
+      <implements>
+        <member api="M:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu.RemoveRecentFileAsync(System.String)">
+          <type api="T:FolkerKinzel.RecentFiles.WPF.IRecentFilesMenu" ref="true" />
+        </member>
+      </implements>
+      <containers>
+        <library assembly="FolkerKinzel.RecentFiles.WPF" module="FolkerKinzel.RecentFiles.WPF" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.6.0+07fb53dfb720791fa1cb8d7bd1de78b8a713ccf2" />
+          <noAptca />
+        </library>
+        <namespace api="N:FolkerKinzel.RecentFiles.WPF" />
+        <type api="T:FolkerKinzel.RecentFiles.WPF.RecentFilesMenu" ref="true" />
+      </containers>
+      <file name="527c3796-1e8b-b408-5c93-003a46e034ea" />
+    </api>
+  </apis>
+</reflection>

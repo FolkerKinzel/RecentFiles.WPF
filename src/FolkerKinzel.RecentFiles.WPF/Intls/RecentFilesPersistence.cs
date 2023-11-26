@@ -11,7 +11,7 @@ internal sealed class RecentFilesPersistence : IDisposable
     private readonly string _fileName;
     private readonly Mutex _mutex;
 
-    internal List<string> RecentFiles { get; } = new List<string>();
+    internal List<string> RecentFiles { get; } = [];
 
     /// <summary>Initializes a <see cref="RecentFilesPersistence" /> instance.</summary>
     /// <param name="persistenceDirectoryPath">Absolute path of the directory, into
@@ -76,7 +76,7 @@ internal sealed class RecentFilesPersistence : IDisposable
         {
             if (File.Exists(_fileName))
             {
-                string[] arr = Array.Empty<string>();
+                string[] arr = [];
 
                 try
                 {

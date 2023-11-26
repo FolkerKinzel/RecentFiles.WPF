@@ -12,7 +12,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    private readonly ConcurrentBag<Task> _tasks = new();
+    private readonly ConcurrentBag<Task> _tasks = [];
     private readonly IRecentFilesMenu _recentFilesMenu;
     private string? _currentFile;
 
@@ -55,7 +55,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     {
         // Wait all tasks to be finished before disposing the
         // recent files menu:
-        await Task.WhenAll(_tasks.ToArray()).ConfigureAwait(false);
+        await Task.WhenAll([.. _tasks]).ConfigureAwait(false);
         _recentFilesMenu.Dispose();
     }
 

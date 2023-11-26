@@ -35,7 +35,7 @@ public class UtilityTests
     [TestMethod]
     public void IsPathDriveTest4() => Assert.IsFalse(Utility.IsPathDrive(new string(System.IO.Path.GetInvalidPathChars())));
 
-#if NET462
+#if NET48
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void IsPathFullyQualifiedTest1() => Assert.IsFalse(Utility.IsPathFullyQualified(new string(System.IO.Path.GetInvalidPathChars())));

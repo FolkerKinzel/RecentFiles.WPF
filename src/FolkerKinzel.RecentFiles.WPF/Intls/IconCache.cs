@@ -130,7 +130,7 @@ internal sealed class IconCache
         }
     }
 
-    private static ImageSource ToImageSource(Icon icon)
+    private static BitmapFrame ToImageSource(Icon icon)
     {
         using Bitmap bmp2 = icon.Width == 16 && icon.Height == 16 ? icon.ToBitmap()
                                                                   : ResizeIcon(icon, 16, 16);
