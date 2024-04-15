@@ -13,7 +13,7 @@
     <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
     <Product>FolkerKinzel.RecentFiles.WPF</Product>
     <Version>1.6.0</Version>
-    <FileVersion>1.6.0.7</FileVersion>
+    <FileVersion>1.6.0.8</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/releases/tag/v1.6.0</PackageReleaseNotes>
     <PackageTags>recent menu WPF</PackageTags>
@@ -40,6 +40,7 @@
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'net462'">
     <NoWarn>$(NoWarn);8600;8601;8602;8603;8604</NoWarn>
