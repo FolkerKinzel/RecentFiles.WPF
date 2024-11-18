@@ -1,7 +1,7 @@
 # FolkerKinzel.RecentFiles.WPF
 [![NuGet](https://img.shields.io/nuget/v/FolkerKinzel.RecentFiles.WPF)](https://www.nuget.org/packages/FolkerKinzel.RecentFiles.WPF/)
 [![GitHub](https://img.shields.io/github/license/FolkerKinzel/RecentFiles.WPF)](https://github.com/FolkerKinzel/RecentFiles.WPF/blob/master/LICENSE)
-
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua)
 
 ## Recent files menu for WPF applications.
 ![Screenshot](screenshot.png)
