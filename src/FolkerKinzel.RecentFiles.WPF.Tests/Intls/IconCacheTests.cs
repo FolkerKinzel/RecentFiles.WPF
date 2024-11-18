@@ -126,4 +126,24 @@ public class IconCacheTests
         Assert.AreSame(img, img2);
 
     }
+
+    [TestMethod]
+    public void GetIconTest7()
+    {
+        var cache = new IconCache();
+
+        string path = "     ";
+
+        ImageSource img = cache.GetIcon(path);
+
+        Assert.IsNotNull(img);
+        Assert.IsTrue(img.Width > 15);
+        Assert.IsTrue(img.Height > 15);
+        Assert.IsTrue(img.Width < 17);
+        Assert.IsTrue(img.Height < 17);
+
+        ImageSource img2 = cache.GetIcon(path);
+        Assert.AreSame(img, img2);
+
+    }
 }

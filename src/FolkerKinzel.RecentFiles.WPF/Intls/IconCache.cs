@@ -26,7 +26,6 @@ internal sealed class IconCache
 
     internal ImageSource GetIcon(string path)
     {
-        Debug.Assert(!string.IsNullOrWhiteSpace(path));
         string? extension;
 
 #if NET462

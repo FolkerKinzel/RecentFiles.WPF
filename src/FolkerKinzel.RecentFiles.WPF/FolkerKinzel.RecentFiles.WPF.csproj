@@ -12,10 +12,10 @@
     <!-- nuget-Package: -->
     <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
     <Product>FolkerKinzel.RecentFiles.WPF</Product>
-    <Version>1.6.0</Version>
-    <FileVersion>1.6.0.8</FileVersion>
+    <Version>1.6.1</Version>
+    <FileVersion>1.6.1.2</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/releases/tag/v1.6.0</PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/releases/tag/v1.6.1</PackageReleaseNotes>
     <PackageTags>recent menu WPF</PackageTags>
     <Description>Recent files menu for WPF applications.</Description>
     <Authors>Folker Kinzel</Authors>
@@ -71,7 +71,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.0" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\Res.resx">
@@ -102,6 +102,6 @@
     </Compile>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Release if '$(TargetFramework)' == 'net6.0-windows' dotnet $(SolutionDir)IncVersion\IncVersion.dll $(ProjectDir)$(ProjectFileName) --revision" />
+    <Exec Command="if $(ConfigurationName) == Release if '$(TargetFramework)' == 'net8.0-windows' dotnet $(SolutionDir)IncVersion\IncVersion.dll $(ProjectDir)$(ProjectFileName) --revision" />
   </Target>
 </Project>

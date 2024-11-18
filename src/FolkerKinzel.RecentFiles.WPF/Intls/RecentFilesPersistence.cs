@@ -86,7 +86,10 @@ internal sealed class RecentFilesPersistence : IDisposable
                         {
                             arr = File.ReadAllLines(_fileName);
                         }
-                        catch { return; }
+                        catch
+                        {
+                            return;
+                        }
                         finally
                         {
                             _mutex.ReleaseMutex();
@@ -122,7 +125,9 @@ internal sealed class RecentFilesPersistence : IDisposable
                             File.WriteAllLines(_fileName, RecentFiles);
                         }
                     }
-                    catch { }
+                    catch
+                    { 
+                    }
                     finally
                     {
                         _mutex.ReleaseMutex();

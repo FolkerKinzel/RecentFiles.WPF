@@ -9,6 +9,6 @@
 * Synchronizes access between multiple threads and multiple instances of the same program.
 * Implements an interface to support Dependency Inversion and unit tests (mockable).
 
-[Project Reference and Release Notes](https://github.com/FolkerKinzel/RecentFiles.WPF/releases/tag/v1.6.0)
+[Project Reference and Release Notes](https://github.com/FolkerKinzel/RecentFiles.WPF/releases/tag/v1.6.1)
 
 [See code examples on GitHub](https://github.com/FolkerKinzel/RecentFiles.WPF)
