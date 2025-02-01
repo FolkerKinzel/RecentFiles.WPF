@@ -12,10 +12,10 @@
     <!-- nuget-Package: -->
     <PackageId>FolkerKinzel.RecentFiles.WPF</PackageId>
     <Product>FolkerKinzel.RecentFiles.WPF</Product>
-    <Version>1.6.1</Version>
-    <FileVersion>1.6.1.2</FileVersion>
+    <Version>1.6.2</Version>
+    <FileVersion>1.6.2.6</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/releases/tag/v1.6.1</PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/FolkerKinzel/RecentFiles.WPF/releases/tag/v1.6.2</PackageReleaseNotes>
     <PackageTags>recent menu WPF</PackageTags>
     <Description>Recent files menu for WPF applications.</Description>
     <Authors>Folker Kinzel</Authors>
@@ -71,7 +71,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.Drawing.Common" Version="9.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\Res.resx">
