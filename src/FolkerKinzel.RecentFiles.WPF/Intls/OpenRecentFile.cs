@@ -18,7 +18,9 @@ internal sealed class OpenRecentFile(Action<object?> execute) : ICommand
 
     /// <summary>Event that is fired if the return value of 
     /// <see cref="OpenRecentFile.CanExecute(object)" /> has changed.</summary>
+#pragma warning disable CS0067 // The event is never used
     public event EventHandler? CanExecuteChanged;
+#pragma warning restore CS0067 // The event is never used
 
     /// <summary>Method that executes the <see cref="ICommand" />.</summary>
     /// <param name="parameter">The filename selected for opening.</param>
