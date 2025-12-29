@@ -54,7 +54,7 @@ public class RecentFilesMenuTests
         menu.Initialize(null!);
     }
 
-    [WpfTestMethod()]
+    [STATestMethod()]
     public void MenuLoadedTest1()
     {
         if (File.Exists(_fileName))
@@ -72,7 +72,7 @@ public class RecentFilesMenuTests
         Assert.IsFalse(menuItem.IsEnabled);
     }
 
-    [WpfTestMethod()]
+    [STATestMethod()]
     public void MenuLoadedTest2()
     {
         File.WriteAllText(_fileName,
@@ -132,7 +132,7 @@ public class RecentFilesMenuTests
 
     
 
-    [WpfTestMethod()]
+    [STATestMethod()]
     public void MenuLoadedTest4()
     {
         File.WriteAllText(_fileName,
